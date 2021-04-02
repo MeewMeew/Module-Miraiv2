@@ -1,12 +1,11 @@
 <h1 align="center">
-	<a href="#"><img src="https://i.imgur.com/1B2FnzS.png" alt="Mirai V2"></a><br>
-	Module Mirai V2
+	<img src="https://i.imgur.com/1B2FnzS.png" alt="Mirai V2">
 </h1>
 
 <p align="center">
-	<a href="https://github.com/ProCoderMew/Module-Miraiv2/commits"><img alt="commits" src="https://img.shields.io/github/commit-activity/m/ProCoderMew/Module-Miraiv2.svg?label=commit&style=flat-square"></a>
-	<a href="https://github.com/ProCoderMew/Module-Miraiv2/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/ProCoderMew/Module-Miraiv2"></a>
-	<a href="https://github.com/ProCoderMew/Module-Miraiv2/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ProCoderMew/Module-Miraiv2"></a>
+	<a href="https://github.com/ProCoderMew/Module-Miraiv2/commits" target="_blank"><img alt="commits" src="https://img.shields.io/github/commit-activity/m/ProCoderMew/Module-Miraiv2.svg?label=commit&style=flat-square"></a>
+	<a href="https://github.com/ProCoderMew/Module-Miraiv2/issues" target="_blank"><img alt="GitHub issues" src="https://img.shields.io/github/issues/ProCoderMew/Module-Miraiv2"></a>
+	<a href="https://github.com/ProCoderMew/Module-Miraiv2/stargazers" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ProCoderMew/Module-Miraiv2"></a>
 </p>
 
 # Module hỗ trợ cho source [CatalizCS/Miraiv2](https://github.com/catalizcs/miraiv2)
