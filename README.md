@@ -18,6 +18,8 @@
 
 - 21/4/2021: Update module img.
 
+- 22/4/2021: Update module sim.
+
 </details>
 
 # Location
