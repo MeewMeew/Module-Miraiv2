@@ -10,6 +10,16 @@
 
 # Module hỗ trợ cho source [CatalizCS/Miraiv2](https://github.com/catalizcs/miraiv2)
 
+# Các thay đổi
+
+<details>
+
+- 1/4/2021: Thêm module sim, img, slap, hitbutt.
+
+- 21/4/2021: Update module img.
+
+</details>
+
 # Location
 - Vị trí lưu module: [modules/commands](https://github.com/catalizcs/miraiv2/tree/main/modules/commands)
 
