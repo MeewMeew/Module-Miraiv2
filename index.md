@@ -21,6 +21,7 @@
 - 22/4/2021: Update module sim.
 
 </details>
+
 # Location
 - Vị trí lưu module: [modules/commands](https://github.com/catalizcs/miraiv2/tree/main/modules/commands)
 
