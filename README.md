@@ -22,6 +22,8 @@
 
 - 23/4/2021: Update module sim.
 
+- 24/4/2021: Update module sim.
+
 </details>
 
 # Location
