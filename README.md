@@ -13,11 +13,11 @@
 # Các thay đổi
 
 <details>
-
-<p>- 1/4/2021: Thêm module sim, img, slap, hitbutt.</p><br>
-<p>- 21/4/2021: Update module img.</p><br>
-<p>- 22/4/2021: Update module sim.</p><br>
-<p>- 23/4/2021: Update module sim.</p><br>
+<br>
+<p>- 1/4/2021: Thêm module sim, img, slap, hitbutt.</p>
+<p>- 21/4/2021: Update module img.</p>
+<p>- 22/4/2021: Update module sim.</p>
+<p>- 23/4/2021: Update module sim.</p>
 <p>- 24/4/2021: Update module sim.</p>
 
 </details>
