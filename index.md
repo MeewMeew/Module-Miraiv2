@@ -15,13 +15,13 @@
 <details>
 
 - 1/4/2021: Thêm module sim, img, slap, hitbutt.
-
+<br>
 - 21/4/2021: Update module img.
-
+<br>
 - 22/4/2021: Update module sim.
-
+<br>
 - 23/4/2021: Update module sim.
-
+<br>
 - 24/4/2021: Update module sim.
 
 </details>
