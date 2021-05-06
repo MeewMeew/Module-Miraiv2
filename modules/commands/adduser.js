@@ -34,8 +34,8 @@ module.exports.run = async function({ api, event, args, client }) {
         try {
             await api.addUserToGroup(id, threadID);
         } catch (e) {
-        	success = false;
-            return out(`${JSON.stringify(e)}`);
+            success = false;
+            return out(e.errorSummary);
         }
         if (success) {
             if (threadInfo.approvalMode == true && !admins.includes(api.getCurrentUserID())) return out(`Đã thêm ${name != null ? name : "thành viên"} vào nhóm, hãy yêu cầu quản trị viên phê duyệt !`);
