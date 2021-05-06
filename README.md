@@ -19,6 +19,7 @@
 <p>- 22/4/2021: Update module sim.</p>
 <p>- 23/4/2021: Update module sim.</p>
 <p>- 24/4/2021: Update module sim.</p>
+<p>- 6/5/2021: Update module covid & adduser.</p>
 
 </details>
 
@@ -30,6 +31,8 @@
 - **image** - Kho Ảnh Trai, Gái, Cosplay: [img.js](modules/commands/img.js)
 - **hitbutt** - Tét Mông người được tag: [hitbutt.js](modules/commands/hitbutt.js)
 - **slap** - Tát toang alo người được tag: [slap.js](modules/commands/slap.js)
+- **covid** - Xem tình hình dịch covid: [covid.js](modules/commands/covid.js)
+- **adduser** - Thêm thành viên vào nhóm bằng link profile: [adduser.js](modules/commands/adduser.js)
 
 # Author
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew)
