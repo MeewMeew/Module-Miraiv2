@@ -31,6 +31,7 @@ module.exports.run = async function({ api, event, args, client }) {
     var participantIDs = threadInfo.participantIDs.map(e => parseInt(e))
     var success = true;
     async function adduser(id, name) {
+    	id = parseInt(id);
     	if (participantIDs.includes(id)) return out(`${name ? name : "Thành viên"} đã có mặt trong nhóm.`);
     	else {
 	    	var admins = threadInfo.adminIDs.map(e => parseInt(e.id));
