@@ -1,6 +1,6 @@
 module.exports.config = {
     name: "adduser",
-    version: "1.0.0",
+    version: "2.0.0",
     hasPermssion: 0,
     credits: "Thùy",
     description: "thêm người dùng vào nhóm bằng link hoặc uid",
@@ -49,7 +49,7 @@ module.exports.run = async function({ api, event, args, client }) {
                 await api.addUserToGroup(id, threadID);
             } catch (e) {
                 success = false;
-                return out(e.errorSummary);
+                return out(`không thể thêm ${name != null ? name : "người dùng"} vào nhóm.`);
             }
             if (success) {
                 if (threadInfo.approvalMode == true) {
