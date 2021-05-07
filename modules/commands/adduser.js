@@ -28,19 +28,23 @@ module.exports.run = async function({ api, event, args, client }) {
     let { threadID, senderID, messageID } = event;
     const out = (msg) => api.sendMessage(msg, threadID, messageID);
     var threadInfo = client.threadInfo.get(threadID) || await api.getThreadInfo(threadID);
+    var participantIDs = threadInfo.participantIDs.map(e => parseInt(e))
     var success = true;
     async function adduser(id, name) {
-    	var admins = threadInfo.adminIDs.map(e => parseInt(e.id));
-        try {
-            await api.addUserToGroup(id, threadID);
-        } catch (e) {
-            success = false;
-            return out(e.errorSummary);
-        }
-        if (success) {
-            if (threadInfo.approvalMode == true && !admins.includes(api.getCurrentUserID())) return out(`Đã thêm ${name != null ? name : "thành viên"} vào nhóm, hãy yêu cầu quản trị viên phê duyệt !`);
-            else return out(`Đã thêm ${name != null ? name : "thành viên"} vào nhóm !`);        	
-        }
+    	if (participantIDs.includes(id)) return out(`${name ? name : "Thành viên"} đã có mặt trong nhóm.`);
+    	else {
+	    	var admins = threadInfo.adminIDs.map(e => parseInt(e.id));
+	        try {
+	            await api.addUserToGroup(id, threadID);
+	        } catch (e) {
+	            success = false;
+	            return out(e.errorSummary);
+	        }
+	        if (success) {
+	            if (threadInfo.approvalMode == true && !admins.includes(api.getCurrentUserID())) return out(`Đã thêm ${name != null ? name : "thành viên"} vào nhóm, hãy yêu cầu quản trị viên phê duyệt !`);
+	            else return out(`Đã thêm ${name != null ? name : "thành viên"} vào nhóm !`);        	
+	        }
+    	}
     }
     if (!args[0]) return out("Vui lòng nhập 1 link profile user cần add");
     if (!isNaN(args[0])) return adduser(args[0], null);
