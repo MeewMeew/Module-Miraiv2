@@ -35,7 +35,7 @@
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [adduser.js](modules/commands/adduser.js)
 
 # Author
-- **ProCoderMew** - [GitHub](https://github.com/ProCoderMew)
+- **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
 
 # License
 
