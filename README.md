@@ -20,6 +20,7 @@
 <p>- 23/4/2021: Update module sim.</p>
 <p>- 24/4/2021: Update module sim.</p>
 <p>- 6/5/2021: Update module covid & adduser.</p>
+<p>- 16/5/2021: Update module linkword, sortword, sim, teach.</p>
 
 </details>
 
