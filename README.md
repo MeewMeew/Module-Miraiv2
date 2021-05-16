@@ -29,11 +29,14 @@
 
 # Module
 - **simsimi** - Chat cùng simsimi: [sim.js](modules/commands/sim.js)
+- **teach** - Dạy sim: [teach.js](modules/commands/teach.js)
 - **image** - Kho Ảnh Trai, Gái, Cosplay: [img.js](modules/commands/img.js)
 - **hitbutt** - Tét Mông người được tag: [hitbutt.js](modules/commands/hitbutt.js)
 - **slap** - Tát toang alo người được tag: [slap.js](modules/commands/slap.js)
 - **covid** - Xem tình hình dịch covid: [covid.js](modules/commands/covid.js)
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [adduser.js](modules/commands/adduser.js)
+- **linkword** - Chơi nối từ với bot: [linkword.js](modules/commands/linkword.js)
+- **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [sortword.js](modules/commands/sortword.js)
 
 # Author
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
