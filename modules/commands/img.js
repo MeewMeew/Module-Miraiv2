@@ -49,7 +49,7 @@ module.exports.run = async function({ api, event, args, utils }) {
             type = "cosplay";
         break;
 
-        case "meo":
+        case "meow":
         	type = "meow";
         break;
 
