@@ -39,26 +39,28 @@ module.exports.run = async function({ api, event, args, utils }) {
         case "trai":
             type = "boy";
         break;
-
         case "girl":
         case "gái":
             type = "girl";
         break;
-
         case "cosplay":
             type = "cosplay";
         break;
-
         case "meow":
         	type = "meow";
         break;
-
+        case "dog":
+            type = "dog";
+        break;        
         default:
             return utils.throwError("img", threadID, messageID);
         break;
     }
     
-    var image = (await axios.get(`https://api.meewmeew.ml/image/${type}?version=${this.config.version}`)).data.data;
-    fs.writeFileSync(__dirname + `/cache/${type}.png`, Buffer.from(image, 'utf-8'));
-    return api.sendMessage({ attachment: fs.createReadStream(__dirname + `/cache/${type}.png`) }, threadID, () => fs.unlinkSync(__dirname + `/cache/${type}.png`), messageID);
+    var data = (await axios.get(`https://api.meewmeew.ml/image/${type}?version=${this.config.version}`)).data;
+    if (data.success == false) return api.api.sendMessage(data.error, threadID, messageID);
+    else {
+        fs.writeFileSync(__dirname + `/cache/${type}.png`, Buffer.from(data.data, 'utf-8'));
+        return api.sendMessage({ attachment: fs.createReadStream(__dirname + `/cache/${type}.png`) }, threadID, () => fs.unlinkSync(__dirname + `/cache/${type}.png`), messageID);       
+    }
 }
