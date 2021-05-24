@@ -32,7 +32,7 @@ module.exports.run = async function ({ api, event, args, global, client }) {
 	var success = true;
 
 	if (!args[0]) return out("Vui lòng nhập 1 link profile user cần add");
-	if (!isNaN(args[0])) return adduser(args[0], null);
+	if (!isNaN(args[0])) return adduser(args[0], undefined);
 	else {
 		var data = (await axios.get("https://api.meewmeew.ml/fbid?url=" + encodeURIComponent(args[0]))).data;
 		if (data.success == false) {
@@ -57,11 +57,11 @@ module.exports.run = async function ({ api, event, args, global, client }) {
 				await api.addUserToGroup(id, threadID);
 			} catch (e) {
 				success = false;
-				return out(`Không thể thêm ${name != null ? name : "người dùng"} vào nhóm.`);
+				return out(`Không thể thêm ${name ? name : "người dùng"} vào nhóm.`);
 			}
 			if (success) {
 				if (threadInfo.approvalMode == true) {
-					if (!admins.includes(botID)) return out(`Đã thêm ${name != null ? name : "thành viên"} vào danh sách phê duyệt !`);
+					if (!admins.includes(botID)) return out(`Đã thêm ${name ? name : "thành viên"} vào danh sách phê duyệt !`);
 					else return join({ api, event: form, global, client })
 				}
 				else return join({ api, event: form, global, client })
