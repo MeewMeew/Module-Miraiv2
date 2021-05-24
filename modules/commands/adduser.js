@@ -1,6 +1,6 @@
 module.exports.config = {
 	name: "adduser",
-	version: "2.0.0",
+	version: "2.0.1",
 	hasPermssion: 0,
 	credits: "Thùy",
 	description: "thêm người dùng vào nhóm bằng link hoặc uid",
