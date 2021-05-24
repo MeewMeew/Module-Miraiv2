@@ -10,7 +10,7 @@
 
 # Module hỗ trợ cho source [CatalizCS/Miraiv2](https://github.com/catalizcs/miraiv2)
 
-# Các thay đổi
+# Các thay đổi (Cập nhật: 24/05/2021)
 
 <details>
 <br>
@@ -22,7 +22,7 @@
 <p>- 6/5/2021: Update module covid & adduser.</p>
 <p>- 16/5/2021: Update module linkword, sortword, sim, teach.</p>
 <p>- 22/5/2021: Update module img.</p>
-
+<p>- 24/5/2021: Update module addser.</p>
 </details>
 
 # Location
