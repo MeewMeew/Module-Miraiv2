@@ -23,6 +23,7 @@
 <p>- 16/5/2021: Update module linkword, sortword, sim, teach.</p>
 <p>- 22/5/2021: Update module img.</p>
 <p>- 24/5/2021: Update module addser.</p>
+<p>- 29/5/2021: Add module xsmb.</p>
 </details>
 
 # Location
@@ -38,6 +39,7 @@
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [adduser.js](modules/commands/adduser.js)
 - **linkword** - Chơi nối từ với bot: [linkword.js](modules/commands/linkword.js)
 - **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [sortword.js](modules/commands/sortword.js)
+- **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [xsmb.js](modules/commands/xsmb.js)
 
 # Author
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
