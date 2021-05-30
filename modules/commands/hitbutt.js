@@ -10,22 +10,18 @@ module.exports.config = {
     cooldowns: 5
 };
 
-module.exports.onLoad = () => {
+module.exports.onLoad = async() => {
     const fs = require("fs-extra");
-    const request = require("request");
+    const axios = require("axios");
     const dirMaterial = __dirname + `/cache/canvas/`;
     if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "hit_butt.png")) request("https://i.imgur.com/SnvJrte.png").pipe(fs.createWriteStream(dirMaterial + "hit_butt.png"));
+    if (!fs.existsSync(dirMaterial + "hit_butt.png")) {
+    	var { data } = await axios.get("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/main/data/hitbutt.png", { responseType: "arraybuffer" });
+    	fs.writeFileSync(dirMaterial + "hit_butt.png");
+    };
 }
 
 async function makeImage({ one, two }) {
-
-    /*
-     * 
-     * Remake from Canvacord
-     * 
-     */
-    
     const axios = require("axios");
     const fs = require("fs-extra");
     const path = require("path");

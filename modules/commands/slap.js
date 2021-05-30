@@ -15,7 +15,10 @@ module.exports.onLoad = () => {
     const request = require("request");
     const dirMaterial = __dirname + `/cache/canvas/`;
     if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "slap.png")) request("https://i.imgur.com/PkyR7L2.png").pipe(fs.createWriteStream(dirMaterial + "slap.png"));
+    if (!fs.existsSync(dirMaterial + "slap.png")) {
+    	var { data } = await axios.get("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/main/data/slap.png", { responseType: "arraybuffer" });
+    	fs.writeFileSync(dirMaterial + "slap.png");
+    };
 }
 
 async function makeImage({ one, two }) {    
