@@ -24,6 +24,7 @@
 <p>- 22/5/2021: Update module img.</p>
 <p>- 24/5/2021: Update module addser.</p>
 <p>- 29/5/2021: Add module xsmb.</p>
+<p>- 30/5/2021: Add module filter.</p>
 </details>
 
 # Location
@@ -40,6 +41,7 @@
 - **linkword** - Chơi nối từ với bot: [linkword.js](modules/commands/linkword.js)
 - **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [sortword.js](modules/commands/sortword.js)
 - **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [xsmb.js](modules/commands/xsmb.js)
+- **filter** - Lọc cá cảnh trong nhóm bạn: [filter.js](modules/commands/filter.js)
 
 # Author
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
