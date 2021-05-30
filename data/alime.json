@@ -48,7 +48,6 @@
 		"baka": "https://api.nekos.dev/api/v3/images/sfw/gif/baka",
 		"wallpaper": "https://api.nekos.dev/api/v3/images/sfw/img/wallpaper",
 		"avatar": "https://api.nekos.dev/api/v3/images/sfw/img/no_tag_avatar",
-		"waifu": "https://api.nekos.dev/api/v3/images/sfw/img/waifu",
-		"loli": "https://api.lolis.life/random?category=kawaii"
+		"waifu": "https://api.nekos.dev/api/v3/images/sfw/img/waifu"
 	}
 }

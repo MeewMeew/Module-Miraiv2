@@ -24,24 +24,26 @@
 <p>- 22/5/2021: Update module img.</p>
 <p>- 24/5/2021: Update module addser.</p>
 <p>- 29/5/2021: Add module xsmb.</p>
-<p>- 30/5/2021: Add module filter, update module xsmb.</p>
+<p>- 30/5/2021: Add module filter, alime. Update module xsmb.</p>
 </details>
 
 # Location
 - Vị trí lưu module: [modules/commands](https://github.com/catalizcs/miraiv2/tree/main/modules/commands)
 
 # Module
-- **simsimi** - Chat cùng simsimi: [sim.js](modules/commands/sim.js)
-- **teach** - Dạy sim: [teach.js](modules/commands/teach.js)
-- **image** - Kho Ảnh Trai, Gái, Cosplay: [img.js](modules/commands/img.js)
-- **hitbutt** - Tét Mông người được tag: [hitbutt.js](modules/commands/hitbutt.js)
-- **slap** - Tát toang alo người được tag: [slap.js](modules/commands/slap.js)
-- **covid** - Xem tình hình dịch covid: [covid.js](modules/commands/covid.js)
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [adduser.js](modules/commands/adduser.js)
-- **linkword** - Chơi nối từ với bot: [linkword.js](modules/commands/linkword.js)
-- **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [sortword.js](modules/commands/sortword.js)
-- **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [xsmb.js](modules/commands/xsmb.js)
+- **alime** - Ảnh alime sfw và cả alime nsfw: [alime.js](modules/commands/alime.js)
+- **covid** - Xem tình hình dịch covid: [covid.js](modules/commands/covid.js)
 - **filter** - Lọc cá cảnh trong nhóm bạn: [filter.js](modules/commands/filter.js)
+- **hitbutt** - Tét Mông người được tag: [hitbutt.js](modules/commands/hitbutt.js)
+- **image** - Kho Ảnh Trai, Gái, Cosplay: [img.js](modules/commands/img.js)
+- **linkword** - Chơi nối từ với bot: [linkword.js](modules/commands/linkword.js)
+- **simsimi** - Chat cùng simsimi: [sim.js](modules/commands/sim.js)
+- **slap** - Tát toang alo người được tag: [slap.js](modules/commands/slap.js)
+- **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [sortword.js](modules/commands/sortword.js)
+- **teach** - Dạy sim: [teach.js](modules/commands/teach.js)
+- **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [xsmb.js](modules/commands/xsmb.js)
+
 
 # Author
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
