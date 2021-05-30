@@ -10,7 +10,7 @@ module.exports.config = {
     cooldowns: 5
 };
 
-module.exports.onLoad = () => {
+module.exports.onLoad = async() => {
     const fs = require("fs-extra");
     const request = require("request");
     const dirMaterial = __dirname + `/cache/canvas/`;
