@@ -24,7 +24,7 @@
 <p>- 22/5/2021: Update module img.</p>
 <p>- 24/5/2021: Update module addser.</p>
 <p>- 29/5/2021: Add module xsmb.</p>
-<p>- 30/5/2021: Add module filter.</p>
+<p>- 30/5/2021: Add module filter, update module xsmb.</p>
 </details>
 
 # Location
