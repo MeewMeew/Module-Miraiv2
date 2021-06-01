@@ -10,7 +10,7 @@
 
 # Module hỗ trợ cho source [CatalizCS/Miraiv2](https://github.com/catalizcs/miraiv2)
 
-# Các thay đổi (Cập nhật: 24/05/2021)
+# Các thay đổi (Cập nhật: 1/6/2021)
 
 <details>
 <br>
