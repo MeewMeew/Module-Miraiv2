@@ -25,6 +25,7 @@
 <p>- 24/5/2021: Update module addser.</p>
 <p>- 29/5/2021: Add module xsmb.</p>
 <p>- 30/5/2021: Add module filter, alime. Update module xsmb.</p>
+<p>- 1/6/2021: Add module surprise.</p>
 </details>
 
 # Location
@@ -41,6 +42,7 @@
 - **simsimi** - Chat cùng simsimi: [sim.js](modules/commands/sim.js)
 - **slap** - Tát toang alo người được tag: [slap.js](modules/commands/slap.js)
 - **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [sortword.js](modules/commands/sortword.js)
+- **surprise** - Một điều bất ngờ dành cho box chat và người dùng lệnh :): [surprise.js](modules/commands/surprise.js)
 - **teach** - Dạy sim: [teach.js](modules/commands/teach.js)
 - **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [xsmb.js](modules/commands/xsmb.js)
 
