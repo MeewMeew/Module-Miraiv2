@@ -1,31 +1,35 @@
 module.exports.config = {
     name: "hitbutt",
-    version: "1.0.0",
+    version: "2.0.0",
     hasPermssion: 0,
-    credits: "MewMew",
+    credits: "ProCoderMew",
     description: "",
     commandCategory: "general",
-    usages: "hitbutt [tag]",
-    dependencies: ["path", "jimp"],
-    cooldowns: 5
+    usages: "[tag]",
+    cooldowns: 5,
+    dependencies: {
+        "axios", "",
+        "fs-extra": "",
+        "path": "",
+        "jimp": ""
+    }
 };
 
 module.exports.onLoad = async() => {
-    const fs = require("fs-extra");
-    const axios = require("axios");
+    const { resolve } = global.nodemodule["path"];
+    const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
+    const { downloadFile } = global.client.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
-    if (!fs.existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "hit_butt.png")) {
-    	var { data } = await axios.get("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/main/data/hitbutt.png", { responseType: "arraybuffer" });
-    	fs.writeFileSync(dirMaterial + "hit_butt.png");
-    };
+    const path = resolve(__dirname, 'cache/canvas', 'hit_butt.png');
+    if (!existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
+    if (!existsSync(path)) await downloadFile("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/main/data/hitbutt.png", path);
 }
 
 async function makeImage({ one, two }) {
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const path = require("path");
-    const jimp = require("jimp");
+    const fs = global.nodemodule["fs-extra"];
+    const path = global.nodemodule["path"];
+    const axios = global.nodemodule["axios"]; 
+    const jimp = global.nodemodule["jimp"];
     const __root = path.resolve(__dirname, "cache", "canvas");
 
     let hit_butt_img = await jimp.read(__root + "/hit_butt.png");
@@ -59,12 +63,12 @@ async function circle(image) {
 }
 
 module.exports.run = async function ({ event, api, args }) {
-    const fs = require("fs-extra");
-    let { threadID, messageID, senderID } = event;
-    var mention = Object.keys(event.mentions);
+    const fs = global.nodemodule["fs-extra"];
+    const { threadID, messageID, senderID } = event;
+    const mention = Object.keys(event.mentions);
     if (!mention) return api.sendMessage("Vui lòng tag 1 người", threadID, messageID);
     else {
-        var one = senderID, two = mention[0];
+        const one = senderID, two = mention[0];
         return makeImage({ one, two }).then(path => api.sendMessage({ body: "Hư nè.. " + event.mentions[mention[0]].replace(/@/g, ""), attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
     }
 }

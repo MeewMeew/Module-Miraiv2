@@ -1,35 +1,23 @@
  module.exports.config = {
 	name: "teach",
-	version: "1.0.0",
+	version: "2.0.0",
 	hasPermssion: 0,
-	credits: "MewMew",
+	credits: "ProCoderMew",
 	description: "Dạy bot (dùng cho lệnh sim)",
-	commandCategory: "chatbot",
-	usages: "teach in => out",
+	commandCategory: "general",
+	usages: "teach hello => goodbye",
 	cooldowns: 5,
-	dependencies: ["axios"],
-	info: [
-		{
-			key: 'In',
-			prompt: 'Câu đầu vào',
-			type: 'Văn Bản',
-			example: 'Chào SpermLord'
-		},
-		{
-			key: 'Out',
-			prompt: 'Câu đầu ra',
-			type: 'Văn Bản',
-			example: 'Chào cái baise ta mère'
-		}
-	]
+	dependencies: {
+		"axios": ""
+	}
 };
 
 module.exports.run = async function({ api, event, args }) {
-	let res = await require("axios")("https://simsimi.miraiproject.tk/teach", {
+	const axios = global.nodemodule["axios"];
+	const res = await axios("https://api.simsimi.tk/teach", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		data: { teach: args.join(" ") }
 	})
-	let data = await res.data.success;
-	return api.sendMessage(`${data}`, event.threadID, event.messageID)
+	return api.sendMessage(`${res.data.success}`, event.threadID, event.messageID)
 }

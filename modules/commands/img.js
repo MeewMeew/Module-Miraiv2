@@ -1,38 +1,22 @@
 module.exports.config = {
     name: "img",
-    version: "2.0.1",
+    version: "3.0.0",
     hasPermssion: 0,
-    credits: "MewMew",
+    credits: "ProCoderMew",
     description: "Kho Ảnh",
     commandCategory: "General",
-    usages: "img [args]",
+    usages: "boy/girl/cosplay/meow",
     cooldowns: 5,
-    info: [
-        {
-            key: "boy/trai",
-            prompt: "Ảnh trai đẹp",
-            type: 'Ảnh',
-            example: 'img boy'
-        }, 
-        {
-            key: "girl/gái",
-            prompt: "Ảnh gái xinh",
-            type: 'Ảnh',
-            example: 'img girl'
-        }, 
-        {
-            key: "cosplay",
-            prompt: "Ảnh cosplay",
-            type: 'Ảnh',
-            example: 'img cosplay'
-        }
-    ]
+    dependencies: {
+        "axios", "",
+        "fs-extra": ""
+    }
 };
 
-module.exports.run = async function({ api, event, args, utils }) {
-    var fs = require("fs-extra");
-    var axios = require("axios");
-    var { threadID, messageID } = event;
+module.exports.run = async function({ api, event, args }) {
+    const { createReadStream, unlinkSync, writeFileSync } = global.nodemodule["fs-extra"];
+    const axios = global.nodemodule["axios"];
+    const { threadID, messageID } = event;
     var type;
     switch (args[0]) {
         case "boy":
@@ -53,14 +37,15 @@ module.exports.run = async function({ api, event, args, utils }) {
             type = "dog";
         break;        
         default:
-            return utils.throwError("img", threadID, messageID);
+            return global.client.utils.throwError(this.config.name, threadID, messageID);
         break;
     }
     
-    var data = (await axios.get(`https://api.meewmeew.ml/image/${type}?version=${this.config.version}`)).data;
+    var { data } = await axios.get(`https://api.meewmeew.ml/image/${type}?version=${this.config.version}`);
+    var path = __dirname + `/cache/${type}.png`;
     if (data.success == false) return api.api.sendMessage(data.error, threadID, messageID);
     else {
-        fs.writeFileSync(__dirname + `/cache/${type}.png`, Buffer.from(data.data, 'utf-8'));
-        return api.sendMessage({ attachment: fs.createReadStream(__dirname + `/cache/${type}.png`) }, threadID, () => fs.unlinkSync(__dirname + `/cache/${type}.png`), messageID);       
+        writeFileSync(path, Buffer.from(data.data, 'utf-8'));
+        return api.sendMessage({ attachment: createReadStream(path) }, threadID, () => unlinkSync(path), messageID);       
     }
 }

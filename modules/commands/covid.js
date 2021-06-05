@@ -1,18 +1,20 @@
 module.exports.config = {
 	name: "covid",
-	version: "1.1.2",
+	version: "2.0.0",
 	hasPermssion: 0,
-	credits: "Thùy",
+	credits: "ProCoderMew",
 	description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
 	commandCategory: "other",
 	usages: "covid",
 	cooldowns: 5,
-	dependencies: ["axios"]
+    dependencies: {
+        "axios": ""
+    }
 };
 
 module.exports.run = async function({ api, event }) {
-    const axios = require("axios");
-    var data = (await axios.get("https://api.meewmeew.ml/covid")).data;
+    const axios = global.nodemodule["axios"];
+    var { data } = await axios.get("https://api.meewmeew.ml/covid");
     var world = data.world,
         vn = data.vietnam,
         news = data.news,
