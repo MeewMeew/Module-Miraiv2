@@ -43,7 +43,7 @@ module.exports.run = async function({ api, event, args }) {
     
     var { data } = await axios.get(`https://api.meewmeew.ml/image/${type}?version=${this.config.version}`);
     var path = __dirname + `/cache/${type}.png`;
-    if (data.success == false) return api.api.sendMessage(data.error, threadID, messageID);
+    if (data.success == false) return api.sendMessage(data.error, threadID, messageID);
     else {
         writeFileSync(path, Buffer.from(data.data, 'utf-8'));
         return api.sendMessage({ attachment: createReadStream(path) }, threadID, () => unlinkSync(path), messageID);       
