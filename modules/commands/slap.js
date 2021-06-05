@@ -21,7 +21,7 @@ module.exports.onLoad = async() => {
     const { downloadFile } = global.client.utils;
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'slap.png');
-    if (!existsSync(dirMaterial + "canvas")) fs.mkdirSync(dirMaterial, { recursive: true });
+    if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
     if (!existsSync(path)) await downloadFile("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/main/data/slap.png", path);
 }
 async function makeImage({ one, two }) {    
