@@ -8,7 +8,7 @@ module.exports.config = {
     usages: "boy/girl/cosplay/meow",
     cooldowns: 5,
     dependencies: {
-        "axios", "",
+        "axios": "",
         "fs-extra": ""
     }
 };

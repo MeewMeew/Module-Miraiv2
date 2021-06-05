@@ -8,7 +8,7 @@ module.exports.config = {
     usages: "[tag]",
     cooldowns: 5,
     dependencies: {
-        "axios", "",
+        "axios": "",
         "fs-extra": "",
         "path": "",
         "jimp": ""
