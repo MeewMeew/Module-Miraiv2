@@ -11,16 +11,19 @@ module.exports.config = {
         "axios": ""
     }
 };
-module.exports.event = async function({ api, event }) {
-    if (!global.hasOwnProperty('procodermew')) return;
-    if (!global.procodermew.hasOwnProperty('linkword')) global.procodermew.linkword = new Map();
+module.exports.onLoad = function () {
+    if (typeof global['procodermew'] == "undefined") global['procodermew'] = new Object();
+    if (typeof global['procodermew']['linkword'] == "undefined") global['procodermew']['linkword'] = new Map();
+}
+module.exports.handleEvent = async function({ api, event }) {
+    if (typeof global['procodermew']['linkword'] == "undefined") return;
     const axios = global.nodemodule["axios"];
     const { body: content, threadID, messageID } = event;
-    if (global.procodermew.linkword.has(threadID)) {
+    if (global['procodermew']['linkword'].has(threadID)) {
         if (content && content.split(" ").length == 2) {
             var data = (await axios.get("https://simsimi.miraiproject.tk/api/linkword?ask=" + encodeURIComponent(content))).data;
             if (data.text == "You Lose!") {
-                global.linkword.delete(threadID);
+                global['procodermew']['linkword'].delete(threadID);
                 return api.sendMessage(data.text, threadID, messageID);
             }
             else return api.sendMessage(data.text, threadID, messageID);
@@ -28,14 +31,12 @@ module.exports.event = async function({ api, event }) {
     }
 }
 module.exports.run = function({ api, event }) {
-    if (!global.hasOwnProperty('procodermew')) global.procodermew = {};
-    if (!global.procodermew.hasOwnProperty('linkword')) global.procodermew.linkword = new Map();
     const { threadID, messageID } = event;
-    if (!global.procodermew.linkword.has(threadID)) {
-        global.procodermew.linkword.set(threadID);
+    if (!global['procodermew']['linkword'].has(threadID)) {
+        global['procodermew']['linkword'].set(threadID);
         return api.sendMessage("Đã bật linkword", threadID, messageID);
     } else {
-        global.procodermew.linkword.delete(threadID);
+        global['procodermew']['linkword'].delete(threadID);
         return api.sendMessage("Đã tắt linkword", threadID, messageID);
     }
 }

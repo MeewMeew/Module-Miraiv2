@@ -10,7 +10,7 @@
 
 # Module hỗ trợ cho source [CatalizCS/Miraiv2](https://github.com/catalizcs/miraiv2)
 
-# Các thay đổi (Cập nhật: 5/6/2021)
+# Các thay đổi (Cập nhật: 6/6/2021)
 
 <details>
 <br>
@@ -27,6 +27,7 @@
 <p>- 30/5/2021: Add module filter, alime. Update module xsmb.</p>
 <p>- 1/6/2021: Add module surprise.</p>
 <p>- 5/6/2021: Update toàn bộ module.</p>
+<p>- 6/6/2021: Fix vài module.</p>
 </details>
 
 # Location

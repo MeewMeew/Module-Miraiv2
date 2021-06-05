@@ -5,7 +5,7 @@ module.exports.config = {
     credits: "ProCoderMew",
     description: "Kho Ảnh",
     commandCategory: "General",
-    usages: "boy/girl/cosplay/meow",
+    usages: "boy/girl/cosplay/meow/dog",
     cooldowns: 5,
     dependencies: {
         "axios": "",
@@ -34,6 +34,7 @@ module.exports.run = async function({ api, event, args }) {
         	type = "meow";
         break;
         case "dog":
+        case "chó":
             type = "dog";
         break;        
         default:
