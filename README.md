@@ -10,28 +10,34 @@
 
 # Module hỗ trợ cho source [CatalizCS/Miraiv2](https://github.com/catalizcs/miraiv2)
 
+# Cảnh Báo
+- **Cấm chỉnh sửa credits.**
+- **Cấm chỉnh sửa(mod) module.**
+- **Bạn và bot bạn có thể lên danh sánh gban nếu vi phạm các điều trên.**
+
 # Các thay đổi (Cập nhật: 7/6/2021)
 
-<details>
-<br>
-<p>- 1/4/2021: Thêm module sim, img, slap, hitbutt.</p>
-<p>- 21/4/2021: Update module img.</p>
-<p>- 22/4/2021: Update module sim.</p>
-<p>- 23/4/2021: Update module sim.</p>
-<p>- 24/4/2021: Update module sim.</p>
-<p>- 6/5/2021: Update module covid & adduser.</p>
-<p>- 16/5/2021: Update module linkword, sortword, sim, teach.</p>
-<p>- 22/5/2021: Update module img.</p>
-<p>- 24/5/2021: Update module addser.</p>
-<p>- 29/5/2021: Add module xsmb.</p>
-<p>- 30/5/2021: Add module filter, alime. Update module xsmb.</p>
-<p>- 1/6/2021: Add module surprise.</p>
-<p>- 5/6/2021: Update toàn bộ module.</p>
-<p>- 6/6/2021: Fix vài module.</p>
-<p>- 7/6/2021: Fix module surprise.</p>
+<details open="open">
+	<summary>Xem các thay đổi.</summary>
+	<br>
+	<p>- 1/4/2021: Thêm module sim, img, slap, hitbutt.</p>
+	<p>- 21/4/2021: Update module img.</p>
+	<p>- 22/4/2021: Update module sim.</p>
+	<p>- 23/4/2021: Update module sim.</p>
+	<p>- 24/4/2021: Update module sim.</p>
+	<p>- 6/5/2021: Update module covid & adduser.</p>
+	<p>- 16/5/2021: Update module linkword, sortword, sim, teach.</p>
+	<p>- 22/5/2021: Update module img.</p>
+	<p>- 24/5/2021: Update module addser.</p>
+	<p>- 29/5/2021: Add module xsmb.</p>
+	<p>- 30/5/2021: Add module filter, alime. Update module xsmb.</p>
+	<p>- 1/6/2021: Add module surprise.</p>
+	<p>- 5/6/2021: Update toàn bộ module.</p>
+	<p>- 6/6/2021: Fix vài module.</p>
+	<p>- 7/6/2021: Fix module surprise.</p>
 </details>
 
-# Location
+# Vị Trí Lưu
 - Vị trí lưu module: [modules/commands](https://github.com/catalizcs/miraiv2/tree/main/modules/commands)
 
 # Module
@@ -50,7 +56,7 @@
 - **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [xsmb.js](modules/commands/xsmb.js)
 
 
-# Author
+# Tác Giả
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
 
 # License
