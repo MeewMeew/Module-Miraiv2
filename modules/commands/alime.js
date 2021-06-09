@@ -17,23 +17,24 @@ module.exports.config = {
 module.exports.onLoad = async function () {
     const { resolve } = global.nodemodule["path"];
     const { existsSync, readFileSync } = global.nodemodule["fs-extra"];
-
+    const { downloadFile } = global.utils;
     const path = resolve(__dirname, 'cache', 'alime.json');
     const url = "https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/main/data/alime.json";
 
     try {
-        if (!existsSync(path)) await global.client.utils.downloadFile(url, path);
+        if (!existsSync(path)) await downloadFile(url, path);
         const data = JSON.parse(readFileSync(path));
-        if (data.length == 0) await global.client.utils.downloadFile(url, path);
+        if (data.length == 0) await downloadFile(url, path);
         return;
-    } catch { await global.client.utils.downloadFile(url, path) };
+    } catch { await downloadFile(url, path) };
 };
 
 module.exports.run = async function ({ event, api, args }) {
     const { writeFileSync, createReadStream, unlinkSync } = global.nodemodule["fs-extra"];
     const { resolve } = global.nodemodule["path"];
     const axios = global.nodemodule["axios"];
-    const { threadID, messageID } = event;
+    const { downloadFile } = global.utils;
+    const { threadID, senderID, messageID } = event;
 
     const out = (msg, callback = function () { }) => api.sendMessage(msg, threadID, callback, messageID);    
     const { sfw, nsfw } = require("./cache/alime.json");
@@ -49,7 +50,7 @@ module.exports.run = async function ({ event, api, args }) {
         const { data: apiData } = await axios.get(apiUrl);
         const url = apiData.data.response.url;
         const ext = url.split(".")[url.split(".").length - 1];
-        const path = resolve(__dirname, 'cache', `${threadID}_${senderID}.${ext}`);
+        const path = resolve(__dirname, 'cache', `${args[0]}_${senderID}.${ext}`);
         
         await global.utils.downloadFile(url, path);
 
