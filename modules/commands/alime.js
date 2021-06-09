@@ -51,7 +51,7 @@ module.exports.run = async function ({ event, api, args }) {
         const ext = url.split(".")[url.split(".").length - 1];
         const path = resolve(__dirname, 'cache', `${threadID}_${senderID}.${ext}`);
         
-        await global.client.utils.downloadFile(url, path);
+        await global.utils.downloadFile(url, path);
 
         return out({
             attachment: createReadStream(path)

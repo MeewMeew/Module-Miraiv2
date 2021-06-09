@@ -8,14 +8,14 @@
 	<a href="https://github.com/ProCoderMew/Module-Miraiv2/stargazers" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ProCoderMew/Module-Miraiv2"></a>
 </p>
 
-# Module hỗ trợ cho source [CatalizCS/Miraiv2](https://github.com/catalizcs/miraiv2)
+# Module hỗ trợ cho source [MiraiPr0ject/Miraiv2](https://github.com/miraiPr0ject/miraiv2)
 
 # Cảnh Báo
 - **Cấm chỉnh sửa credits.**
 - **Cấm chỉnh sửa(mod) module.**
 - **Bạn và bot bạn có thể lên danh sánh gban nếu vi phạm các điều trên.**
 
-# Các thay đổi (Cập nhật: 7/6/2021)
+# Các thay đổi (Cập nhật: 9/6/2021)
 
 <details open="open">
 	<summary>Xem các thay đổi.</summary>
@@ -35,10 +35,11 @@
 	<p>- 5/6/2021: Update toàn bộ module.</p>
 	<p>- 6/6/2021: Fix vài module.</p>
 	<p>- 7/6/2021: Fix module surprise.</p>
+	<p>- 7/6/2021: Update module alime, hitbutt and slap.</p>
 </details>
 
 # Vị Trí Lưu
-- Vị trí lưu module: [modules/commands](https://github.com/catalizcs/miraiv2/tree/main/modules/commands)
+- Vị trí lưu module: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
 
 # Module
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [adduser.js](modules/commands/adduser.js)
