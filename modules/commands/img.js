@@ -38,7 +38,7 @@ module.exports.run = async function({ api, event, args }) {
             type = "dog";
         break;        
         default:
-            return global.client.utils.throwError(this.config.name, threadID, messageID);
+            return global.utils.throwError(this.config.name, threadID, messageID);
         break;
     }
     
