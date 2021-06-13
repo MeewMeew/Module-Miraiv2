@@ -1,4 +1,9 @@
- module.exports.config = {
+/**
+* @author ProCoderMew
+* @warn Do not edit code or edit credits
+*/
+
+module.exports.config = {
 	name: "teach",
 	version: "2.0.0",
 	hasPermssion: 0,

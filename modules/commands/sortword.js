@@ -1,3 +1,8 @@
+/**
+* @author ProCoderMew
+* @warn Do not edit code or edit credits
+*/
+
 module.exports.config = {
     name: "sortword",
     version: "1.0.0",

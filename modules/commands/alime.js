@@ -1,3 +1,8 @@
+/**
+* @author ProCoderMew
+* @warn Do not edit code or edit credits
+*/
+
 module.exports.config = {
     name: "alime",
     version: "1.0.0",
