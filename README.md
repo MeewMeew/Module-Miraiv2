@@ -15,9 +15,9 @@
 - **Cấm chỉnh sửa(mod) module.**
 - **Bạn và bot bạn có thể lên danh sánh gban nếu vi phạm các điều trên.**
 
-# Các thay đổi (Cập nhật: 10/6/2021)
+# Các thay đổi (Cập nhật: 13/6/2021)
 
-<details open="open">
+<details>
 	<summary>Xem các thay đổi.</summary>
 	<br>
 	<p>- 1/4/2021: Thêm module sim, img, slap, hitbutt.</p>
@@ -36,26 +36,28 @@
 	<p>- 6/6/2021: Fix vài module.</p>
 	<p>- 7/6/2021: Fix module surprise.</p>
 	<p>- 7/6/2021: Update module alime, hitbutt and slap.</p>
-	<p>- 7/6/2021: Update module img.</p>
+	<p>- 10/6/2021: Update module img.</p>
+	<p>- 13/6/2021: Add module meewmeew.</p>
 </details>
 
 # Vị Trí Lưu
 - Vị trí lưu module: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
 
 # Module
-- **adduser** - Thêm thành viên vào nhóm bằng link profile: [adduser.js](modules/commands/adduser.js)
-- **alime** - Ảnh alime sfw và cả alime nsfw: [alime.js](modules/commands/alime.js)
-- **covid** - Xem tình hình dịch covid: [covid.js](modules/commands/covid.js)
-- **filter** - Lọc cá cảnh trong nhóm bạn: [filter.js](modules/commands/filter.js)
-- **hitbutt** - Tét Mông người được tag: [hitbutt.js](modules/commands/hitbutt.js)
-- **image** - Kho Ảnh Trai, Gái, Cosplay: [img.js](modules/commands/img.js)
-- **linkword** - Chơi nối từ với bot: [linkword.js](modules/commands/linkword.js)
-- **simsimi** - Chat cùng simsimi: [sim.js](modules/commands/sim.js)
-- **slap** - Tát toang alo người được tag: [slap.js](modules/commands/slap.js)
-- **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [sortword.js](modules/commands/sortword.js)
-- **surprise** - Một điều bất ngờ dành cho box chat và người dùng lệnh :): [surprise.js](modules/commands/surprise.js)
-- **teach** - Dạy sim: [teach.js](modules/commands/teach.js)
-- **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [xsmb.js](modules/commands/xsmb.js)
+- **adduser** - Thêm thành viên vào nhóm bằng link profile: [commands/adduser.js](modules/commands/adduser.js)
+- **alime** - Ảnh alime sfw và cả alime nsfw: [commands/alime.js](modules/commands/alime.js)
+- **covid** - Xem tình hình dịch covid: [commands/covid.js](modules/commands/covid.js)
+- **filter** - Lọc cá cảnh trong nhóm bạn: [commands/filter.js](modules/commands/filter.js)
+- **hitbutt** - Tét Mông người được tag: [commands/hitbutt.js](modules/commands/hitbutt.js)
+- **image** - Kho Ảnh Trai, Gái, Cosplay: [commands/img.js](modules/commands/img.js)
+- **linkword** - Chơi nối từ với bot: [commands/linkword.js](modules/commands/linkword.js)
+- **meewmeew** - Update tất cả module chỉ với 1 lệnh: [commands/meewmeew.js](modules/commands/meewmeew.js);
+- **simsimi** - Chat cùng simsimi: [commands/sim.js](modules/commands/sim.js)
+- **slap** - Tát toang alo người được tag: [commands/slap.js](modules/commands/slap.js)
+- **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [commands/sortword.js](modules/commands/sortword.js)
+- **surprise** - Một điều bất ngờ dành cho box chat và người dùng lệnh :): [commands/surprise.js](modules/commands/surprise.js)
+- **teach** - Dạy sim: [commands/teach.js](modules/commands/teach.js)
+- **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [commands/xsmb.js](modules/commands/xsmb.js)
 
 
 # Tác Giả
