@@ -41,7 +41,8 @@
 </details>
 
 # Vị Trí Lưu
-- Vị trí lưu module: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
+- Module command: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
+- Module event: [modules/events](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/events)
 
 # Module
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [commands/adduser.js](modules/commands/adduser.js)
