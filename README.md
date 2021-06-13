@@ -51,7 +51,7 @@
 - **hitbutt** - Tét Mông người được tag: [commands/hitbutt.js](modules/commands/hitbutt.js)
 - **image** - Kho Ảnh Trai, Gái, Cosplay: [commands/img.js](modules/commands/img.js)
 - **linkword** - Chơi nối từ với bot: [commands/linkword.js](modules/commands/linkword.js)
-- **meewmeew** - Update tất cả module chỉ với 1 lệnh: [commands/meewmeew.js](modules/commands/meewmeew.js);
+- **meewmeew** - Update tất cả module chỉ với 1 lệnh: [commands/meewmeew.js](modules/commands/meewmeew.js)
 - **simsimi** - Chat cùng simsimi: [commands/sim.js](modules/commands/sim.js)
 - **slap** - Tát toang alo người được tag: [commands/slap.js](modules/commands/slap.js)
 - **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [commands/sortword.js](modules/commands/sortword.js)
