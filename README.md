@@ -38,7 +38,7 @@
 	<p>- 7/6/2021: Update module alime, hitbutt and slap.</p>
 	<p>- 10/6/2021: Update module img.</p>
 	<p>- 13/6/2021: Add module meewmeew.</p>
-	<p>- 21/6/2021: Update module surprise, api.</p>
+	<p>- 21/6/2021: Update module surprise, adduser.</p>
 </details>
 
 # Vị Trí Lưu

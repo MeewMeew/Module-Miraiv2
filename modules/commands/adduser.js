@@ -12,7 +12,7 @@ module.exports.config = {
 	commandCategory: "group",
 	usages: "[args]",
 	cooldowns: 5,
-    dependencies: {
+	dependencies: {
         "axios": ""
     }
 };
@@ -22,7 +22,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users }) {
 	const { threadID, senderID, messageID } = event;
 	const botID = api.getCurrentUserID();
 	const out = msg => api.sendMessage(msg, threadID, messageID);
-	var { participantIDs, approvalMode, adminIDs } = await Threads.getInfo(event.threadID);
+	var { participantIDs, approvalMode, adminIDs } = await Threads.getInfo(threadID) || await api.getThreadInfo(threadID);
 	var participantIDs = participantIDs.map(e => parseInt(e));	
 
 	if (!args[0]) return out("Vui lòng nhập 1 link profile user cần add.");
@@ -32,7 +32,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users }) {
 			var { success, error, data } = (await axios.get("https://api.meewmeew.ml/fbid?url=" + encodeURIComponent(args[0]))).data;
 			if (success == false) {
 				if (error == "invalid url") return out("Liên kết không hợp lệ.");
-				else return out(error);
+				else return out(JSON.stringify(error));
 			} else return adduser(data.id, data.name);
 		} catch (e) {
 			return out(`${e.name}: ${e.message}.`);
@@ -57,10 +57,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users }) {
 			catch {			
 				return out(`Không thể thêm ${name ? name : "người dùng"} vào nhóm.`);
 			}
-			if (approvalMode === true) {
-				if (!admins.includes(botID)) return out(`Đã thêm ${name ? name : "thành viên"} vào danh sách phê duyệt !`);
-				else return join({ api, event: form, Threads, Users })
-			}
+			if (approvalMode === true && !admins.includes(botID))  return out(`Đã thêm ${name ? name : "thành viên"} vào danh sách phê duyệt !`);
 			else return join({ api, event: form, Threads, Users });
 		}
 	}
