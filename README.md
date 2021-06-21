@@ -15,7 +15,7 @@
 - **Cấm chỉnh sửa(mod) module.**
 - **Bạn và bot bạn có thể lên danh sánh gban nếu vi phạm các điều trên.**
 
-# Các thay đổi (Cập nhật: 13/6/2021)
+# Các thay đổi (Cập nhật: 21/6/2021)
 
 <details>
 	<summary>Xem các thay đổi.</summary>
@@ -38,6 +38,7 @@
 	<p>- 7/6/2021: Update module alime, hitbutt and slap.</p>
 	<p>- 10/6/2021: Update module img.</p>
 	<p>- 13/6/2021: Add module meewmeew.</p>
+	<p>- 21/6/2021: Update module surprise, api.</p>
 </details>
 
 # Vị Trí Lưu
