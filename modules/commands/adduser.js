@@ -5,7 +5,7 @@
 
 module.exports.config = {
 	name: "adduser",
-	version: "2.0.2",
+	version: "2.0.3",
 	hasPermssion: 0,
 	credits: "ProCoderMew",
 	description: "Thêm người dùng vào nhóm bằng link hoặc uid",
@@ -29,7 +29,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users }) {
 	if (!isNaN(args[0])) return adduser(args[0], undefined);
 	else {
 		try {
-			var { success, error, data } = (await axios.get("https://api.meewmeew.ml/fbid?url=" + encodeURIComponent(args[0]))).data;
+			var { success, error, data } = (await axios.get("https://meewmeew.info/fbid?url=" + encodeURIComponent(args[0]))).data;
 			if (success == false) {
 				if (error == "invalid url") return out("Liên kết không hợp lệ.");
 				else return out(JSON.stringify(error));

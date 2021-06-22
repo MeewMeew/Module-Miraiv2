@@ -5,7 +5,7 @@
 
 module.exports.config = {
 	name: "teach",
-	version: "2.0.0",
+	version: "2.0.1",
 	hasPermssion: 0,
 	credits: "ProCoderMew",
 	description: "Dạy bot (dùng cho lệnh sim)",
@@ -19,7 +19,7 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args }) {
 	const axios = global.nodemodule["axios"];
-	const res = await axios("https://api.simsimi.tk/teach", {
+	const res = await axios("https://api.meewmeew.info/teach", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		data: { teach: args.join(" ") }
