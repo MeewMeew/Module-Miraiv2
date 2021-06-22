@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "linkword",
-    version: "2.0.2",
+    version: "2.0.3",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Chơi nối từ với bot hoặc thành viên trong nhóm",
@@ -26,7 +26,7 @@ module.exports.handleEvent = async function({ api, event }) {
     const { body: content, threadID, messageID } = event;
     if (global['procodermew']['linkword'].has(threadID)) {
         if (content && content.split(" ").length == 2) {
-            var data = (await axios.get("https://api.meewmeew.info/api/linkword?ask=" + encodeURIComponent(content))).data;
+            var data = (await axios.get("https://meewmeew.info/word/linkword?ask=" + encodeURIComponent(content))).data;
             if (data.text == "You Lose!") {
                 global['procodermew']['linkword'].delete(threadID);
                 return api.sendMessage(data.text, threadID, messageID);

@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "sortword",
-    version: "1.0.2",
+    version: "1.0.3",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Sắp xếp lại 1 từ tiếng anh bị xáo trộn",
@@ -61,7 +61,7 @@ module.exports.run = async function({ api, event, args }) {
             level = "random", time = 10;
             break;
     }
-    var { data } = await axios.get("https://api.meewmeew.info/api/rw?level=" + level);
+    var { data } = await axios.get("https://meewmeew.info/word/rw?level=" + level);
     api.sendMessage(`Bạn đã chọn level ${level} với thời gian ${time}s.`, threadID, async () => {
         api.sendMessage("Chuẩn bị.", threadID);
         await new Promise(resolve => setTimeout(resolve, 2000));
