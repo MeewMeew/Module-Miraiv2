@@ -47,7 +47,7 @@ module.exports.run = async function({ api, event, args }) {
         break;
     }
     
-    var { data } = await axios.get(`hhttps://meewmeew.info/image/${type}?version=${this.config.version}`);
+    var { data } = await axios.get(`https://meewmeew.info/image/${type}?version=${this.config.version}`);
     var path = __dirname + `/cache/${type}.png`;
     if (data.success == false) return api.sendMessage(data.error, threadID, messageID);
     else {
