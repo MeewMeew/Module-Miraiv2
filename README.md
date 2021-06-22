@@ -39,7 +39,7 @@
 	<p>- 10/6/2021: Update module img.</p>
 	<p>- 13/6/2021: Add module meewmeew.</p>
 	<p>- 21/6/2021: Update module surprise, adduser.</p>
-	<p>- 22/6/2021: Update API.</p>
+	<p>- 22/6/2021: Update API, module sim.</p>
 </details>
 
 # Vị Trí Lưu
