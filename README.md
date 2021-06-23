@@ -15,7 +15,7 @@
 - **Cấm chỉnh sửa(mod) module.**
 - **Bạn và bot bạn có thể lên danh sánh gban nếu vi phạm các điều trên.**
 
-# Các thay đổi (Cập nhật: 22/6/2021)
+# Các thay đổi (Cập nhật: 24/6/2021)
 
 <details>
 	<summary>Xem các thay đổi.</summary>
@@ -40,6 +40,7 @@
 	<p>- 13/6/2021: Add module meewmeew.</p>
 	<p>- 21/6/2021: Update module surprise, adduser.</p>
 	<p>- 22/6/2021: Update API, module sim.</p>
+	<p>- 24/6/2021: Add module antiout.</p>
 </details>
 
 # Vị Trí Lưu
