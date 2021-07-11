@@ -5,12 +5,12 @@
 
 module.exports.config = {
     name: "xsmb",
-    version: "2.0.0",
+    version: "2.0.1",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Xem thông tin xổ số miền bắc hôm nay",
     commandCategory: "general",
-    usages: "xsmb",
+    usages: "",
     cooldowns: 5,
     dependencies: {
     	"axios": "",

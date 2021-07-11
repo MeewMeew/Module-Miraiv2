@@ -1,0 +1,27 @@
+{
+	"version": "2.2.6",
+	"change": ["sortword"],
+	"modules": {
+		"commands": {
+			"adduser": "2.3.2",
+			"alime": "1.1.1",
+			"antiout": "1.1.2",
+			"covid": "2.0.2",
+			"fbuser": "1.0.0",
+			"filter": "2.0.1",
+			"hitbutt": "2.2.2",
+			"img": "3.0.1",
+			"linkword": "2.0.5",
+			"meewmeew": "2.2.0",
+			"sim": "4.1.0",
+			"slap": "2.2.2",
+			"sortword": "1.0.5",
+			"surprise": "3.1.0",
+			"teach": "2.0.3",
+			"xsmb": "2.0.1"
+		},
+		"events": {
+			"antiout": "1.0.1"
+		}
+	}
+}

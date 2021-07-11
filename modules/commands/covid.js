@@ -5,12 +5,12 @@
 
 module.exports.config = {
 	name: "covid",
-	version: "2.0.1",
+	version: "2.0.2",
 	hasPermssion: 0,
 	credits: "ProCoderMew",
 	description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
 	commandCategory: "other",
-	usages: "covid",
+	usages: "",
 	cooldowns: 5,
     dependencies: {
         "axios": ""

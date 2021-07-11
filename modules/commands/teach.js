@@ -5,12 +5,12 @@
 
 module.exports.config = {
 	name: "teach",
-	version: "2.0.2",
+	version: "2.0.3",
 	hasPermssion: 0,
 	credits: "ProCoderMew",
 	description: "Dạy bot (dùng cho lệnh sim)",
 	commandCategory: "general",
-	usages: "teach hello => goodbye",
+	usages: "hello => goodbye",
 	cooldowns: 5,
 	dependencies: {
 		"axios": ""

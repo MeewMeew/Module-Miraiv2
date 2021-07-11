@@ -5,12 +5,12 @@
 
 module.exports.config = {
     name: "sortword",
-    version: "1.0.3",
+    version: "1.0.5",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Sắp xếp lại 1 từ tiếng anh bị xáo trộn",
     commandCategory: "game-sp",
-    usages: "sortword",
+    usages: "",
     cooldowns: 5,
     dependencies: {
         "axios": ""
@@ -24,7 +24,7 @@ module.exports.onLoad = function () {
 
 module.exports.handleEvent = function({ api, event }) {
     if (typeof global['procodermew']['sortword'] == "undefined") return;
-    const { threadID, body, senderID } = event;
+    const { threadID, body, senderID, messageID } = event;
     if (global['procodermew']['sortword'].some(e => e.user == senderID)) {
         var data = global['procodermew']['sortword'].find(e => e.user == senderID);
         var index = global['procodermew']['sortword'].findIndex(e => e.user == senderID);
@@ -43,6 +43,7 @@ module.exports.handleEvent = function({ api, event }) {
 module.exports.run = async function({ api, event, args }) {
     if (!typeof global['procodermew']['sortword'] == "undefined") global['procodermew']['sortword'] = new Array();
     const axios = global.nodemodule["axios"];
+    const { threadID, senderID, messageID } = event;
     var level, time;
     switch (args[0]) {
         case "easy":

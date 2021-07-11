@@ -10,7 +10,7 @@ module.exports.config = {
     credits: "ProCoderMew",
     description: "Kho Ảnh",
     commandCategory: "General",
-    usages: "boy/girl/cosplay/meow/dog",
+    usages: "[boy/girl/cosplay/meow/dog]",
     cooldowns: 5,
     dependencies: {
         "axios": "",
