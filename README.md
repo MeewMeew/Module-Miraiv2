@@ -14,7 +14,7 @@
 - **Cấm chỉnh sửa credits.**
 - **Hạn chế chỉnh sửa(mod) module.**
 
-# Cập nhật: 11/7/2021
+# Cập nhật: 12/7/2021
 
 # Vị Trí Lưu
 - Module command: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
@@ -36,7 +36,6 @@
 - **surprise** - Một điều bất ngờ dành cho box chat và người dùng lệnh :): [commands/surprise.js](modules/commands/surprise.js)
 - **teach** - Dạy sim: [commands/teach.js](modules/commands/teach.js)
 - **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [commands/xsmb.js](modules/commands/xsmb.js)
-
 
 # Tác Giả
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)

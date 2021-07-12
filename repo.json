@@ -1,6 +1,6 @@
 {
-	"version": "2.2.6",
-	"change": ["sortword"],
+	"version": "2.2.7",
+	"change": ["meewmeew"],
 	"modules": {
 		"commands": {
 			"adduser": "2.3.2",
@@ -12,7 +12,7 @@
 			"hitbutt": "2.2.2",
 			"img": "3.0.1",
 			"linkword": "2.0.5",
-			"meewmeew": "2.2.0",
+			"meewmeew": "2.2.1",
 			"sim": "4.1.0",
 			"slap": "2.2.2",
 			"sortword": "1.0.5",
