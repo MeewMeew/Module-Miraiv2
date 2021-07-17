@@ -82,6 +82,7 @@ const details = async function (modules) {
                 try {
                     console.log("================================================");
                     logger("Đang lấy dữ liệu cần thiết..", 'MeewMeew');
+                    const data = await getModules();
                     const update = await checkVersion(modules, data);
                     logger("Lấy dữ liệu thành công !", "MeewMeew");
                     console.log("================================================");
