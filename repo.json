@@ -1,6 +1,6 @@
 {
-	"version": "2.2.10",
-	"change": ["adduser"],
+	"version": "2.2.11",
+	"change": ["sim"],
 	"modules": {
 		"commands": {
 			"adduser": "2.4.1",
@@ -12,7 +12,7 @@
 			"img": "3.1.0",
 			"linkword": "2.0.7",
 			"meewmeew": "2.2.2",
-			"sim": "4.2.0",
+			"sim": "4.2.1",
 			"slap": "2.2.2",
 			"sortword": "1.1.0",
 			"surprise": "3.1.0",
