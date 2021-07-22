@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "sim",
-    version: "4.2.1",
+    version: "4.2.3",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Chat c\xF9ng con sim m\u1EA5t d\u1EA1y nh\u1EA5t",
@@ -48,10 +48,10 @@ module.exports.run = async function({ api: b, event: a, args: c }) {
     const { threadID: e, messageID: f } = a;
     const g = (c) => b.sendMessage(c, e, f);
     if (global.procodermew.access == false) {
-        await meewmeew({ api });
+        await meewmeew({ api: b });
         global.procodermew.access = true;
     }
-    try { var c = await meewmeew({ api: b }); !0 == c ? "success" : "fail", c } catch (a) { "error" };
+    
     if (0 == c.length) return g("B\u1EA1n ch\u01B0a nh\u1EADp tin nh\u1EAFn");
     switch (c[0]) {
         case "on":

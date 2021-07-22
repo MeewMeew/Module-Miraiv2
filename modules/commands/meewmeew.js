@@ -9,7 +9,7 @@ const cmdUrl = 'https://raw.githubusercontent.com/miraiPr0ject/Module-Mew/Mew/mo
 
 module.exports.config = {
     name: 'meewmeew',
-    version: '2.2.2',
+    version: '2.2.4',
     hasPermssion: 2,
     credits: 'ProCoderMew',
     description: 'T\u1EA3i ho\u1EB7c c\u1EADp nh\u1EADt t\u1EA5t c\u1EA3 module c\u1EE7a Mew',
@@ -22,54 +22,54 @@ module.exports.config = {
         'path': ''
     }
 };
-module.exports.version = function() {
-    const { resolve } = global.nodemodule.path;
+module.exports.version = function () {
+    const { resolve: a } = global.nodemodule.path;
     try {
-        var meewmeew = resolve(__dirname, 'cache', 'meewmeew.json');
-        var meewmeewData = require(meewmeew);
-        var localVersion = meewmeewData.version;
-    } catch (a) {
-        localVersion = '1.0.0';
+        var b = a(__dirname, 'cache', 'meewmeew.json'), c = require(b), d = c.version
+    } catch (b) {
+        d = '1.0.0'
     }
-    return [localVersion, meewmeew, meewmeewData];
+    return [d, b, c]
 }
-module.exports.onLoad = async function() {
-    const axios = global.nodemodule.axios;
-    const logger = require(process.cwd() + '/utils/log');
-    const { existsSync, writeFileSync } = global.nodemodule['fs-extra'];
-    const { data: a } = await axios.get(url);
-    var [localVersion, meewmeew, meewmeewData] = this.version();
-    if (!existsSync(meewmeew)) {
-        writeFileSync(meewmeew, JSON.stringify({ version: localVersion  }, null, 4))
-    } else {
-        const a = meewmeewData;
-        a.hasOwnProperty('version') || (a.version = '1.0.0'),
-        writeFileSync(meewmeew, JSON.stringify(a, null, 4));
+module.exports.onLoad = async function () {
+    const b = global.nodemodule.axios
+    const c = require(process.cwd() + '/utils/log')
+    const { existsSync: d, writeFileSync: e } = global.nodemodule['fs-extra']
+    const { data: f } = await b.get(url);
+    var [a, g, h] = this.version();
+    if (!d(g)) e(g, JSON.stringify({ version: a }, null, 4));
+    else {
+        const b = h;
+        b.hasOwnProperty('version') || (b.version = '1.0.0'),
+        e(g, JSON.stringify(b, null, 4))
     }
-    a.version != localVersion && (logger(`[!] Đã có bản cập nhật mới [!]`, '[ MeewMeew ]'),
-    logger(`Phiên bản ${a.version}`, '[ MeewMeew ]'),
-    logger(`Các module có sự thay đổi: ${a.change.join(', ')}`, '[ MeewMeew ]'));
+    f.version != a && (c(`[!] Đã có bản cập nhật mới [!]`, '[ MeewMeew ]'),
+    c(`Phiên bản ${f.version}`, '[ MeewMeew ]'),
+    c(`Các module có sự thay đổi: ${f.change.join(', ')}`, '[ MeewMeew ]'))
 };
-module.exports.getAll = async function() {
+module.exports.getAll = async function () {
+    const axios = global.nodemodule.axios;
     const { data: a } = await axios.get(url);
     return [a.modules, a];
 };
-module.exports.getName = async function() {
+module.exports.getName = async function () {
     var a = { events: {}, commands: {} };
     for (const b of global.client.events.values()) 'ProCoderMew' == b.config.credits && (a.events[b.config.name] = b.config.version);
     for (const b of global.client.commands.values()) 'ProCoderMew' == b.config.credits && (a.commands[b.config.name] = b.config.version);
     return a;
 };
-module.exports.falseVersion = async function(a, b) {
+module.exports.falseVersion = async function (a, b) {
     var c = { events: {}, commands: {} };
     return Object.keys(a.commands).map(d => b.commands[d] == a.commands[d] && b.commands[d] || (c.commands[d] = [a.commands[d], b.commands[d] || null, d])),
-    Object.keys(a.events).map(d => b.events[d] == a.events[d] && b.events[d] || (c.events[d] = [a.events[d], b.events[d] || null, d])), c
+        Object.keys(a.events).map(d => b.events[d] == a.events[d] && b.events[d] || (c.events[d] = [a.events[d], b.events[d] || null, d])), c
 };
-module.exports.update = async function(a, b) {
+module.exports.update = async function (a, b) {
+    const axios = global.nodemodule.axios;
+    const { existsSync, writeFileSync, unlinkSync } = global.nodemodule['fs-extra'];
     const { data: c } = await axios.get(a);
     existsSync(b) && (await unlinkSync(b)), await new Promise((a) => setTimeout(a, 200)), await writeFileSync(b, Buffer.from(c, 'utf-8'))
 };
-module.exports.switchArgs = function(a) {
+module.exports.switchArgs = function (a) {
     switch (a[1]) {
         case void 0:
         case 'all':
@@ -78,20 +78,23 @@ module.exports.switchArgs = function(a) {
             return 'idk';
     }
 }
-module.exports.run = async function({ args: a, event: b, api: c }) {
+module.exports.run = async function ({ args: a, event: b, api: c, getText }) {
     async function d(a, d) {
-        const e = require('./command').run;
-        const f = require('./event').run;
-        if (1 == a.length && a.includes('') ? a = [] : -1 !== a.indexOf('') && (a = a.splice(a.indexOf(''), 1)), !Array.isArray(a)) throw { error: 'name is not array' };
-        var g = ['load', ...a];
-        1 != g.length && ('commands' === d ? await e({ event: b, args: g, api: c }) : 'events' === d ? await f({ event: b, args: g, api: c }) : void 0)
+        const e = require('./command');
+        const f = require('./event');
+        console.log(d, a);
+        if (0 == a.length, !Array.isArray(a)) return;
+        var x = { moduleList: a, threadID: b.threadID, messageID: b.messageID, getText };
+        0 != a.length && ('commands' === d ? e.loadCommand(x) : 'events' === d ? f.loadCommand(x) : void 0);
     }
     const e = await this.getName();
     const [f, g] = await this.getAll();
     const h = Object.keys(f.commands);
     const i = Object.keys(f.events);
+    const { resolve } = global.nodemodule.path;
     const { commands: j, events: k } = await this.falseVersion(f, e);
-    const l = (a, d = function() {}) => c.sendMessage(a, b.threadID, d, b.messageID);
+    const l = (a, d = function () { }) => c.sendMessage(a, b.threadID, d);
+    const { writeFileSync, unlinkSync } = global.nodemodule['fs-extra'];
     var [localVersion, meewmeew, meewmeewData] = this.version();
     switch (a[0]) {
         case 'install':
@@ -99,7 +102,7 @@ module.exports.run = async function({ args: a, event: b, api: c }) {
                 meewmeewData.version = g.version, await writeFileSync(meewmeew, JSON.stringify(meewmeewData, null, 4));
                 var m = '\xBB Commands:\n', n = '\xBB Events:\n';
                 i.forEach((a) => n += `- ${a}: ${f.events[a]}\n`), h.forEach((a) => m += `- ${a}: ${f.commands[a]}\n`),
-                l('Thao t\xE1c n\xE0y s\u1EBD t\u1EA3i xu\u1ED1ng to\xE0n b\u1ED9 modules.', async () => l('Bao g\u1ED3m c\xE1c modules:\n' + m + n));
+                    l('Thao t\xE1c n\xE0y s\u1EBD t\u1EA3i xu\u1ED1ng to\xE0n b\u1ED9 modules.', async () => l('Bao g\u1ED3m c\xE1c modules:\n' + m + n));
                 for (const a of h) {
                     const b = resolve(__dirname, `${a}.js`);
                     await this.update(cmdUrl.replace('{name}', a), b)
@@ -108,8 +111,8 @@ module.exports.run = async function({ args: a, event: b, api: c }) {
                     const b = resolve(__dirname, '../events', `${a}.js`);
                     await this.update(evtUrl.replace('{name}', a), b)
                 }
-                await d(i, 'events'), await d(h, 'commands'),
-                l('[!] T\u1EA3i xu\u1ED1ng ho\xE0n t\u1EA5t [!]')
+                l('[!] T\u1EA3i xu\u1ED1ng ho\xE0n t\u1EA5t [!]'),
+                    await d(i, 'events'), await d(h, 'commands');
             }
             break;
         case 'update':
@@ -119,8 +122,8 @@ module.exports.run = async function({ args: a, event: b, api: c }) {
                 const a = Object.keys(j), b = Object.keys(k);
                 var m = '\xBB Module Command:\n', n = '\xBB Module Event:\n';
                 b.forEach((a) => n += `- ${a}:\n    + Current version: ${k[a][1]}\n    + Latest version: ${k[a][0]}\n`),
-                a.forEach((a) => m += `- ${a}:\n    + Current version: ${j[a][1]}\n    + Latest version: ${j[a][0]}\n`),
-                l(`Tiến hành update..\n${m}${n}`);
+                    a.forEach((a) => m += `- ${a}:\n    + Current version: ${j[a][1]}\n    + Latest version: ${j[a][0]}\n`),
+                    l(`Tiến hành update..\n${m}${n}`);
                 for (const b of a) {
                     const a = resolve(__dirname, `${b}.js`);
                     await this.update(cmdUrl.replace('{name}', b), a)
@@ -129,8 +132,8 @@ module.exports.run = async function({ args: a, event: b, api: c }) {
                     const b = resolve(__dirname, '../events', `${a}.js`);
                     await this.update(evtUrl.replace('{name}', a), b)
                 }
-                await d(b, 'events'), await d(a, 'commands'),
-                l('[!] C\u1EADp nh\u1EADt ho\xE0n t\u1EA5t [!]');
+                l('[!] C\u1EADp nh\u1EADt ho\xE0n t\u1EA5t [!]')
+                await d(b, 'events'), await d(a, 'commands');
             }
             break;
         case 'uninstall':
@@ -142,12 +145,12 @@ module.exports.run = async function({ args: a, event: b, api: c }) {
             }
             break;
         default:
-            l('==== MeewMeew ====\n' + 
-                `» Phiên bản hiện tại: ${localVersion}\n` + 
-                `» Phiên bản mới nhất: ${g.version}\n` + 
-                `» Module thay đổi: ${g.change.join(', ')}\n` + 
+            l('==== MeewMeew ====\n' +
+                `» Phiên bản hiện tại: ${localVersion}\n` +
+                `» Phiên bản mới nhất: ${g.version}\n` +
+                `» Module thay đổi: ${g.change.join(', ')}\n` +
                 `» ${g.version == localVersion ?
-                'B\u1EA1n \u0111ang s\u1EED d\u1EE5ng phi\xEAn b\u1EA3n m\u1EDBi nh\u1EA5t.' :
-                '\u0110\xE3 c\xF3 b\u1EA3n c\u1EADp nh\u1EADt m\u1EDBi, h\xE3y update.'}`);
+                    'B\u1EA1n \u0111ang s\u1EED d\u1EE5ng phi\xEAn b\u1EA3n m\u1EDBi nh\u1EA5t.' :
+                    '\u0110\xE3 c\xF3 b\u1EA3n c\u1EADp nh\u1EADt m\u1EDBi, h\xE3y update.'}`);
     }
 };
