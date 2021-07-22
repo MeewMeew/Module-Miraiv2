@@ -1,27 +1,24 @@
 {
-	"version": "2.2.7",
-	"change": ["meewmeew"],
+	"version": "2.2.10",
+	"change": ["adduser"],
 	"modules": {
 		"commands": {
-			"adduser": "2.3.2",
-			"alime": "1.1.1",
-			"antiout": "1.1.2",
+			"adduser": "2.4.1",
+			"alime": "1.1.2",
 			"covid": "2.0.2",
-			"fbuser": "1.0.0",
+			"fbuser": "2.0.0",
 			"filter": "2.0.1",
 			"hitbutt": "2.2.2",
-			"img": "3.0.1",
-			"linkword": "2.0.5",
-			"meewmeew": "2.2.1",
-			"sim": "4.1.0",
+			"img": "3.1.0",
+			"linkword": "2.0.7",
+			"meewmeew": "2.2.2",
+			"sim": "4.2.0",
 			"slap": "2.2.2",
-			"sortword": "1.0.5",
+			"sortword": "1.1.0",
 			"surprise": "3.1.0",
 			"teach": "2.0.3",
 			"xsmb": "2.0.1"
 		},
-		"events": {
-			"antiout": "1.0.1"
-		}
+		"events": {}
 	}
 }

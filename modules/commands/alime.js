@@ -5,11 +5,11 @@
 
 module.exports.config = {
     name: "alime",
-    version: "1.1.1",
+    version: "1.1.2",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "alime sfw và cả alime nsfw :)",
-    commandCategory: "random-img",
+    commandCategory: "nsfw",
     usages: "[tag]",
     cooldowns: 5,
     dependencies: {

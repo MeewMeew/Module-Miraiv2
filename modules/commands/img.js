@@ -5,12 +5,12 @@
 
 module.exports.config = {
     name: "img",
-    version: "3.0.1",
+    version: "3.1.0",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Kho Ảnh",
-    commandCategory: "General",
-    usages: "[boy/girl/cosplay/meow/dog]",
+    commandCategory: "nsfw",
+    usages: "[boy/girl/cosplay/wibu/meow/dog]",
     cooldowns: 5,
     dependencies: {
         "axios": "",
@@ -35,6 +35,9 @@ module.exports.run = async function({ api, event, args }) {
         case "cosplay":
             type = "cosplay";
         break;
+        case "wibu":
+            type = "wibu";
+        break;
         case "meow":
         	type = "meow";
         break;
@@ -47,7 +50,7 @@ module.exports.run = async function({ api, event, args }) {
         break;
     }
     
-    var { data } = await axios.get(`https://meewmeew.info/image/${type}?version=${this.config.version}`);
+    var { data } = await axios.get(`https://meewmeew.info/image/${type}`);
     var path = __dirname + `/cache/${type}.png`;
     if (data.success == false) return api.sendMessage(data.error, threadID, messageID);
     else {
