@@ -9,7 +9,7 @@ const cmdUrl = 'https://raw.githubusercontent.com/miraiPr0ject/Module-Mew/Mew/mo
 
 module.exports.config = {
     name: 'meewmeew',
-    version: '2.2.4',
+    version: '2.2.6',
     hasPermssion: 2,
     credits: 'ProCoderMew',
     description: 'T\u1EA3i ho\u1EB7c c\u1EADp nh\u1EADt t\u1EA5t c\u1EA3 module c\u1EE7a Mew',
@@ -22,6 +22,34 @@ module.exports.config = {
         'path': ''
     }
 };
+module.exports.languages = {
+    "vi": {
+        "nameExist": "Tên module bị trùng với một module mang cùng tên khác!",
+        "notFoundLanguage": "Module %1 không hỗ trợ ngôn ngữ ngôn ngữ của bạn",
+        "notFoundPackage": "Không tìm thấy package %1 hỗ trợ cho module %2, tiến hành cài đặt...",
+        "cantInstallPackage": "Không thể cài đặt package %1 cho module %2, lỗi: %3",
+        "loadedPackage": "Đã tải thành công toàn bộ package cho module %1",
+        "loadedConfig": "Đã tải thành công config cho module %1",
+        "cantLoadConfig": "Không thể tải config của module %1, lỗi: %2",
+        "cantOnload": "Không thể khởi chạy setup của module %1, lỗi: %1",
+        "successLoadModule": "Đã tải thành công module %1",
+        "failLoadModule": "Không thể tải thành công module %1, lỗi: %2",
+        "moduleError": "Những module đã xảy ra sự cố không mong muốn khi đang tải: \n\n%1"
+    },
+    "en": {
+        "nameExist": "Module's name is similar to another module!",
+        "notFoundLanguage": "Module %1 does not support your language",
+        "notFoundPackage": "Can't find package %1 for module %2, install...",
+        "cantInstallPackage": "Can't install package %1 for module %2, error: %3",
+        "loadedPackage": "Loaded package for module %1",
+        "loadedConfig": "Loaded config for module %1",
+        "cantLoadConfig": "Can't load config for module %1, error: %2",
+        "cantOnload": "Can't load setup for module %1, error: %1",
+        "successLoadModule": "Loaded module %1",
+        "failLoadModule": "Can't load module %1, error: %2",
+        "moduleError": "Modules which have unexpected error when loading: \n\n%1"
+    }
+}
 module.exports.version = function () {
     const { resolve: a } = global.nodemodule.path;
     try {
@@ -82,7 +110,6 @@ module.exports.run = async function ({ args: a, event: b, api: c, getText }) {
     async function d(a, d) {
         const e = require('./command');
         const f = require('./event');
-        console.log(d, a);
         if (0 == a.length, !Array.isArray(a)) return;
         var x = { moduleList: a, threadID: b.threadID, messageID: b.messageID, getText };
         0 != a.length && ('commands' === d ? e.loadCommand(x) : 'events' === d ? f.loadCommand(x) : void 0);
