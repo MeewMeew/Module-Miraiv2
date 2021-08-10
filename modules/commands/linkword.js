@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "linkword",
-    version: "2.0.8",
+    version: "2.0.9",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Chơi nối từ với bot hoặc thành viên trong nhóm",
@@ -24,7 +24,7 @@ module.exports.onLoad = function () {
     if (typeof global.procodermew.linkword == "undefined") global.procodermew.linkword = new Map();
 }
 module.exports.handleEvent = async function({ api, event }) {
-    const { APIKEY } = global.configModule;
+    const { APIKEY } = global.configModule.linkword;
     if (typeof global.procodermew.linkword == "undefined") return;
     const axios = global.nodemodule["axios"];
     const { body: content, threadID, messageID } = event;

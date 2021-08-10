@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "hitbutt",
-    version: "2.2.3",
+    version: "2.2.4",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "",
@@ -34,7 +34,7 @@ module.exports.onLoad = async() => {
 }
 
 async function makeImage({ one, two }) {
-    const { APIKEY } = global.configModule;
+    const { APIKEY } = global.configModule.hitbutt;
     const fs = global.nodemodule["fs-extra"];
     const path = global.nodemodule["path"];
     const axios = global.nodemodule["axios"]; 
@@ -43,7 +43,7 @@ async function makeImage({ one, two }) {
 
     let hit_butt_img = await jimp.read(__root + "/hit_butt.png");
     let pathImg = __root + `/hit_butt_${one}_${two}.png`;
-    
+
     let avatarOne = (await axios.get(`https://meewmeew.info/avatar/${one}?apiey=${APIKEY}`)).data;    
     let avatarTwo = (await axios.get(`https://meewmeew.info/avatar/${two}?apiey=${APIKEY}`)).data;
     

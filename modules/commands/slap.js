@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "slap",
-    version: "2.2.3",
+    version: "2.2.4",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "",
@@ -33,7 +33,7 @@ module.exports.onLoad = async() => {
     if (!existsSync(path)) await downloadFile("https://git.meewmeew.info/data/slap.png", path);
 }
 async function makeImage({ one, two }) {    
-    const { APIKEY } = global.configModule;
+    const { APIKEY } = global.configModule.slap;
     const fs = global.nodemodule["fs-extra"];
     const path = global.nodemodule["path"];
     const axios = global.nodemodule["axios"];

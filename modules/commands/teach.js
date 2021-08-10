@@ -21,7 +21,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, args }) {
-	const { APIKEY } = global.configModule;
+	const { APIKEY } = global.configModule.teach;
 	const axios = global.nodemodule["axios"];
 	const res = await axios("https://meewmeew.info/simsimi/teach?apikey=" + APIKEY, {
 		method: "POST",

@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "img",
-    version: "3.1.1",
+    version: "3.1.2",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Kho Ảnh",
@@ -22,7 +22,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, args }) {
-    const { APIKEY } = global.configModule;
+    const { APIKEY } = global.configModule.img;
     const { createReadStream, unlinkSync, writeFileSync } = global.nodemodule["fs-extra"];
     const axios = global.nodemodule["axios"];
     const { threadID, messageID } = event;

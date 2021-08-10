@@ -4,7 +4,7 @@
  */
 module.exports.config = {
     name: "sortword",
-    version: "1.1.1",
+    version: "1.1.2",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "S\u1EAFp x\u1EBFp l\u1EA1i 1 t\u1EEB ti\u1EBFng anh b\u1ECB x\xE1o tr\u1ED9n",
@@ -36,7 +36,7 @@ module.exports.handleEvent = function({ api: a, event: b }) {
     }
 }
 module.exports.run = async function({ api: a, event: b, args: c }) {
-    const { APIKEY } = global.configModule;
+    const { APIKEY } = global.configModule.sortword;
     "undefined" == !typeof global.procodermew.sortword && (global.procodermew.sortword = []);
     const d = global.nodemodule.axios, { threadID: e, senderID: f, messageID: g } = b;
     var h, i;

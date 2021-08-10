@@ -5,7 +5,7 @@
 
 module.exports.config = {
 	name: "covid",
-	version: "2.1.0",
+	version: "2.1.1",
 	hasPermssion: 0,
 	credits: "ProCoderMew",
 	description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
@@ -22,7 +22,7 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event }) {
     const axios = global.nodemodule["axios"];
-    const { APIKEY } = global.configModule;
+    const { APIKEY } = global.configModule.covid;
     var { data } = await axios.get("https://meewmeew.info/covid?apikey=" + APIKEY);
     if (data.success == false) return api.sendMessage(data.error, event.threadID);
     var world = data.world,
