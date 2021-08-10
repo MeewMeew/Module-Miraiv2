@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "sim",
-    version: "4.3.3",
+    version: "4.3.4",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Chat c\xF9ng con sim m\u1EA5t d\u1EA1y nh\u1EA5t",
@@ -31,7 +31,6 @@ module.exports.handleEvent = async function({ api: b, event: a }) {
 }
 module.exports.run = async function({ api: b, event: a, args: c }) {
     const { threadID: d, messageID: e } = a, f = (c) => b.sendMessage(c, d, e);
-    if ("ProCoderMew" != config.credits) return f("Sai credits.");
     if (0 == c.length) return f("B\u1EA1n ch\u01B0a nh\u1EADp tin nh\u1EAFn");
     switch (c[0]) {
         case "on":
