@@ -1,5 +1,5 @@
 {
-	"version": "2.2.19",
+	"version": "2.2.20",
 	"change": ["sim"],
 	"modules": {
 		"commands": {
@@ -12,7 +12,7 @@
 			"img": "3.1.1",
 			"linkword": "2.0.8",
 			"meewmeew": "2.2.7",
-			"sim": "4.3.4",
+			"sim": "4.3.5",
 			"slap": "2.2.3",
 			"sortword": "1.1.1",
 			"surprise": "3.1.0",
