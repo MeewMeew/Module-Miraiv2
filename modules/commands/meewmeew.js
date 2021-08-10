@@ -3,13 +3,13 @@
 * @warn Do not edit code or edit credits
 */
 
-const url = 'https://raw.githubusercontent.com/miraiPr0ject/Module-Mew/Mew/repo.json';
-const evtUrl = 'https://raw.githubusercontent.com/miraiPr0ject/Module-Mew/Mew/modules/events/{name}.js';
-const cmdUrl = 'https://raw.githubusercontent.com/miraiPr0ject/Module-Mew/Mew/modules/commands/{name}.js';
+const url = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/repo.json';
+const evtUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/modules/events/{name}.js';
+const cmdUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/modules/commands/{name}.js';
 
 module.exports.config = {
     name: 'meewmeew',
-    version: '2.2.6',
+    version: '2.2.7',
     hasPermssion: 2,
     credits: 'ProCoderMew',
     description: 'T\u1EA3i ho\u1EB7c c\u1EADp nh\u1EADt t\u1EA5t c\u1EA3 module c\u1EE7a Mew',
