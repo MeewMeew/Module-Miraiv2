@@ -4,7 +4,7 @@
  */
 module.exports.config = {
     name: "sortword",
-    version: "1.1.0",
+    version: "1.1.1",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "S\u1EAFp x\u1EBFp l\u1EA1i 1 t\u1EEB ti\u1EBFng anh b\u1ECB x\xE1o tr\u1ED9n",
@@ -13,6 +13,9 @@ module.exports.config = {
     cooldowns: 5,
     dependencies: {
         axios: ""
+    },
+    envConfig: {
+        APIKEY: ""
     }
 }
 module.exports.onLoad = function() {
@@ -33,6 +36,7 @@ module.exports.handleEvent = function({ api: a, event: b }) {
     }
 }
 module.exports.run = async function({ api: a, event: b, args: c }) {
+    const { APIKEY } = global.configModule;
     "undefined" == !typeof global.procodermew.sortword && (global.procodermew.sortword = []);
     const d = global.nodemodule.axios, { threadID: e, senderID: f, messageID: g } = b;
     var h, i;
@@ -52,7 +56,7 @@ module.exports.run = async function({ api: a, event: b, args: c }) {
         default:
             h = "random", i = 10;
     }
-    var { data: j } = await d.get("https://meewmeew.info/word/rw?level=" + h);
+    var { data: j } = await d.get("https://meewmeew.info/word/rw?level=" + h + "&apikey=" + APIKEY);
     a.sendMessage(`Bạn đã chọn level ${h} với thời gian ${i}s.`, e, async () => {
         return a.sendMessage("Chu\u1EA9n b\u1ECB.", e),
         await new Promise((a) => setTimeout(a, 2e3)),

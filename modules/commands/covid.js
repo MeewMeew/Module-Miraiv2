@@ -5,7 +5,7 @@
 
 module.exports.config = {
 	name: "covid",
-	version: "2.0.2",
+	version: "2.1.0",
 	hasPermssion: 0,
 	credits: "ProCoderMew",
 	description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
@@ -14,12 +14,17 @@ module.exports.config = {
 	cooldowns: 5,
     dependencies: {
         "axios": ""
+    },
+    envConfig: {
+        APIKEY: ""
     }
 };
 
 module.exports.run = async function({ api, event }) {
     const axios = global.nodemodule["axios"];
-    var { data } = await axios.get("https://meewmeew.info/covid");
+    const { APIKEY } = global.configModule;
+    var { data } = await axios.get("https://meewmeew.info/covid?apikey=" + APIKEY);
+    if (data.success == false) return api.sendMessage(data.error, event.threadID);
     var world = data.world,
         vn = data.vietnam,
         news = data.news,
@@ -38,8 +43,7 @@ module.exports.run = async function({ api, event }) {
         ptdieutrivn = (100 - pthoiphucvn - ptchetvn).toString().split(".")[0];
     ptchetvn = ptchetvn.toString().split(".")[0];
     pthoiphuctg = pthoiphuctg.toString().split(".")[0];
-    ptchettg = ptchettg.toString().split(".")[0];
-
+    ptchettg = ptchettg.toString().split(".")[0];    
     return api.sendMessage(
         '====== Thế Giới ======\n' +
         `😷 Nhiễm: ${nhiemtg}\n` +
