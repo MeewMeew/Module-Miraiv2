@@ -1,6 +1,6 @@
 {
-	"version": "2.2.22",
-	"change": ["teach"],
+	"version": "2.2.23",
+	"change": ["sim"],
 	"modules": {
 		"commands": {
 			"adduser": "2.4.1",
@@ -12,7 +12,7 @@
 			"img": "3.1.2",
 			"linkword": "2.0.9",
 			"meewmeew": "2.2.7",
-			"sim": "4.3.6",
+			"sim": "4.3.7",
 			"slap": "2.2.4",
 			"sortword": "1.1.2",
 			"surprise": "3.1.0",
