@@ -3,20 +3,12 @@
 </h1>
 
 <p align="center">
-	<a href="https://github.com/miraiPr0ject/Module-Mew/commits" target="_blank"><img alt="commits" src="https://img.shields.io/github/commit-activity/m/miraiPr0ject/Module-Mew.svg?label=commit&style=flat-square"></a>
-	<a href="https://github.com/miraiPr0ject/Module-Mew/issues" target="_blank"><img alt="GitHub issues" src="https://img.shields.io/github/issues/miraiPr0ject/Module-Mew"></a>
-	<a href="https://github.com/miraiPr0ject/Module-Mew/stargazers" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/miraiPr0ject/Module-Mew"></a>
+	<a href="https://github.com/ProCoderMew/Module-Miraiv2/commits" target="_blank"><img alt="commits" src="https://img.shields.io/github/commit-activity/m/ProCoderMew/Module-Miraiv2.svg?label=commit&style=flat-square"></a>
+	<a href="https://github.com/ProCoderMew/Module-Miraiv2/issues" target="_blank"><img alt="GitHub issues" src="https://img.shields.io/github/issues/ProCoderMew/Module-Miraiv2"></a>
+	<a href="https://github.com/ProCoderMew/Module-Miraiv2/stargazers" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ProCoderMew/Module-Miraiv2"></a>
 </p>
 
-<p align="center">
-	<a href="#Cảnh Báo">Lưu Ý</a>
-	-
-	<a href="#Module">All Module</a>
-	-
-	<a href="#Hướng Dẫn Tạo APIKEY">Hướng Dẫn Tạo APIKEY</a>
-	-
-	<a href="#Author">Tác Giả</a>	
-</p>
+# ĐỌC KĨ README TRƯỚC KHI SỬ DỤNG TRÁNH LỖI KHÔNG MONG MUỐN !
 
 # Module hỗ trợ cho source [MiraiPr0ject/Miraiv2](https://github.com/miraiPr0ject/miraiv2)
 
