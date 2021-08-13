@@ -8,13 +8,23 @@
 	<a href="https://github.com/miraiPr0ject/Module-Mew/stargazers" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/miraiPr0ject/Module-Mew"></a>
 </p>
 
+<p align="center">
+	<a href="#Cảnh Báo">Lưu Ý</a>
+	-
+	<a href="#Module">All Module</a>
+	-
+	<a href="#Hướng Dẫn Tạo APIKEY">Hướng Dẫn Tạo APIKEY</a>
+	-
+	<a href="#Author">Tác Giả</a>	
+</p>
+
 # Module hỗ trợ cho source [MiraiPr0ject/Miraiv2](https://github.com/miraiPr0ject/miraiv2)
 
 # Cảnh Báo
 - **Cấm chỉnh sửa credits.**
 - **Hạn chế chỉnh sửa(mod) module.**
 
-# Cập nhật: 10/8/2021
+# Cập nhật: 13/8/2021
 
 # Vị Trí Lưu
 - Module command: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
@@ -36,6 +46,12 @@
 - **surprise** - Một điều bất ngờ dành cho box chat và người dùng lệnh :): [commands/surprise.js](modules/commands/surprise.js)
 - **teach** - Dạy sim: [commands/teach.js](modules/commands/teach.js)
 - **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [commands/xsmb.js](modules/commands/xsmb.js)
+
+# Hướng Dẫn Tạo APIKEY
+- Để sử dụng được một số lệnh cần apikey, cần tạo một apikey mới để có thể sử dụng lệnh.
+- Dưới đây là video hướng dẫn.
+
+[![Generator APIKEY](https://img.youtube.com/vi/RtB28wte47s/0.jpg)](https://www.youtube.com/watch?v=RtB28wte47s)
 
 # Tác Giả
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
