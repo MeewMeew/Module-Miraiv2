@@ -8,7 +8,7 @@
 	<a href="https://github.com/ProCoderMew/Module-Miraiv2/stargazers" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/ProCoderMew/Module-Miraiv2"></a>
 </p>
 
-# ĐỌC KĨ README TRƯỚC KHI SỬ DỤNG TRÁNH LỖI KHÔNG MONG MUỐN !
+## ĐỌC KĨ README TRƯỚC KHI SỬ DỤNG TRÁNH LỖI KHÔNG MONG MUỐN !
 
 # Module hỗ trợ cho source [MiraiPr0ject/Miraiv2](https://github.com/miraiPr0ject/miraiv2)
 
