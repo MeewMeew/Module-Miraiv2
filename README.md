@@ -44,7 +44,7 @@
 - Dưới đây là video hướng dẫn.
 - Web login: [MeewMeew](https://meewmeew.info/site)
 
-[![Generator APIKEY](https://img.youtube.com/vi/RtB28wte47s/0.jpg)](https://www.youtube.com/watch?v=RtB28wte47s)
+[![Generator APIKEY](https://img.youtube.com/vi/HPiA_Pdtmcw/0.jpg)](https://youtu.be/HPiA_Pdtmcw)
 
 # Tác Giả
 - **ProCoderMew** - [GitHub](https://github.com/ProCoderMew) - [Facebook](https://www.facebook.com/ProCoder.Mew)
