@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "findtext",
-    version: "1.0.0",
+    version: "1.0.1",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Lấy text từ ảnh.",
@@ -29,7 +29,7 @@ module.exports.onLoad = async function() {
     const path = resolve(__dirname, 'cache', 'meewmeew.json');
 
     try {
-        var AllLang = (await axios.get("https://raw.githubusercontent.com/miraiPr0ject/Module-Mew/Mew/data/lang.json")).data;
+        var AllLang = (await axios.get("https://dev.meewmeew.info/Module-Miraiv2/data/lang.json")).data;
     }
     catch {
         var AllLang = [];
