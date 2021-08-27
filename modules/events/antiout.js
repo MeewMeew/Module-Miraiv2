@@ -26,11 +26,12 @@ module.exports.run = async function ({ api, event, Users }) {
         if (antiout.hasOwnProperty(threadID) && antiout[threadID] == true) {
             try {
                 await api.addUserToGroup(id, threadID);
-                return api.sendMessage(`Đã thêm ${name} vào lại nhóm .`)
+                return api.sendMessage(`Đã thêm ${name} vào lại nhóm .`);
             }
             catch (e) {
                 return api.sendMessage(`Không thể thêm ${name} vừa out vào lại nhóm.`, threadID);
             }
         }
     }
+    return;
 }
