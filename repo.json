@@ -1,6 +1,6 @@
 {
-	"version": "2.2.26",
-	"change": ["antiout"],
+	"version": "2.2.27",
+	"change": ["antiout", "linkword"],
 	"modules": {
 		"commands": {
 			"adduser": "2.4.1",
@@ -11,7 +11,7 @@
 			"findtext": "1.0.1",
 			"hitbutt": "2.2.6",
 			"img": "3.1.2",
-			"linkword": "2.0.9",
+			"linkword": "2.0.10",
 			"meewmeew": "2.2.7",
 			"sim": "4.3.7",
 			"slap": "2.2.6",
@@ -21,7 +21,7 @@
 			"xsmb": "2.0.1"
 		},
 		"events": {
-			"antiout": "1.0.2"
+			"antiout": "1.0.3"
 		}
 	}
 }

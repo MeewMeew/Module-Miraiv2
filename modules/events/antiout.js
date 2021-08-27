@@ -6,7 +6,7 @@
 module.exports.config = {
     name: "antiout",
     eventType: ["log:unsubscribe"],
-    version: "1.0.2",
+    version: "1.0.3",
     credits: "ProCoderMew",
     description: "Listen events",
     dependencies: {
@@ -36,7 +36,7 @@ module.exports.run = async function({ api, event, Users }) {
 }
 
 module.exports.addUser = async function({ id, name, api, event }) {
-    const join = require("./join").run;
+    const join = (require("./join") || require("./joinNoti")).run;
     const form = {
         type: 'event',
         threadID: event.threadID,
