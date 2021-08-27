@@ -6,7 +6,7 @@
 module.exports.config = {
     name: "antiout",
     eventType: ["log:unsubscribe"],
-    version: "1.0.1",
+    version: "1.0.2",
     credits: "ProCoderMew",
     description: "Listen events",
     dependencies: {
@@ -27,7 +27,8 @@ module.exports.run = async function({ api, event, Users }) {
             try {
                 await this.addUser({ id, name, api, event });
             }
-            catch {
+            catch (e) {
+                console.log(e);
                 return api.sendMessage(`Không thể thêm ${name} vừa out vào lại nhóm.`, threadID);
             }
         }

@@ -16,7 +16,7 @@
 - **Cấm chỉnh sửa credits.**
 - **Hạn chế chỉnh sửa(mod) module.**
 
-# Cập nhật: 20/8/2021
+# Cập nhật: 27/8/2021
 
 # Vị Trí Lưu
 - Module command: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)

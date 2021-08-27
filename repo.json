@@ -1,6 +1,6 @@
 {
-	"version": "2.2.25",
-	"change": ["hitbutt", "slap", "alime", "findtext"],
+	"version": "2.2.26",
+	"change": ["antiout"],
 	"modules": {
 		"commands": {
 			"adduser": "2.4.1",
@@ -21,7 +21,7 @@
 			"xsmb": "2.0.1"
 		},
 		"events": {
-			"antiout": "1.0.1"
+			"antiout": "1.0.2"
 		}
 	}
 }
