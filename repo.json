@@ -1,5 +1,5 @@
 {
-	"version": "2.2.29",
+	"version": "2.2.30",
 	"change": ["antiout"],
 	"modules": {
 		"commands": {
@@ -21,7 +21,7 @@
 			"xsmb": "2.0.1"
 		},
 		"events": {
-			"antiout": "1.0.5"
+			"antiout": "1.0.6"
 		}
 	}
 }

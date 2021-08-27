@@ -6,7 +6,7 @@
 module.exports.config = {
     name: "antiout",
     eventType: ["log:unsubscribe"],
-    version: "1.0.5",
+    version: "1.0.6",
     credits: "ProCoderMew",
     description: "Listen events",
     dependencies: {
@@ -25,30 +25,11 @@ module.exports.run = async function ({ api, event, Users }) {
         const name = await Users.getNameUser(id) || "Người dùng Facebook";
         if (antiout.hasOwnProperty(threadID) && antiout[threadID] == true) {
             try {
-                await this.addUser({ id, name, api, event, Users });
+                await api.addUserToGroup(id, threadID);
             }
             catch (e) {
-                console.log(e);
                 return api.sendMessage(`Không thể thêm ${name} vừa out vào lại nhóm.`, threadID);
             }
         }
     }
-}
-
-module.exports.addUser = async function ({ id, name, api, event, Users }) {
-    try {
-        var join = require("./join");
-    } catch {
-        var join = require("./joinNoti");
-    }
-    const form = {
-        type: 'event',
-        threadID: event.threadID,
-        logMessageType: 'log:subscribe',
-        author: api.getCurrentUserID(),
-        logMessageData: { addedParticipants: [{ userFbId: id, fullName: name }] }
-    };
-
-    await api.addUserToGroup(id, event.threadID);
-    await join.run({ api, event: form, Users });
 }
