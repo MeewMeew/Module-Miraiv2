@@ -1,6 +1,6 @@
 {
-	"version": "2.2.28",
-	"change": ["antiout", "adduser"],
+	"version": "2.2.29",
+	"change": ["antiout"],
 	"modules": {
 		"commands": {
 			"adduser": "2.4.2",
@@ -21,7 +21,7 @@
 			"xsmb": "2.0.1"
 		},
 		"events": {
-			"antiout": "1.0.4"
+			"antiout": "1.0.5"
 		}
 	}
 }

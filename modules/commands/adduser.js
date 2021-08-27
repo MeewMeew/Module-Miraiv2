@@ -63,7 +63,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users }) {
 				return out(`Không thể thêm ${name ? name : "người dùng"} vào nhóm.`);
 			}
 			if (approvalMode === true && !admins.includes(botID)) return out(`Đã thêm ${name ? name : "thành viên"} vào danh sách phê duyệt !`);
-			else return join({ api, event: form, Threads, Users });
+			else return join({ api, event: form, Users });
 		}
 	}
 }
