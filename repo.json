@@ -1,6 +1,6 @@
 {
-	"version": "2.2.31",
-	"change": ["adduser", "antiout"],
+	"version": "2.3.0",
+	"change": ["tiktok"],
 	"modules": {
 		"commands": {
 			"adduser": "2.4.3",
@@ -13,11 +13,13 @@
 			"img": "3.1.2",
 			"linkword": "2.0.10",
 			"meewmeew": "2.2.7",
+			"reactToRemoveMsg": "1.0.0",
 			"sim": "4.3.7",
 			"slap": "2.2.6",
 			"sortword": "1.1.2",
 			"surprise": "3.1.0",
 			"teach": "2.0.6",
+			"tiktok": "1.0.0",
 			"xsmb": "2.0.1"
 		},
 		"events": {

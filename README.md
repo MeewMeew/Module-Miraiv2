@@ -16,7 +16,7 @@
 - **Cấm chỉnh sửa credits.**
 - **Hạn chế chỉnh sửa(mod) module.**
 
-# Cập nhật: 27/8/2021
+# Cập nhật: 04/09/2021
 
 # Vị Trí Lưu
 - Module command: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
@@ -32,11 +32,13 @@
 - **image** - Kho Ảnh Trai, Gái, Cosplay: [commands/img.js](modules/commands/img.js)
 - **linkword** - Chơi nối từ với bot: [commands/linkword.js](modules/commands/linkword.js)
 - **meewmeew** - Update tất cả module chỉ với 1 lệnh: [commands/meewmeew.js](modules/commands/meewmeew.js)
+- **reactToRemoveMsg** - Gỡ tin nhắn bằng cách thả cảm xúc: [commands/reactToRemoveMsg.js](modules/commands/reactToRemoveMsg.js)
 - **simsimi** - Chat cùng simsimi: [commands/sim.js](modules/commands/sim.js)
 - **slap** - Tát toang alo người được tag: [commands/slap.js](modules/commands/slap.js)
 - **sortword** - Sắp xếp 1 từ tiếng anh bị đảo lộn: [commands/sortword.js](modules/commands/sortword.js)
 - **surprise** - Một điều bất ngờ dành cho box chat và người dùng lệnh :): [commands/surprise.js](modules/commands/surprise.js)
 - **teach** - Dạy sim: [commands/teach.js](modules/commands/teach.js)
+- **tiktok** - Tải video tiktok không có logo: [commands/tiktok.js](modules/commands/tiktok.js)
 - **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [commands/xsmb.js](modules/commands/xsmb.js)
 
 # Hướng Dẫn Tạo APIKEY
