@@ -1,6 +1,6 @@
 {
-	"version": "2.3.2",
-	"change": ["reactToRemoveMsg"],
+	"version": "2.4.0",
+	"change": [],
 	"modules": {
 		"commands": {
 			"adduser": "2.4.3",
@@ -13,7 +13,6 @@
 			"img": "3.1.2",
 			"linkword": "2.0.10",
 			"meewmeew": "2.2.7",
-			"reactToRemoveMsg": "1.0.1",
 			"sim": "4.3.7",
 			"slap": "2.2.6",
 			"sortword": "1.1.2",
