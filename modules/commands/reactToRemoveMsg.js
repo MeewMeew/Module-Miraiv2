@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "reactToRemoveMsg",
-    version: "1.0.1",
+    version: "1.0.2",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Gỡ tin nhắn bằng cách thả cảm được chỉ định hoặc bất kỳ.",
@@ -13,15 +13,20 @@ module.exports.config = {
     usages: "",
     cooldowns: 5,
     envConfig: {
-        react: "<thay cảm xúc ở đây hoặc để trống để sử dụng được tất cả>"
+        react: ""
     }
 };
 
 module.exports.handleEvent = function ({ api, event }) {
-    const { senderID, type, reaction, messageID } = event;
-    const { react } = global.configModule.reactToRemoveMsg;
-    if (type == "message_reaction" && senderID == api.getCurrentUserID()) {
-        if (reaction && (react == "" || react == reaction)) return api.unsendMessage(messageID);
+    try {
+        const { senderID, type, reaction, messageID } = event;
+        const { react } = global.configModule.reactToRemoveMsg;
+        if (type === "message_reaction" && senderID == api.getCurrentUserID()) {
+            if (reaction && (react === "" || react === reaction)) return api.unsendMessage(messageID);
+        }
+        return;        
+    } catch (e) {
+        console.log(e)
     }
 }
 module.exports.run = () => !0;
