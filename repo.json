@@ -1,6 +1,7 @@
 {
 	"version": "2.4.1",
-	"change": ["add sexy image"],
+	"change": ["img"],
+	"details": "add sexy image",
 	"modules": {
 		"commands": {
 			"adduser": "2.4.3",
@@ -12,7 +13,7 @@
 			"hitbutt": "2.2.6",
 			"img": "3.1.3",
 			"linkword": "2.0.10",
-			"meewmeew": "2.2.7",
+			"meewmeew": "2.2.8",
 			"sim": "4.3.7",
 			"slap": "2.2.6",
 			"sortword": "1.1.2",
