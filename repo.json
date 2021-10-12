@@ -1,6 +1,6 @@
 {
 	"version": "2.4.1",
-	"change": ["img"],
+	"change": ["img", "meewmeew"],
 	"details": "add sexy image",
 	"modules": {
 		"commands": {
