@@ -9,7 +9,7 @@ const cmdUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew
 
 module.exports.config = {
     name: 'meewmeew',
-    version: '2.2.7',
+    version: '2.2.8',
     hasPermssion: 2,
     credits: 'ProCoderMew',
     description: 'T\u1EA3i ho\u1EB7c c\u1EADp nh\u1EADt t\u1EA5t c\u1EA3 module c\u1EE7a Mew',
@@ -176,6 +176,7 @@ module.exports.run = async function ({ args: a, event: b, api: c, getText }) {
                 `» Phiên bản hiện tại: ${localVersion}\n` +
                 `» Phiên bản mới nhất: ${g.version}\n` +
                 `» Module thay đổi: ${g.change.join(', ')}\n` +
+                `» Chi tiết: ${g.details}\n` +
                 `» ${g.version == localVersion ?
                     'B\u1EA1n \u0111ang s\u1EED d\u1EE5ng phi\xEAn b\u1EA3n m\u1EDBi nh\u1EA5t.' :
                     '\u0110\xE3 c\xF3 b\u1EA3n c\u1EADp nh\u1EADt m\u1EDBi, h\xE3y update.'}`);
