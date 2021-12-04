@@ -41,6 +41,9 @@
 - **tiktok** - Tải video tiktok không có logo: [commands/tiktok.js](modules/commands/tiktok.js)
 - **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [commands/xsmb.js](modules/commands/xsmb.js)
 
+## Một số module khác
+- Nhấn vào [đây](https://github.com/MintDaL/Module-Mint).
+
 # Hướng Dẫn Tạo APIKEY
 - Để sử dụng được một số lệnh cần apikey, cần tạo một apikey mới để có thể sử dụng lệnh.
 - Dưới đây là video hướng dẫn.
