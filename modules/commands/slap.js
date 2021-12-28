@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "slap",
-    version: "2.2.6",
+    version: "2.2.7",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "",
@@ -30,7 +30,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'slap.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://dev.meewmeew.info/Module-Miraiv2/data/slap.png", path);
+    if (!existsSync(path)) await downloadFile("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/data/slap.png", path);
 }
 async function makeImage({ one, two }) {    
     const { APIKEY } = global.configModule.slap;

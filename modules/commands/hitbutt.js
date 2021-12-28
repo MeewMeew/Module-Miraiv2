@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "hitbutt",
-    version: "2.2.6",
+    version: "2.2.7",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "",
@@ -30,7 +30,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'hit_butt.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://dev.meewmeew.info/Module-Miraiv2/data/hitbutt.png", path);
+    if (!existsSync(path)) await downloadFile("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/data/hitbutt.png", path);
 }
 
 async function makeImage({ one, two }) {
@@ -67,7 +67,7 @@ async function circle(image) {
     return await image.getBufferAsync("image/png");
 }
 
-module.exports.run = async function ({ event, api, args }) {    
+module.exports.run = async function ({ event, api }) {    
     const fs = global.nodemodule["fs-extra"];
     const { threadID, messageID, senderID } = event;
     const mention = Object.keys(event.mentions);

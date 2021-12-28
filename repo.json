@@ -1,7 +1,7 @@
 {
-	"version": "2.4.3",
-	"change": ["xoso", "meewmeew"],
-	"details": "Xổ số cho 40 tỉnh thành việt nam",
+	"version": "2.4.4",
+	"change": ["alime", "findtext", "hitbutt", "slap"],
+	"details": "Fix some bugs.",
 	"modules": {
 		"commands": {
 			"adduser": "2.4.3",
