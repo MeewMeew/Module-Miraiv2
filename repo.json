@@ -1,7 +1,7 @@
 {
-	"version": "2.4.1",
-	"change": ["img", "meewmeew"],
-	"details": "add sexy image",
+	"version": "2.4.3",
+	"change": ["xoso", "meewmeew"],
+	"details": "Xổ số cho 40 tỉnh thành việt nam",
 	"modules": {
 		"commands": {
 			"adduser": "2.4.3",
@@ -13,14 +13,14 @@
 			"hitbutt": "2.2.6",
 			"img": "3.1.3",
 			"linkword": "2.0.10",
-			"meewmeew": "2.2.8",
+			"meewmeew": "2.2.9",
 			"sim": "4.3.7",
 			"slap": "2.2.6",
 			"sortword": "1.1.2",
 			"surprise": "3.1.0",
 			"teach": "2.0.6",
 			"tiktok": "1.0.0",
-			"xsmb": "2.0.1"
+			"xoso": "1.0.0"
 		},
 		"events": {
 			"antiout": "1.0.7"

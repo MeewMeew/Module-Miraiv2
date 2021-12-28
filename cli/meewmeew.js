@@ -94,11 +94,11 @@ async function loadUpdate(a, b) {
 }
 async function install(a, b, c) {
     const { data: d } = await axios.get(a);
-    await writeFileSync(b, Buffer.from(d, 'utf-8')), logger('\u0110\xE3 c\xE0i \u0111\u1EB7t th\xE0nh c\xF4ng module ' + c, 'MeewMeew')
+    writeFileSync(b, Buffer.from(d, 'utf-8')), logger('\u0110\xE3 c\xE0i \u0111\u1EB7t th\xE0nh c\xF4ng module ' + c, 'MeewMeew')
 }
 async function update(a, b, c) {
     const { data: d } = await axios.get(a);
-    existsSync(b) && (await unlinkSync(b)), await new Promise((a) => setTimeout(a, 200)), await writeFileSync(b, Buffer.from(d, 'utf-8')), logger('\u0110\xE3 c\u1EADp nh\u1EADt th\xE0nh c\xF4ng module ' + c, 'MeewMeew')
+    existsSync(b) && (unlinkSync(b)), await new Promise((a) => setTimeout(a, 200)),  writeFileSync(b, Buffer.from(d, 'utf-8')), logger('\u0110\xE3 c\u1EADp nh\u1EADt th\xE0nh c\xF4ng module ' + c, 'MeewMeew')
 }
 async function checkVersion(a, b) {
     var c = { events: {}, commands: {} };
@@ -152,8 +152,8 @@ async function details(a) {
                 }
                 break;
             default:
-                console.log("================================================");    
-                logger('==== MeewMeew ====', 'MeewMeew'), logger(`Phiên bản hiện tại: ${localVersion}`, 'MeewMeew'), logger(`Phiên bản mới nhất: ${b.version}`, 'MeewMeew'), logger(`Module thay đổi: ${b.change.join(', ')}`, 'MeewMeew'), logger(`Sử dụng: node meewmeew --update để cập nhật module.`, 'MeewMeew'), logger(`Sử dụng: node meewmeew --install để cài đặt tất cả module.`, 'MeewMeew'), logger(`Sử dụng: node meewmeew --uninstall để gỡ cài đặt tất cả module.`, 'MeewMeew');
+                console.log("================================================");
+                logger('==== MeewMeew ====', 'MeewMeew'), logger(`Phiên bản hiện tại: ${localVersion}`, 'MeewMeew'), logger(`Phiên bản mới nhất: ${b.version}`, 'MeewMeew'), logger(`Module thay đổi: ${b.change.join(', ')}`, 'MeewMeew'), logger(`Thay đổi chi tiết: ${b.details}`, 'MeewMeew'), logger(`Sử dụng: node meewmeew --update để cập nhật module.`, 'MeewMeew'), logger(`Sử dụng: node meewmeew --install để cài đặt tất cả module.`, 'MeewMeew'), logger(`Sử dụng: node meewmeew --uninstall để gỡ cài đặt tất cả module.`, 'MeewMeew');
                 break;
         }
     } catch (a) {

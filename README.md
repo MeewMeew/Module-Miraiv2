@@ -39,7 +39,7 @@
 - **surprise** - Một điều bất ngờ dành cho box chat và người dùng lệnh :): [commands/surprise.js](modules/commands/surprise.js)
 - **teach** - Dạy sim: [commands/teach.js](modules/commands/teach.js)
 - **tiktok** - Tải video tiktok không có logo: [commands/tiktok.js](modules/commands/tiktok.js)
-- **xsmb** - Xem kết quả xổ số miền bắc hôm nay: [commands/xsmb.js](modules/commands/xsmb.js)
+- **xoso** - Xem kết quả xổ số 40 tỉnh thành: [commands/xoso.js](modules/commands/xoso.js)
 
 ## Một số module khác
 - Nhấn vào [đây](https://github.com/MintDaL/Module-Mint).

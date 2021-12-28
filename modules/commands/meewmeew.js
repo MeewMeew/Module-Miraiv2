@@ -9,7 +9,7 @@ const cmdUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew
 
 module.exports.config = {
     name: 'meewmeew',
-    version: '2.2.8',
+    version: '2.2.9',
     hasPermssion: 2,
     credits: 'ProCoderMew',
     description: 'T\u1EA3i ho\u1EB7c c\u1EADp nh\u1EADt t\u1EA5t c\u1EA3 module c\u1EE7a Mew',
@@ -20,6 +20,9 @@ module.exports.config = {
         'axios': '',
         "fs-extra": '',
         'path': ''
+    },
+    envConfig: {
+        auto_update: true,
     }
 };
 module.exports.languages = {
@@ -64,16 +67,32 @@ module.exports.onLoad = async function () {
     const c = require(process.cwd() + '/utils/log')
     const { existsSync: d, writeFileSync: e } = global.nodemodule['fs-extra']
     const { data: f } = await b.get(url);
+    const { spawnSync } = global.nodemodule.child_process
     var [a, g, h] = this.version();
     if (!d(g)) e(g, JSON.stringify({ version: a }, null, 4));
     else {
         const b = h;
         b.hasOwnProperty('version') || (b.version = '1.0.0'),
-        e(g, JSON.stringify(b, null, 4))
+            e(g, JSON.stringify(b, null, 4))
     }
-    f.version != a && (c(`[!] Đã có bản cập nhật mới [!]`, '[ MeewMeew ]'),
-    c(`Phiên bản ${f.version}`, '[ MeewMeew ]'),
-    c(`Các module có sự thay đổi: ${f.change.join(', ')}`, '[ MeewMeew ]'))
+    if (f.version != a) {
+        c(`[!] Đã có bản cập nhật mới [!]`, '[ MeewMeew ]');
+        c(`Phiên bản ${f.version}`, '[ MeewMeew ]');
+        c(`Các module có sự thay đổi: ${f.change.join(', ')}`, '[ MeewMeew ]');
+        c(`Chi tiết: ${f.details}`, '[ MeewMeew ]');
+        if (global.configModule.meewmeew && global.configModule.meewmeew.auto_update) {
+            if (!d(process.cwd() + '/meewmeew.js')) {
+                let url = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/cli/meewmeew.js';
+                let { data: a } = await b.get(url, { responseType: 'arraybuffer' });
+                b(process.cwd() + '/meewmeew.js', Buffer.from(a));
+            }
+            if (d(process.cwd() + '/meewmeew.json')) {
+                spawnSync('node', [process.cwd() + '/meewmeew.js', '--update'], {
+                    stdio: 'inherit'
+                });
+            }
+        };
+    }
 };
 module.exports.getAll = async function () {
     const axios = global.nodemodule.axios;
