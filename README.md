@@ -24,7 +24,7 @@
 
 # Module
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [commands/adduser.js](modules/commands/adduser.js)
-- **aio** - Tải mọi video nếu source được hỗ trợ, chi tiết tại [đây](meew.info/site/docs#aio): [commands/aio.js](modules/commands/aio.js)
+- **aio** - Tải mọi video nếu source được hỗ trợ, chi tiết tại [đây](https://meew.info/site/docs#aio): [commands/aio.js](modules/commands/aio.js)
 - **alime** - Ảnh alime sfw và cả alime nsfw: [commands/alime.js](modules/commands/alime.js)
 - **covid** - Xem tình hình dịch covid: [commands/covid.js](modules/commands/covid.js)
 - **fbuser** - Lọc người dùng facebook: [commands/fbuser.js](modules/commands/fbuser.js)
