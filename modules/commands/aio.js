@@ -5,7 +5,7 @@
 
 module.exports.config = {
     name: "aio",
-    version: "1.0.0",
+    version: "1.0.1",
     hasPermssion: 0,
     credits: "ProCoderMew",
     description: "Tải được tất cả video nếu nguồn được hỗ trợ (xem chi tiết tại meew .info/site/docs#aio)",
@@ -76,7 +76,10 @@ module.exports.handleReply = async function ({ event, api, handleReply }) {
                 return out('File quá lớn');
             }
         }
+    } else if (event.body.startsWith('url')) {
+        var id = event.body.split(' ')[1] -1;
+        return out(handleReply.medias[id].url);
     } else {
-        return out('Không tìm thấy video này');
+        return out('Không tồn tại video này.')
     }
 }
