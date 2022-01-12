@@ -16,7 +16,7 @@
 - **Cấm chỉnh sửa credits.**
 - **Hạn chế chỉnh sửa(mod) module.**
 
-# Cập nhật: 28/12/2021
+# Cập nhật: 12/01/2022
 
 # Vị Trí Lưu
 - Module command: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)
@@ -24,6 +24,7 @@
 
 # Module
 - **adduser** - Thêm thành viên vào nhóm bằng link profile: [commands/adduser.js](modules/commands/adduser.js)
+- **aio** - Tải mọi video nếu source được hỗ trợ, chi tiết tại [đây](meew.info/site/docs#aio): [commands/adduser.js](modules/commands/aio.js)
 - **alime** - Ảnh alime sfw và cả alime nsfw: [commands/alime.js](modules/commands/alime.js)
 - **covid** - Xem tình hình dịch covid: [commands/covid.js](modules/commands/covid.js)
 - **fbuser** - Lọc người dùng facebook: [commands/fbuser.js](modules/commands/fbuser.js)
