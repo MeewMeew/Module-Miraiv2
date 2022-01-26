@@ -44,7 +44,7 @@ module.exports.run = async function ({ api: b, event: a, args: c }) {
         'quang_ngai', 'kon_tum', 'da_nang',
         'khanh_hoa'
     ];
-    if (args.length == 0 || !province.includes(c[0])) return f("Các tỉnh thành hiện có: " + province.join(', '), d);
+    if (c.length == 0 || !province.includes(c[0])) return f("Các tỉnh thành hiện có: " + province.join(', '), d);
     try {
         const { data } = await meewneew.lotteryToday(c[0]);
         const result = Object.entries(data.data);
