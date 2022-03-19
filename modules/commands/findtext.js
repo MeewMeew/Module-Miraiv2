@@ -1,13 +1,13 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
 module.exports.config = {
     name: "findtext",
-    version: "1.0.2",
+    version: "1.0.3",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "Lấy text từ ảnh.",
     commandCategory: "general",
     usages: "[lang] (xem tại findtext list)",
@@ -20,16 +20,16 @@ module.exports.config = {
 };
 
 module.exports.onLoad = async function() {
-    const { join, resolve } = global.nodemodule.path;
+    const { resolve } = global.nodemodule.path;
     const log = require(process.cwd() + '/utils/log');
     const { default: axios } = global.nodemodule["axios"];
     const {  mkdirSync, writeFileSync, existsSync } = global.nodemodule["fs-extra"];
-    const dir = join(__dirname, 'cache', 'lang-data');
-    if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+    global.pathCache = resolve(process.cwd(), 'node_modules', 'meewmeewCache');
+    if (!existsSync(dir)) mkdirSync(global.pathCache, { recursive: true });
     const path = resolve(__dirname, 'cache', 'meewmeew.json');
 
     try {
-        var AllLang = (await axios.get("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/data/lang.json")).data;
+        var AllLang = (await axios.get("https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/data/lang.json")).data;
     }
     catch {
         var AllLang = [];
@@ -47,7 +47,7 @@ module.exports.onLoad = async function() {
     } 
         
     for (const e of AllLang) {
-        let newLang = resolve(__dirname, 'cache', 'lang-data', `${e}.traineddata.gz`);
+        let newLang = resolve(global.pathCache, `${e}.traineddata.gz`);
         if (existsSync(newLang)) continue;
         var { data } = await axios.get(`https://raw.githubusercontent.com/naptha/tessdata/gh-pages/4.0.0_fast/${e}.traineddata.gz`, { responseType: "arraybuffer"});
         writeFileSync(newLang, Buffer.from(data, 'utf-8'))
@@ -59,9 +59,9 @@ module.exports.run = async function ({ api, event, args }) {
     const tesseract = global.nodemodule['tesseract.js'];
     const { threadID, messageID, type, messageReply } = event;
     const out = msg => api.sendMessage(msg, threadID, messageID);
-    const { join, resolve } = global.nodemodule.path;
+    const { resolve } = global.nodemodule.path;
     const { createWorker } = tesseract;
-    const path = join(__dirname, 'cache', 'lang-data');
+    const path = resolve(global.pathCache, 'lang-data');
 
     const worker = createWorker({
         langPath: path

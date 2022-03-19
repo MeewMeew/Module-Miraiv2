@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
     name: "linkword",
     version: "2.0.10",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "Chơi nối từ với bot hoặc thành viên trong nhóm",
     commandCategory: "game",
     usages: "",

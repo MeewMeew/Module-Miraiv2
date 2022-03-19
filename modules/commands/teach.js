@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
 	name: "teach",
 	version: "2.0.6",
 	hasPermssion: 0,
-	credits: "ProCoderMew",
+	credits: "MeewMeew",
 	description: "Dạy bot (dùng cho lệnh sim)",
 	commandCategory: "general",
 	usages: "hello => goodbye",

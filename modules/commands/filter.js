@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
 	name: "filter",
 	version: "2.0.1",
 	hasPermssion: 1,
-	credits: "ProCoderMew",
+	credits: "MeewMeew",
 	description: "Lọc cá cảnh trong group",
 	commandCategory: "group",
 	usages: "[num]",

@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
     name: "img",
     version: "3.1.3",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "Kho Ảnh",
     commandCategory: "nsfw",
     usages: "[boy/girl/cosplay/sexy/wibu/meow/dog]",

@@ -2,8 +2,6 @@
 	"nsfw": {
 		"classic": "https://api.nekos.dev/api/v3/images/nsfw/img/classic_lewd",
 		"piersing": "https://api.nekos.dev/api/v3/images/nsfw/img/piersing_lewd",
-		"feet": "https://api.nekos.dev/api/v3/images/nsfw/img/feet_lewd",
-		"keta": "https://api.nekos.dev/api/v3/images/nsfw/img/keta_lewd",
 		"piersingEro": "https://api.nekos.dev/api/v3/images/nsfw/img/piersing_ero",
 		"yuriEro": "https://api.nekos.dev/api/v3/images/nsfw/img/yuri_ero",
 		"soloEro": "https://api.nekos.dev/api/v3/images/nsfw/img/solo_ero",

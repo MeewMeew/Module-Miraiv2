@@ -1,17 +1,17 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
-const url = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/repo.json';
-const evtUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/modules/events/{name}.js';
-const cmdUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/modules/commands/{name}.js';
+const url = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/repo.json';
+const evtUrl = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/modules/events/{name}.js';
+const cmdUrl = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/modules/commands/{name}.js';
 
 module.exports.config = {
     name: 'meewmeew',
     version: '2.2.9',
     hasPermssion: 2,
-    credits: 'ProCoderMew',
+    credits: 'MeewMeew',
     description: 'T\u1EA3i ho\u1EB7c c\u1EADp nh\u1EADt t\u1EA5t c\u1EA3 module c\u1EE7a Mew',
     commandCategory: 'admin',
     usages: '[install/uninstall/update/b\u1ECF tr\u1ED1ng]',
@@ -82,7 +82,7 @@ module.exports.onLoad = async function () {
         c(`Chi tiết: ${f.details}`, '[ MeewMeew ]');
         if (global.configModule.meewmeew && global.configModule.meewmeew.auto_update) {
             if (!d(process.cwd() + '/meewmeew.js')) {
-                let url = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/cli/meewmeew.js';
+                let url = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/cli/meewmeew.js';
                 let { data: a } = await b.get(url, { responseType: 'arraybuffer' });
                 b(process.cwd() + '/meewmeew.js', Buffer.from(a));
             }
@@ -101,8 +101,8 @@ module.exports.getAll = async function () {
 };
 module.exports.getName = async function () {
     var a = { events: {}, commands: {} };
-    for (const b of global.client.events.values()) 'ProCoderMew' == b.config.credits && (a.events[b.config.name] = b.config.version);
-    for (const b of global.client.commands.values()) 'ProCoderMew' == b.config.credits && (a.commands[b.config.name] = b.config.version);
+    for (const b of global.client.events.values()) 'MeewMeew' == b.config.credits && (a.events[b.config.name] = b.config.version);
+    for (const b of global.client.commands.values()) 'MeewMeew' == b.config.credits && (a.commands[b.config.name] = b.config.version);
     return a;
 };
 module.exports.falseVersion = async function (a, b) {

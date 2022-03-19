@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
     name: "aio",
     version: "1.0.1",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "Tải được tất cả video nếu nguồn được hỗ trợ (xem chi tiết tại meew .info/site/docs#aio)",
     commandCategory: "media",
     usages: "[url]",

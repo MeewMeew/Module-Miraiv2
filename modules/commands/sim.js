@@ -1,5 +1,5 @@
 /**
- * @author ProCoderMew
+ * @author MeewMeew
  * @warn Do not edit code or edit credits
  * @apikey Reg key tại: https://meewmeew.info/site
  */
@@ -7,7 +7,7 @@ module.exports.config = {
     name: "sim",
     version: "4.3.8",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "Chat c\xF9ng con sim m\u1EA5t d\u1EA1y nh\u1EA5t",
     commandCategory: "General",
     usages: "[args]",

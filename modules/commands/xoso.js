@@ -1,5 +1,5 @@
 /**
- * @author ProCoderMew
+ * @author MeewMeew
  * @warn Do not edit code or edit credits
  * @apikey Reg key tại: https://meewmeew.info/site
  */
@@ -7,7 +7,7 @@ module.exports.config = {
     name: "xoso",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "Xem kết quả xổ số 40 tỉnh thành",
     commandCategory: "General",
     usages: "[args]",
@@ -19,7 +19,6 @@ module.exports.config = {
         APIKEY: ""
     }
 }
-
 module.exports.onLoad = async function () {
     console.log('\x1b[1m=\x1b[5m'.repeat(20) + " Reg APIKEY tại meewmeew.info/site " + '='.repeat(20) + "\x1b[0m");
 };

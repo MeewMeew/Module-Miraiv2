@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
     name: "hitbutt",
     version: "2.2.7",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "",
     commandCategory: "general",
     usages: "[@tag]",
@@ -30,7 +30,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'hit_butt.png');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/data/hitbutt.png", path);
+    if (!existsSync(path)) await downloadFile("https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/data/hitbutt.png", path);
 }
 
 async function makeImage({ one, two }) {

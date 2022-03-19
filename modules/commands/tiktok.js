@@ -1,13 +1,13 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
 module.exports.config = {
     name: "tiktok",
-    version: "1.0.0",
+    version: "1.0.1",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "Get tiktok video without watermark",
     commandCategory: "media",
     usages: "[url]",
@@ -31,7 +31,7 @@ module.exports.run = async function({ api, event, args }) {
     var path = __dirname + `/cache/tiktok.mp4`;
     if (data.success == false) return api.sendMessage(data.error, threadID, messageID);
     else {
-        const { data: stream } = await axios.get(data.url, { responseType: 'arraybuffer' });
+        const { data: stream } = await axios.get(data.video_url, { responseType: 'arraybuffer' });
         writeFileSync(path, Buffer.from(stream, 'utf-8'));
         return api.sendMessage({ attachment: createReadStream(path) }, threadID, () => unlinkSync(path), messageID);       
     }

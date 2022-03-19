@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
     name: "alime",
     version: "1.1.4",
     hasPermssion: 0,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "alime sfw và cả alime nsfw :)",
     commandCategory: "nsfw",
     usages: "[tag]",
@@ -24,7 +24,7 @@ module.exports.onLoad = async function () {
     const { existsSync, readFileSync } = global.nodemodule["fs-extra"];
     const { downloadFile } = global.utils;
     const path = resolve(__dirname, 'cache', 'alime.json');
-    const url = "https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/data/alime.json";
+    const url = "https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/data/alime.json";
 
     try {
         if (!existsSync(path)) await downloadFile(url, path);

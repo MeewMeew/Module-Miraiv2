@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -8,7 +8,7 @@ module.exports.config = {
     name: "fbuser",
     version: "2.0.0",
     hasPermssion: 1,
-    credits: "ProCoderMew",
+    credits: "MeewMeew",
     description: "L\u1ECDc ng\u01B0\u1EDDi d\xF9ng Facebook",
     commandCategory: "group",
     usages: "",

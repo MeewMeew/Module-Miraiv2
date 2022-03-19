@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,7 +7,7 @@ module.exports.config = {
 	name: "covid",
 	version: "2.1.1",
 	hasPermssion: 0,
-	credits: "ProCoderMew",
+	credits: "MeewMeew",
 	description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
 	commandCategory: "other",
 	usages: "",

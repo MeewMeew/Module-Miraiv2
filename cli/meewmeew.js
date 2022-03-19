@@ -1,5 +1,5 @@
 /**
-* @author ProCoderMew
+* @author MeewMeew
 * @warn Do not edit code or edit credits
 */
 
@@ -7,9 +7,9 @@ const axios = require('axios');
 const { resolve } = require('path');
 const logger = require(process.cwd() + '/utils/log');
 const { unlinkSync, existsSync, writeFileSync, readdirSync } = require('fs-extra');
-const url = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/repo.json';
-const evtUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/modules/events/{name}.js';
-const cmdUrl = 'https://raw.githubusercontent.com/ProCoderMew/Module-Miraiv2/Mew/modules/commands/{name}.js';
+const url = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/repo.json';
+const evtUrl = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/modules/events/{name}.js';
+const cmdUrl = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/modules/commands/{name}.js';
 var meewmeew = resolve(__dirname, 'modules', 'commands', 'cache', 'meewmeew.json');
 if (existsSync(meewmeew)) {
     var meewmeewData = require(meewmeew);
@@ -31,7 +31,7 @@ async function getModules() {
         var d = resolve(__dirname, 'modules', 'commands', b);
         try {
             var e = require(d);
-            'ProCoderMew' == e.config.credits && (c.commands[e.config.name] = [e.config.version, d])
+            'MeewMeew' == e.config.credits && (c.commands[e.config.name] = [e.config.version, d])
         } catch (a) {
             continue
         }
@@ -40,7 +40,7 @@ async function getModules() {
         var d = resolve(__dirname, 'modules', 'events', a);
         try {
             var e = require(d);
-            'ProCoderMew' == e.config.credits && (c.events[e.config.name] = [e.config.version, d])
+            'MeewMeew' == e.config.credits && (c.events[e.config.name] = [e.config.version, d])
         } catch (a) {
             continue
         }
