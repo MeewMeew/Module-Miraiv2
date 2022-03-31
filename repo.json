@@ -1,6 +1,8 @@
 {
-  "version": "2.4.8",
-  "change": [],
+  "version": "2.4.9",
+  "change": [
+    "hentaivn"
+  ],
   "details": "update",
   "modules": {
     "commands": {
