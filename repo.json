@@ -1,6 +1,8 @@
 {
   "version": "2.4.8",
-  "change": [],
+  "change": [
+    "hentaivn"
+  ],
   "details": "update",
   "modules": {
     "commands": {
@@ -12,6 +14,7 @@
       "fbuser": "2.0.0",
       "filter": "2.0.1",
       "findtext": "1.0.3",
+      "hentaivn": "1.0.1",
       "hitbutt": "2.2.7",
       "img": "3.1.3",
       "linkword": "2.0.10",
