@@ -5,7 +5,7 @@
 
 module.exports.config = {
 	name: "teach",
-	version: "2.0.6",
+	version: "2.0.7",
 	hasPermssion: 0,
 	credits: "MeewMeew",
 	description: "Dạy bot (dùng cho lệnh sim)",
@@ -29,5 +29,5 @@ module.exports.run = async function({ api, event, args }) {
 		data: { teach: args.join(" ") }
 	});
 	if (data.success == false) return api.sendMessage(`${data.error}`, event.threadID, event.messageID);
-	return api.sendMessage(`${data.data}`, event.threadID, event.messageID);
+	return api.sendMessage(`${data.msg}`, event.threadID, event.messageID);
 }
