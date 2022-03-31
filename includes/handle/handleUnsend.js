@@ -4,6 +4,6 @@ module.exports = function({ api }) {
         const { senderID, reaction, messageID } = event;
         if (senderID == api.getCurrentUserID()) {
             if (react === "" || react === reaction) return api.unsendMessage(messageID);
-        }		
+        }
 	};
 };
