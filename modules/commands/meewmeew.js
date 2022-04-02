@@ -200,4 +200,5 @@ module.exports.run = async function ({ args: a, event: b, api: c, getText }) {
                     'B\u1EA1n \u0111ang s\u1EED d\u1EE5ng phi\xEAn b\u1EA3n m\u1EDBi nh\u1EA5t.' :
                     '\u0110\xE3 c\xF3 b\u1EA3n c\u1EADp nh\u1EADt m\u1EDBi, h\xE3y update.'}`);
     }
+
 };

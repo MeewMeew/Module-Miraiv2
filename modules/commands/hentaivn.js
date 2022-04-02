@@ -8,13 +8,13 @@ class HentaiVN {
     this.API_URL = 'https://meewmeew.info/hidden/hentaivn';
     this.config = {
       name: "hentaivn",
-      version: "1.0.1",
+      version: "1.0.2",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "Tải truyện trên hentaivn",
       commandCategory: "nsfw",
-      usages: "\n   + [comics] [url]: tải all chap\n   + [url]: tải 1 chap\n   + [id]: thông tin truyện",
-      cooldowns: 30,
+      usages: "\n   + [comics] [url]: tải all chap\n   + [url]: tải 1 chap\n   + [id]: thông tin truyện\n   + [homepage] [new/hot/random]: lấy list truyện từ homepage",
+      cooldowns: 0,
       envConfig: {
         meewmeew_apikey: "",
         limitPerMessage: 9,
@@ -102,6 +102,7 @@ class HentaiVN {
   async run({ api, event, args }) {
     if (!args[0] || !isNaN(args[0])) return this.getInfoById(api, event, args);
     if (args[0] !== 'comics') {
+      if (args[0] === 'homepage') return this.homepage(api, event, args[1]);
       var result = await this.download(api, event, args);
       if (result) return this.out(api, result, event);
     }
@@ -115,13 +116,14 @@ class HentaiVN {
     var dataForPage = [];
     page = parseInt(args[1]) || 1;
     page < -1 ? page = 1 : "";
-    var limit = 10;
+    var limit = 5;
     var numPage = Math.ceil(reverse.length / limit);
     for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
       if (i >= reverse.length) break;
       dataForPage.push(reverse[i]);
     }
-    var msg = dataForPage.map((comics, index) => `${index + 1}. ${comics.title}`).join('\n');
+    var msg =  '====[ Truyện HentaiVN ]====\n\n';
+    msg += dataForPage.map((comics, index) => `${index + 1}. ${comics.title}`).join('\n');
     msg += '\n\n==== [ ' + page + '/' + numPage + ' ] ====';
     msg += '\n\nReply tin nhắn với số thứ tự để tải truyện.';
     msg += '\nReply "page [số trang]" để chuyển trang.'
@@ -132,8 +134,9 @@ class HentaiVN {
     try {
       var { allComics, comics, url } = handleReply;
       if (event.body.indexOf('page') == 0) {
+        var attachment = []
         var page = parseInt(event.body.split(' ')[1]) || 1;
-        var limit = 10;
+        var limit = 5;
         var numPage = Math.ceil(allComics.length / limit);
         if (page < 1) page = 1;
         if (page > numPage) page = numPage;
@@ -141,15 +144,23 @@ class HentaiVN {
         for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
           if (i >= allComics.length) break;
           dataForPage.push(allComics[i]);
+          if (allComics[i].image) {
+            let img = await this.axios.get(`${allComics[i].image}`, { responseType: 'arraybuffer' });
+            let filename = this.path.resolve(this.tempFolder, this.randomName() + '.png');
+            this.fs.writeFileSync(filename, Buffer.from(img.data, 'utf-8'));
+            attachment.push(this.fs.createReadStream(filename));
+          }
         }
-        var msg = dataForPage.map((comics, index) => `${index + 1}. ${comics.title}`).join('\n');
-        msg += '\n\n==== [ ' + page + '/' + numPage + ' ] ====';
-        msg += '\n\nReply tin nhắn với số thứ tự để tải truyện.';
-        msg += '\nReply "page [số trang]" để chuyển trang.'
-        return this.out(api, msg, event, (_, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID, comics: dataForPage, allComics }));
+        var body = '====[ Truyện HentaiVN ]====\n\n';
+        body += dataForPage.map((comics, index) => `${index + 1}. ${comics.title || comics.name}`).join('\n');
+        body += '\n\n==== [ ' + page + '/' + numPage + ' ] ====';
+        body += '\n\nReply tin nhắn với số thứ tự để tải truyện.';
+        body += '\nReply "page [số trang]" để chuyển trang.'
+        return this.out(api, { body, attachment }, event, (_, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID, comics: dataForPage, allComics }));
       }
       if (event.body === 'dl') return this.run({ api, event, args: ['comics', ...url.split(/\s+/g)] });
       var chap = comics[parseInt(event.body) - 1];
+      if (chap.type && chap.type === 'comics') return this.run({ api, event, args: ['comics', chap.url] });
       this.out(api, 'Đợi tý, đang tải ' + chap.title, event);
       var result = await this.download(api, event, [chap.link]);
       if (result) return this.out(api, result, event);
@@ -165,6 +176,35 @@ class HentaiVN {
     catch {
       return this.out(api, "Không thể xử lý yêu cầu của bạn!", event);
     }
+  }
+
+  async homepage(api, event, args) {
+    var attachment = [];
+    var page = 1;
+    var dataForPage = [];
+    var limit = 5;
+    var url = `${this.API_URL}/homepage?apikey=${this.meewmeewApikey}&type=${args || 'hot'}`;
+    let { data: { error, data } } = await this.axios.get(url).catch(e => this.out(api, e.response.data.error, event));
+    if (error) return this.out(api, data.error, event);
+    if (data.length === 0) return this.out(api, "Không tìm thấy truyện", event);
+    var numPage = Math.ceil(data.length / limit);
+    data.forEach(e => e.type = 'comics');
+    for (var i = limit * (page - 1); i < limit * (page - 1) + limit; i++) {
+      if (i >= data.length) break;
+      dataForPage.push(data[i]);
+      if (!data[i].image) continue;
+      let img = await this.axios.get(data[i].image, { responseType: 'arraybuffer' });
+      var filename = this.path.resolve(this.tempFolder, this.randomName() + '.png');
+      this.fs.writeFileSync(filename, Buffer.from(img.data, 'utf-8'));
+      attachment.push(this.fs.createReadStream(filename));
+    }
+    var body = '====[ Truyện HentaiVN ]====\n\n';
+    body += dataForPage.map((comics, index) => `${index + 1}. ${comics.name}`).join('\n');
+    body += '\n\n==== [ ' + page + '/' + numPage + ' ] ====';
+    body += '\n\nReply tin nhắn với số thứ tự để tải truyện.';
+    body += '\nReply "page [số trang]" để chuyển trang.'
+    return this.out(api, { attachment, body }, event, (_, info) => global.client.handleReply.push({ name: this.config.name, messageID: info.messageID, author: event.senderID, comics: dataForPage, allComics: data }))
+
   }
 }
 
