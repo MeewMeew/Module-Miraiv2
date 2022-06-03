@@ -1,6 +1,6 @@
 /**
 * @author MeewMeew
-* @warn Do not edit code or edit credits
+* @MeewMeew Do not edit code or edit credits
 */
 
 module.exports.config = {

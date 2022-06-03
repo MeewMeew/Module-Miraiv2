@@ -1,38 +1,40 @@
 /**
 * @author MeewMeew
-* @warn Do not edit code or edit credits
+* @MeewMeew Do not edit code or edit credits
 */
 
-module.exports.config = {
-    name: "tiktok",
-    version: "1.0.1",
-    hasPermssion: 0,
-    credits: "MeewMeew",
-    description: "Get tiktok video without watermark",
-    commandCategory: "media",
-    usages: "[url]",
-    cooldowns: 5,
-    dependencies: {
-        "axios": "",
-        "fs-extra": ""
-    },
-    envConfig: {
-        APIKEY: ""
+class MeewMeewModule{
+    get config(){
+        return {
+            name: "tiktok",
+            version: "1.0.2",
+            hasPermssion: 0,
+            credits: "MeewMeew",
+            description: "Get tiktok video without watermark",
+            commandCategory: "media",
+            usages: "[url]",
+            cooldowns: 5,
+            dependencies: {
+                meewmeewapi: "",
+                "fs-extra": ""
+            },
+            envConfig: {
+                APIKEY: ""
+            }
+        }
     }
-};
-
-module.exports.run = async function({ api, event, args }) {
-    const { APIKEY } = global.configModule.tiktok;
-    const { createReadStream, unlinkSync, writeFileSync } = global.nodemodule["fs-extra"];
-    const axios = global.nodemodule["axios"];
-    const { threadID, messageID } = event;
-    if (args.length == 0) return api.sendMessage("Da co loi xay ra");
-    var { data } = await axios.get(`https://meewmeew.info/tiktok/api?url=${args[0]}&apikey=${APIKEY}`);
-    var path = __dirname + `/cache/tiktok.mp4`;
-    if (data.success == false) return api.sendMessage(data.error, threadID, messageID);
-    else {
-        const { data: stream } = await axios.get(data.video_url, { responseType: 'arraybuffer' });
-        writeFileSync(path, Buffer.from(stream, 'utf-8'));
-        return api.sendMessage({ attachment: createReadStream(path) }, threadID, () => unlinkSync(path), messageID);       
+    async run({ api, event, args }){
+        const { APIKEY } = global.configModule.tiktok;
+        const MeewMeew = global.nodemodule["meewmeewapi"].default;
+        const fs = global.nodemodule["fs-extra"];
+        const tiktok = new MeewMeew.Tiktok(APIKEY);
+        if (args.length == 0) return api.sendMessage("Cách dùng: tiktok [url]", event.threadID, event.messageID);
+        var url = args[0];
+        if (url.indexOf("https://www.tiktok.com/") == -1) return api.sendMessage("Cách dùng: tiktok [url]", event.threadID, event.messageID);
+        var { path, error } = await tiktok.video(url, __dirname + '/cache/tiktok.mp4');
+        if (error) return api.sendMessage(error, event.threadID, event.messageID);
+        return api.sendMessage({ attachment: fs.createReadStream(path) }, event.threadID, () => fs.unlinkSync(path), event.messageID);
     }
 }
+
+module.exports = new MeewMeewModule();

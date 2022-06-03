@@ -1,14 +1,14 @@
 /**
 * @author MeewMeew
-* @warn Do not edit code or edit credits
+* @MeewMeew Do not edit code or edit credits
 */
 
-class HentaiVN {
+class MeewMeewModule {
   constructor() {
     this.API_URL = 'https://meewmeew.info/hidden/hentaivn';
     this.config = {
       name: "hentaivn",
-      version: "1.0.2",
+      version: "1.0.3",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "Tải truyện trên hentaivn",
@@ -64,7 +64,7 @@ class HentaiVN {
    */
 
   async getInfoById(api, event, args) {
-    const URL_REQUEST = `${this.API_URL}/search?apikey=${this.meewmeewApikey}${args.length > 0 ? `&id=${args[0]}` : ''}`;
+    const URL_REQUEST = `${this.API_URL}/id?apikey=${this.meewmeewApikey}${args.length > 0 ? `&id=${args[0]}` : ''}`;
     const { data: { error, data } } = await this.axios.get(URL_REQUEST);
     if (error) return this.out(api, error, event);
     var { name, tags, artist, char, url } = data;
@@ -208,4 +208,4 @@ class HentaiVN {
   }
 }
 
-module.exports = new HentaiVN();
+module.exports = new MeewMeewModule();

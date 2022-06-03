@@ -1,52 +1,79 @@
 /**
 * @author MeewMeew
-* @warn Do not edit code or edit credits
+* @MeewMeew Do not edit code or edit credits
 */
 
-module.exports.config = {
-    name: "linkword",
-    version: "2.0.10",
-    hasPermssion: 0,
-    credits: "MeewMeew",
-    description: "Chơi nối từ với bot hoặc thành viên trong nhóm",
-    commandCategory: "game",
-    usages: "",
-    cooldowns: 5,
-    dependencies: {
-        "axios": ""
-    },
-    envConfig: {
+class MeewMeewModule {
+  get config() {
+    return {
+      name: "linkword",
+      version: "2.0.11",
+      hasPermssion: 0,
+      credits: "MeewMeew",
+      description: "Chơi nối từ với bot hoặc thành viên trong nhóm",
+      commandCategory: "game",
+      usages: "[en/vi]",
+      cooldowns: 5,
+      dependencies: {
+        meewmeewapi: "*"
+      },
+      envConfig: {
         APIKEY: ""
+      }
     }
-};
-module.exports.onLoad = function () {
-    if (typeof global.procodermew == "undefined") global.procodermew = new Object();
-    if (typeof global.procodermew.linkword == "undefined") global.procodermew.linkword = new Map();
-}
-module.exports.handleEvent = async function({ api, event }) {    
+  }
+
+  maxWord(lang) {
+    if (lang == "en") return 1;
+    else return 2;
+  }
+
+  validWord(words, lang) {
+    if (lang == "vi") return words.slice(2).join();
+    else return words[0];
+  }
+
+  onLoad() {
+    if (!global.MeewMeew) global.MeewMeew = new Object();
+    if (!global.MeewMeew.linkword) global.MeewMeew.linkword = new Map();
+  }
+
+  async handleEvent({ api, event }) {
+    if (!global.MeewMeew.linkword) return;
+    const MeewMeew = global.nodemodule["meewmeewapi"].default;
     const { APIKEY } = global.configModule.linkword;
-    if (typeof global.procodermew.linkword == "undefined") return;
-    const axios = global.nodemodule["axios"];
+    const word = new MeewMeew.Word(APIKEY);
     const { body: content, threadID, messageID, senderID } = event;
-    if (global.procodermew.linkword.has(threadID) && senderID != api.getCurrentUserID()) {
-        if (content && content.split(" ").length == 2) {
-            var data = (await axios.get("https://meewmeew.info/word/linkword?ask=" + encodeURIComponent(content) + "&apikey=" + APIKEY)).data;
-            if (data.success == true) {
-                if (data.data == "Bạn đã thua!") {
-                    global.procodermew.linkword.delete(threadID);
-                    return api.sendMessage(data.data, threadID, messageID);
-                } else return api.sendMessage(data.data, threadID, messageID);
-            } else return api.sendMessage(data.error, threadID, messageID);
+    if (senderID == api.getCurrentUserID()) return;
+    if (global.MeewMeew.linkword.has(threadID)) {
+      var lang = global.MeewMeew.linkword.get(threadID);
+      var maxWord = this.maxWord(lang);
+      var words = content.split(" ");
+      if (words.length == maxWord) {
+        var result = await word.linkWord(this.validWord(words, lang), lang);
+        if (result.data == "Bạn đã thua!" || result.error == "Từ của bạn sử dụng không tồn tại") {
+          global.MeewMeew.linkword.delete(threadID);
+          return api.sendMessage("Bạn đã thua tôi, đồ con gà xD", threadID, messageID);
         }
+        if (result.error) return api.sendMessage(result.error, threadID, messageID);
+        else return api.sendMessage(result.data, threadID, messageID);
+      }
     }
-}
-module.exports.run = function({ api, event }) {
+  }
+
+  run({ api, event, args }) {
     const { threadID, messageID } = event;
-    if (!global.procodermew.linkword.has(threadID)) {
-        global.procodermew.linkword.set(threadID);
-        return api.sendMessage("Đã bật linkword", threadID, messageID);
-    } else {
-        global.procodermew.linkword.delete(threadID);
+    const lang = args[0] || "vi";
+    if (lang == "en" || lang == "vi") {
+      if (!global.MeewMeew.linkword.has(threadID)) {
+        global.MeewMeew.linkword.set(threadID, lang);
+        return api.sendMessage(`Đã bật linkword (${lang})`, threadID, messageID);
+      } else {
+        global.MeewMeew.linkword.delete(threadID);
         return api.sendMessage("Đã tắt linkword", threadID, messageID);
-    }
+      }
+    } else return global.utils.throwError(this.config.name, threadID, messageID);
+  }
 }
+
+module.exports = new MeewMeewModule();
