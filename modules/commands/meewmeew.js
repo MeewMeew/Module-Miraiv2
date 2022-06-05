@@ -8,7 +8,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: 'meewmeew',
-      version: '2.3.3',
+      version: '2.3.4',
       hasPermssion: 2,
       credits: 'MeewMeew',
       description: 'Tải, cập nhật, gỡ bỏ các module của meewmeew',
@@ -123,12 +123,12 @@ class MeewMeewModule {
       }
       var result = await this.download(url, path)
       if (result) {
+        var newConfig = null
         const { config } = require(path);
-        if (config.meewmeewConfig) this.setConfig(`${module}`, config.meewmeewConfig, ['modules'])
-        else this.setConfig(`${module}`, {
-          version: config.version,
-          type: type,
-        }, ['modules'])
+        const thisModuleConfig = await this.getConfig(`${module}`, ['modules'])
+        if (config.meewmeewConfig) newConfig = Object.assign(thisModuleConfig || {}, config.meewmeewConfig)
+        newConfig = Object.assign(newConfig || {}, { version: config.version, type: type, })
+        this.setConfig(`${module}`, newConfig, ['modules'])
         let msg = `[+] Module ${module} đã được cài đặt!`
         console.log(msg)
         log.push(msg)
@@ -179,12 +179,12 @@ class MeewMeewModule {
       }
       var result = await this.download(url, path)
       if (result) {
-        const { meewmeewConfig, config } = require(path);
-        if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
-        else this.setConfig(`${module}`, {
-          version: config.version,
-          type: type,
-        }, ['modules'])
+        var newConfig = null
+        const { config } = require(path);
+        const thisModuleConfig = await this.getConfig(`${module}`, ['modules'])
+        if (config.meewmeewConfig) newConfig = Object.assign(thisModuleConfig || {}, config.meewmeewConfig)
+        newConfig = Object.assign(newConfig || {}, { version: config.version, type: type, })
+        this.setConfig(`${module}`, newConfig, ['modules'])
         let msg = `[+] Module ${module} đã được cập nhật!`
         console.log(msg)
         log.push(msg)
