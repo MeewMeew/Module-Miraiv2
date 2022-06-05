@@ -7,7 +7,7 @@ class MeewMeewModule {
 	get config() {
 		return {
 			name: "teach",
-			version: "2.0.8",
+			version: "2.0.9",
 			hasPermssion: 0,
 			credits: "MeewMeew",
 			description: "Dạy bot (dùng cho lệnh sim)",
@@ -15,10 +15,13 @@ class MeewMeewModule {
 			usages: "[câu hiện tại] -> [câu mong muốn]",
 			cooldowns: 5,
 			dependencies: {
-				meewmeewapi: ""
+				meewmeewapi: "latest"
 			},
 			envConfig: {
 				APIKEY: ""
+			},
+			meewmeewConfig: {
+				requiredApikey: true
 			}
 		}
 	}

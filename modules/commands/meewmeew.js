@@ -1,204 +1,342 @@
-/**
-* @author MeewMeew
-* @MeewMeew Do not edit code or edit credits
-*/
+class MeewMeewModule {
+  constructor() {
+    this.fs = global.nodemodule['fs-extra']
+    this.path = global.nodemodule['path']
+    this.got = global.nodemodule['got']
+    this.makeConfig();
+    this.updateOnLoad();
+  }
+  get config() {
+    return {
+      name: 'meewmeew',
+      version: '2.3.0',
+      hasPermssion: 2,
+      credits: 'MeewMeew',
+      description: 'Tải, cập nhật, gỡ bỏ các module của meewmeew',
+      commandCategory: 'admin',
+      usages: 'help',
+      cooldowns: 1,
+      dependencies: {
+        got: '11.8.3'
+      },
+      meewmeewConfig: {
+        autoUpdate: true,
+      }
+    }
+  }
 
-const url = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/repo.json';
-const evtUrl = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/modules/events/{name}.js';
-const cmdUrl = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/modules/commands/{name}.js';
+  get configPath() {
+    return this.path.resolve(process.cwd(), 'meewmeew.json')
+  }
 
-module.exports.config = {
-    name: 'meewmeew',
-    version: '2.2.9',
-    hasPermssion: 2,
-    credits: 'MeewMeew',
-    description: 'T\u1EA3i ho\u1EB7c c\u1EADp nh\u1EADt t\u1EA5t c\u1EA3 module c\u1EE7a Mew',
-    commandCategory: 'admin',
-    usages: '[install/uninstall/update/b\u1ECF tr\u1ED1ng]',
-    cooldowns: 1,
-    dependencies: {
-        'axios': '',
-        "fs-extra": '',
-        'path': ''
-    },
-    envConfig: {
-        auto_update: true,
+  get rawGithubUrl() {
+    return 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/'
+  }
+
+  getType(variable) {
+    return Object.prototype.toString.call(variable).slice(8, -1);
+  }
+
+  async download(url, path) {
+    const write = this.fs.createWriteStream(path);
+    const response = await this.got(url);
+    response.body.pipe(write);
+    return new Promise((resolve, reject) => {
+      write.on('finish', resolve);
+      write.on('error', reject);
+    });
+  }
+
+  async makeConfig() {
+    if (!this.fs.existsSync(this.configPath)) {
+      const config = {
+        APIKEY: '',
+        modules: {
+          commands: {},
+          events: {}
+        }
+      }
+      this.fs.writeFileSync(this.configPath, JSON.stringify(config, null, 4), 'utf8');
     }
-};
-module.exports.languages = {
-    "vi": {
-        "nameExist": "Tên module bị trùng với một module mang cùng tên khác!",
-        "notFoundLanguage": "Module %1 không hỗ trợ ngôn ngữ ngôn ngữ của bạn",
-        "notFoundPackage": "Không tìm thấy package %1 hỗ trợ cho module %2, tiến hành cài đặt...",
-        "cantInstallPackage": "Không thể cài đặt package %1 cho module %2, lỗi: %3",
-        "loadedPackage": "Đã tải thành công toàn bộ package cho module %1",
-        "loadedConfig": "Đã tải thành công config cho module %1",
-        "cantLoadConfig": "Không thể tải config của module %1, lỗi: %2",
-        "cantOnload": "Không thể khởi chạy setup của module %1, lỗi: %1",
-        "successLoadModule": "Đã tải thành công module %1",
-        "failLoadModule": "Không thể tải thành công module %1, lỗi: %2",
-        "moduleError": "Những module đã xảy ra sự cố không mong muốn khi đang tải: \n\n%1"
-    },
-    "en": {
-        "nameExist": "Module's name is similar to another module!",
-        "notFoundLanguage": "Module %1 does not support your language",
-        "notFoundPackage": "Can't find package %1 for module %2, install...",
-        "cantInstallPackage": "Can't install package %1 for module %2, error: %3",
-        "loadedPackage": "Loaded package for module %1",
-        "loadedConfig": "Loaded config for module %1",
-        "cantLoadConfig": "Can't load config for module %1, error: %2",
-        "cantOnload": "Can't load setup for module %1, error: %1",
-        "successLoadModule": "Loaded module %1",
-        "failLoadModule": "Can't load module %1, error: %2",
-        "moduleError": "Modules which have unexpected error when loading: \n\n%1"
+  }
+
+  async setConfig(key, value, [...keys]) {
+    const data = this.fs.readFileSync(this.configPath, 'utf8');
+    const config = JSON.parse(data);
+    if (keys.length != 0) {
+      let temp = config[key]
+      for (const el of keys) {
+        temp = temp[el]
+      }
+      temp[keys[keys.length - 1]] = value
+    } else config[key] = value
+    const json = JSON.stringify(config, null, 2);
+    this.fs.writeFileSync(this.configPath, json, 'utf8');
+    return;
+  }
+
+  async deleteKey(key, [...keys]) {
+    const data = this.fs.readFileSync(this.configPath, 'utf8');
+    const config = JSON.parse(data);
+    if (keys.length != 0) {
+      let temp = config[key]
+      for (const el of keys) {
+        temp = temp[el]
+      }
+      delete temp[keys[keys.length - 1]]
+    } else delete config[key]
+    const json = JSON.stringify(config, null, 2);
+    this.fs.writeFileSync(this.configPath, json, 'utf8');
+    return;
+  }
+
+  async getConfig(key) {
+    const data = this.fs.readFileSync(this.configPath, 'utf8');
+    const config = JSON.parse(data);
+    return key ? config[key] : config;
+  }
+
+  async listModules(type) {
+    const response = await this.got(this.rawGithubUrl + 'repo.json');
+    const data = JSON.parse(response.body);
+    return type ? data.modules[type] : data.modules;
+  }
+
+  async listModulesLocal() {
+    const config = await this.getConfig();
+    const modules = {
+      commands: [],
+      events: []
     }
-}
-module.exports.version = function () {
-    const { resolve: a } = global.nodemodule.path;
-    try {
-        var b = a(__dirname, 'cache', 'meewmeew.json'), c = require(b), d = c.version
-    } catch (b) {
-        d = '1.0.0'
+    Object.keys(config.modules).map(el => config.modules[el].type === "commands" ? modules.commands.push({
+      [el]: config.modules[el].version
+    }) : modules.events.push({
+      [el]: config.modules[el].version
+    }))
+    return modules;
+  }
+
+  async updateOnLoad() {
+    var modules = await this.getConfig('modules');
+    var meewmeew = modules['meewmeew'];
+    if (meewmeew && meewmeew.autoUpdate) {
+      await this.updateAllModules()
     }
-    return [d, b, c]
-}
-module.exports.onLoad = async function () {
-    const b = global.nodemodule.axios
-    const c = require(process.cwd() + '/utils/log')
-    const { existsSync: d, writeFileSync: e } = global.nodemodule['fs-extra']
-    const { data: f } = await b.get(url);
-    const { spawnSync } = global.nodemodule.child_process
-    var [a, g, h] = this.version();
-    if (!d(g)) e(g, JSON.stringify({ version: a }, null, 4));
-    else {
-        const b = h;
-        b.hasOwnProperty('version') || (b.version = '1.0.0'),
-            e(g, JSON.stringify(b, null, 4))
+  }
+
+  async installModule(name, type = "commands", overwrite = false) {
+    if (this.getType(name) === "String") var allModule = [name]
+    else if (this.getType(name) === "Array") var allModule = name
+    else throw new TypeError("Module name must be a string or array of strings")
+    const log = []
+    for (const module of allModule) {
+      const url = `${this.rawGithubUrl}/modules/${type}/${module}.js`
+      const path = this.path.resolve(process.cwd(), 'modules', type, module + '.js')
+      if (this.fs.existsSync(path) && !overwrite) {
+        log.push(`[-] Module ${module} đã tồn tại! Bật chế độ overwrite để buộc ghi đè.`)
+        continue;
+      }
+      await this.download(url, path)
+      const { meewmeewConfig, config } = require(path);
+      if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
+      else this.setConfig(`${module}`, {
+        version: config.version,
+        type: type,
+      }, ['modules'])
+      log.push(`[+] Module ${module} đã được cài đặt!`)
     }
-    if (f.version != a) {
-        c(`[!] Đã có bản cập nhật mới [!]`, '[ MeewMeew ]');
-        c(`Phiên bản ${f.version}`, '[ MeewMeew ]');
-        c(`Các module có sự thay đổi: ${f.change.join(', ')}`, '[ MeewMeew ]');
-        c(`Chi tiết: ${f.details}`, '[ MeewMeew ]');
-        if (global.configModule.meewmeew && global.configModule.meewmeew.auto_update) {
-            if (!d(process.cwd() + '/meewmeew.js')) {
-                let url = 'https://raw.githubusercontent.com/MeewMeew/Module-Miraiv2/Mew/cli/meewmeew.js';
-                let { data: a } = await b.get(url, { responseType: 'arraybuffer' });
-                b(process.cwd() + '/meewmeew.js', Buffer.from(a));
-            }
-            if (d(process.cwd() + '/meewmeew.json')) {
-                spawnSync('node', [process.cwd() + '/meewmeew.js', '--update'], {
-                    stdio: 'inherit'
-                });
-            }
+    return log;
+  }
+
+  async uninstallModule(name, type = "commands") {
+    if (this.getType(name) === "String") var allModule = [name]
+    else if (this.getType(name) === "Array") var allModule = name
+    else throw new TypeError("Module name must be a string or array of strings")
+    const log = []
+    for (const module of allModule) {
+      const path = this.path.resolve(process.cwd(), 'modules', type, module + '.js')
+      if (!this.fs.existsSync(path)) {
+        log.push(`[-] Module ${module} không tồn tại!`)
+        continue;
+      }
+      this.fs.unlinkSync(path)
+      await this.deleteKey(`${module}`, ['modules'])
+      log.push(`[+] Module ${module} đã được gỡ bỏ!`)
+    }
+    return log;
+  }
+
+  async updateModule(name, type = "commands") {
+    if (this.getType(name) === "String") var allModule = [name]
+    else if (this.getType(name) === "Array") var allModule = name
+    else throw new TypeError("Module name must be a string or array of strings")
+    const log = []
+    for (const module of allModule) {
+      const url = `${this.rawGithubUrl}/modules/${type}/${module}.js`
+      const path = this.path.resolve(process.cwd(), 'modules', type, module + '.js')
+      if (!this.fs.existsSync(path)) {
+        log.push(`[-] Module ${module} không tồn tại!`)
+        continue;
+      }
+      await this.download(url, path)
+      const { meewmeewConfig, config } = require(path);
+      if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
+      else this.setConfig(`${module}`, {
+        version: config.version,
+        type: type,
+      }, ['modules'])
+      log.push(`[+] Module ${module} đã được cập nhật!`)
+    }
+    return log;
+  }
+
+  async updateAllModules() {
+    const modules = await this.listModules();
+    const local = await this.listModulesLocal();
+    const log = []
+    for (const module of modules) {
+      const { name, type } = module;
+      if (local[type][name] === module.version) continue;
+      await this.updateModule(name, type)
+      log.push(`[+] Module ${name} đã được cập nhật!`)
+    }
+    return log;
+  }
+
+  async uninstallAllModules() {
+    const local = await this.listModulesLocal();
+    const log = []
+    for (const module in local) {
+      for (const name in local[module]) {
+        await this.uninstallModule(name, module)
+        log.push(`[+] Module ${name} đã được gỡ bỏ!`)
+      }
+    }
+    return log;
+  }
+
+  async listUpdateModules() {
+    const modules = await this.listModules().catch(console.error);
+    const local = await this.listModulesLocal().catch(console.error);
+    const log = []
+    for (const types in modules) {
+      for (const module in modules[types]) {
+        let localModule = local[types][module]
+        let latestVersion = modules[types][module]
+        if (localModule) {
+          if (localModule.version === latestVersion) continue;
         };
+        log.push(`[+] "${module}" ${localModule ? localModule.version : 'not installed'} -> ${latestVersion}`)
+      }
     }
-};
-module.exports.getAll = async function () {
-    const axios = global.nodemodule.axios;
-    const { data: a } = await axios.get(url);
-    return [a.modules, a];
-};
-module.exports.getName = async function () {
-    var a = { events: {}, commands: {} };
-    for (const b of global.client.events.values()) 'MeewMeew' == b.config.credits && (a.events[b.config.name] = b.config.version);
-    for (const b of global.client.commands.values()) 'MeewMeew' == b.config.credits && (a.commands[b.config.name] = b.config.version);
-    return a;
-};
-module.exports.falseVersion = async function (a, b) {
-    var c = { events: {}, commands: {} };
-    return Object.keys(a.commands).map(d => b.commands[d] == a.commands[d] && b.commands[d] || (c.commands[d] = [a.commands[d], b.commands[d] || null, d])),
-        Object.keys(a.events).map(d => b.events[d] == a.events[d] && b.events[d] || (c.events[d] = [a.events[d], b.events[d] || null, d])), c
-};
-module.exports.update = async function (a, b) {
-    const axios = global.nodemodule.axios;
-    const { existsSync, writeFileSync, unlinkSync } = global.nodemodule['fs-extra'];
-    const { data: c } = await axios.get(a);
-    existsSync(b) && (await unlinkSync(b)), await new Promise((a) => setTimeout(a, 200)), await writeFileSync(b, Buffer.from(c, 'utf-8'))
-};
-module.exports.switchArgs = function (a) {
-    switch (a[1]) {
-        case void 0:
-        case 'all':
-            return 'all';
-        default:
-            return 'idk';
-    }
-}
-module.exports.run = async function ({ args: a, event: b, api: c, getText }) {
-    async function d(a, d) {
-        const e = require('./command');
-        const f = require('./event');
-        if (0 == a.length, !Array.isArray(a)) return;
-        var x = { moduleList: a, threadID: b.threadID, messageID: b.messageID, getText };
-        0 != a.length && ('commands' === d ? e.loadCommand(x) : 'events' === d ? f.loadCommand(x) : void 0);
-    }
-    const e = await this.getName();
-    const [f, g] = await this.getAll();
-    const h = Object.keys(f.commands);
-    const i = Object.keys(f.events);
-    const { resolve } = global.nodemodule.path;
-    const { commands: j, events: k } = await this.falseVersion(f, e);
-    const l = (a, d = function () { }) => c.sendMessage(a, b.threadID, d);
-    const { writeFileSync, unlinkSync } = global.nodemodule['fs-extra'];
-    var [localVersion, meewmeew, meewmeewData] = this.version();
-    switch (a[0]) {
-        case 'install':
-            if ('all' == this.switchArgs(a)) {
-                meewmeewData.version = g.version, await writeFileSync(meewmeew, JSON.stringify(meewmeewData, null, 4));
-                var m = '\xBB Commands:\n', n = '\xBB Events:\n';
-                i.forEach((a) => n += `- ${a}: ${f.events[a]}\n`), h.forEach((a) => m += `- ${a}: ${f.commands[a]}\n`),
-                    l('Thao t\xE1c n\xE0y s\u1EBD t\u1EA3i xu\u1ED1ng to\xE0n b\u1ED9 modules.', async () => l('Bao g\u1ED3m c\xE1c modules:\n' + m + n));
-                for (const a of h) {
-                    const b = resolve(__dirname, `${a}.js`);
-                    await this.update(cmdUrl.replace('{name}', a), b)
-                }
-                for (const a of i) {
-                    const b = resolve(__dirname, '../events', `${a}.js`);
-                    await this.update(evtUrl.replace('{name}', a), b)
-                }
-                l('[!] T\u1EA3i xu\u1ED1ng ho\xE0n t\u1EA5t [!]'),
-                    await d(i, 'events'), await d(h, 'commands');
-            }
-            break;
-        case 'update':
-            if ('all' == this.switchArgs(a)) {
-                if (0 == Object.keys(j).length && 0 == Object.keys(k).length) return l('==== MeewMeew ====\n\xBB T\u1EA5t c\u1EA3 c\xE1c module hi\u1EC7n \u0111ang \u1EDF phi\xEAn b\u1EA3n m\u1EDBi nh\u1EA5t!');
-                meewmeewData.version = g.version, await writeFileSync(meewmeew, JSON.stringify(meewmeewData, null, 4));
-                const a = Object.keys(j), b = Object.keys(k);
-                var m = '\xBB Module Command:\n', n = '\xBB Module Event:\n';
-                b.forEach((a) => n += `- ${a}:\n    + Current version: ${k[a][1]}\n    + Latest version: ${k[a][0]}\n`),
-                    a.forEach((a) => m += `- ${a}:\n    + Current version: ${j[a][1]}\n    + Latest version: ${j[a][0]}\n`),
-                    l(`Tiến hành update..\n${m}${n}`);
-                for (const b of a) {
-                    const a = resolve(__dirname, `${b}.js`);
-                    await this.update(cmdUrl.replace('{name}', b), a)
-                }
-                for (const a of b) {
-                    const b = resolve(__dirname, '../events', `${a}.js`);
-                    await this.update(evtUrl.replace('{name}', a), b)
-                }
-                l('[!] C\u1EADp nh\u1EADt ho\xE0n t\u1EA5t [!]')
-                await d(b, 'events'), await d(a, 'commands');
-            }
-            break;
-        case 'uninstall':
-            if ('all' == this.switchArgs(a)) {
-                meewmeewData.version = '1.0.0', await writeFileSync(meewmeew, JSON.stringify(meewmeewData, null, 4));
-                for (const a of h) 'meewmeew' != a && (await unlinkSync(resolve(__dirname, a + '.js')));
-                for (const a of i) await unlinkSync(resolve(__dirname, '../events', a + '.js'));
-                l('[!] \u0110\xE3 g\u1EE1 c\xE0i \u0111\u1EB7t t\u1EA5t c\u1EA3 module c\u1EE7a Mew [!]', () => l('\u0110\u1EC3 c\xE0i \u0111\u1EB7t l\u1EA1i, h\xE3y s\u1EED d\u1EE5ng l\u1EC7nh meewmeew install'))
-            }
-            break;
-        default:
-            l('==== MeewMeew ====\n' +
-                `» Phiên bản hiện tại: ${localVersion}\n` +
-                `» Phiên bản mới nhất: ${g.version}\n` +
-                `» Module thay đổi: ${g.change.join(', ')}\n` +
-                `» Chi tiết: ${g.details}\n` +
-                `» ${g.version == localVersion ?
-                    'B\u1EA1n \u0111ang s\u1EED d\u1EE5ng phi\xEAn b\u1EA3n m\u1EDBi nh\u1EA5t.' :
-                    '\u0110\xE3 c\xF3 b\u1EA3n c\u1EADp nh\u1EADt m\u1EDBi, h\xE3y update.'}`);
-    }
+    return log;
+  }
 
-};
+  trueType(type) {
+    if (!['commands', 'events'].includes(type)) return false;
+    return true;
+  }
+
+  async run({ api, event, args }) {
+    const { threadID, messageID } = event;
+    switch (args[0]) {
+      case 'help':
+        var update = `Cập nhật modules\n` +
+          `- meewmeew update [type] [All/ModuleName]:\n` +
+          ` + all: Cập nhật tất cả module có bản update.\n` +
+          `  -> Exam: meewmeew update all\n` +
+          ` + modules: Cập nhật module được chỉ định.\n` +
+          `  -> Exam: meewmeew update commands module1 module2\n\n`;
+        var install = `Cài đặt module\n` +
+          `- meewmeew install [type] [All/ModuleName] [overwrite]:\n` +
+          ` + all: Cài đặt tất cả module.\n` +
+          `  -> Exam: meewmeew install commands all true\n` +
+          ` + modules: Cài đặt module được chỉ định.\n` +
+          `  -> Exam: meewmeew install commands module1 module2\n` +
+          ` + overwrite: Cài đặt module được chỉ định và ghi đè lên module đã cài đặt nếu trùng tên.\n` +
+          `  -> Exam: meewmeew install commands module1 module2 true\n\n`;
+        var uninstall = `Gỡ bỏ module\n` +
+          `- meewmeew uninstall [type] [All/ModuleName]:\n` +
+          ` + all: Gỡ bỏ tất cả module.\n` +
+          `  -> Exam: meewmeew uninstall all\n` +
+          ` + modules: Gỡ bỏ module được chỉ định.\n` +
+          `  -> Exam: meewmeew uninstall commands module1 module2\n\n`;
+        var list =  `Danh sách module\n` +
+          `- meewmeew list [type]:\n` +
+          ` + type: Hiển thị danh sách module theo loại.\n` +
+          `  -> Exam: meewmeew list commands`;
+        switch (args[1]) {
+          case 'update':
+            api.sendMessage(update, threadID, messageID);
+            break;
+          case 'install':
+            api.sendMessage(install, threadID, messageID);
+            break;
+          case 'uninstall':
+            api.sendMessage(uninstall, threadID, messageID);
+            break;
+          case 'list':
+            api.sendMessage(list, threadID, messageID);
+            break;
+          default:
+            api.sendMessage(`[-] meewmeew help [install/update/uninstall/list]`, threadID, messageID);
+            break;
+        }
+        break;
+      case 'install':
+        // get last item of args without change args
+        const overwrite = args.at(-1) === 'true' || false;
+
+        if (args[1] === 'all') {
+          var log = await this.installAllModules(overwrite);
+          return api.sendMessage(log.join('\n'), threadID, messageID);
+        } else {
+          var type = args[1];
+          if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
+          var modules = args.slice(2);
+          if (overwrite) modules = modules.slice(0, -1);
+          var log = await this.installModule(modules, type, overwrite);
+          return api.sendMessage(log.join('\n'), threadID, messageID);
+        }
+      case 'uninstall':
+        if (args[1] === 'all') {
+          var log = await this.uninstallAllModules();
+          return api.sendMessage(log.join('\n'), threadID, messageID);
+        } else {
+          var type = args[1];
+          if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
+          var modules = args.slice(2);
+          var log = await this.uninstallModule(modules, type);
+          return api.sendMessage(log.join('\n'), threadID, messageID);
+        }
+      case 'update':
+        if (args[1] === 'all') {
+          var log = await this.updateAllModules();
+          return api.sendMessage(log.join('\n'), threadID, messageID);
+        }
+        else if (args[1] === 'list') {
+          var log = await this.listUpdateModules();
+          return api.sendMessage(log.join('\n'), threadID, messageID);
+        }
+        else {
+          var type = args[1];
+          if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
+          var modules = args.slice(2);
+          var log = await this.updateModule(modules, type);
+          return api.sendMessage(log.join('\n'), threadID, messageID);
+        }
+      case 'list':
+        var type = args[1];
+        if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
+        var list = await this.listModules(type);
+        var msg = (Object.entries(list)).map((el, index) => {
+          return `[${index + 1}] ${el[0]} - ${el[1]}`;
+        }).join('\n');
+        return api.sendMessage(msg, threadID, messageID);
+      default:
+        return api.sendMessage(`[+] Command không hợp lệ!`, threadID, messageID);
+    }
+  }
+}
+
+module.exports = new MeewMeewModule();

@@ -14,9 +14,6 @@
 
 # Cảnh Báo
 - **Cấm chỉnh sửa credits.**
-- **Hạn chế chỉnh sửa(mod) module.**
-
-# Cập nhật: 19/03/2022
 
 # Vị Trí Lưu
 - Module command: [modules/commands](https://github.com/miraiPr0ject/miraiv2/tree/main/modules/commands)

@@ -6,7 +6,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "covid",
-      version: "2.1.2",
+      version: "2.1.3",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
@@ -14,14 +14,14 @@ class MeewMeewModule {
       usages: "",
       cooldowns: 5,
       dependencies: {
-        meewmeewapi: ""
+        meewmeewapi: "latest"
       },
       envConfig: {
         APIKEY: ""
       },
-      changelog: [
-        "Nâng cấp module"
-      ]
+      meewmeewConfig: {
+        requiredApikey: true
+      }
     }
   }
 

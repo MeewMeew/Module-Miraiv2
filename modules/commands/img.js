@@ -7,7 +7,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "img",
-      version: "3.1.4",
+      version: "3.1.5",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "Kho Ảnh",
@@ -15,10 +15,13 @@ class MeewMeewModule {
       usages: "[boy/girl/cosplay/sexy/wibu/meow/dog]",
       cooldowns: 5,
       dependencies: {
-        meewmeewapi: ""
+        meewmeewapi: "latest"
       },
       envConfig: {
         APIKEY: ""
+      },
+      meewmeewConfig: {
+        requiredApikey: true
       }
     }
   }

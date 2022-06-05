@@ -7,7 +7,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "hitbutt",
-      version: "2.2.8",
+      version: "2.2.9",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "",
@@ -15,13 +15,16 @@ class MeewMeewModule {
       usages: "[@tag]",
       cooldowns: 5,
       dependencies: {
-        meewmeewapi: "",
+        meewmeewapi: "latest",
         "fs-extra": "",
         "path": "",
         "jimp": ""
       },
       envConfig: {
         APIKEY: ""
+      },
+      meewmeewConfig: {
+        requiredApikey: true
       }
     }
   }

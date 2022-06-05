@@ -8,18 +8,21 @@ class MeewMeewModule {
   get config() {
     return {
       name: "sim",
-      version: "4.3.8",
+      version: "4.3.9",
       hasPermssion: 0,
       credits: "MeewMeew",
-      description: "Chat c\xF9ng con sim m\u1EA5t d\u1EA1y nh\u1EA5t",
+      description: "Simsimi dành cho người có sở thích lạ =))",
       commandCategory: "General",
       usages: "[args]",
       cooldowns: 5,
       dependencies: {
-        meewmeewapi: ""
+        meewmeewapi: "latest"
       },
       envConfig: {
         APIKEY: ""
+      },
+      meewmeewConfig: {
+        requiredApikey: true
       }
     }
   }
@@ -45,6 +48,7 @@ class MeewMeewModule {
 
   async handleEvent({ api, event }) {
     if (!global.meewmeew.simsimi || !global.meewmeew.simsimi[event.threadID]) return;
+    if (global.meewmeew.simsimi[event.threadID] == event.messageID) return;
     if (event.senderID == api.getCurrentUserID() || !event.body) return;
     var result = await this.simsimi(event.body);
     return api.sendMessage(result, event.threadID, event.messageID);

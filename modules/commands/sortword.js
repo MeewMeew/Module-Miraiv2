@@ -7,7 +7,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "sortword",
-      version: "1.1.4",
+      version: "1.1.5",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "S\u1EAFp x\u1EBFp l\u1EA1i 1 t\u1EEB ti\u1EBFng anh b\u1ECB x\xE1o tr\u1ED9n",
@@ -15,10 +15,13 @@ class MeewMeewModule {
       usages: "",
       cooldowns: 5,
       dependencies: {
-        meewmeewapi: ""
+        meewmeewapi: "latest"
       },
       envConfig: {
         APIKEY: ""
+      },
+      meewmeewConfig: {
+        requiredApikey: true
       }
     }
   }
