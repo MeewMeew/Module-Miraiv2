@@ -8,7 +8,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: 'meewmeew',
-      version: '2.3.4',
+      version: '2.3.5',
       hasPermssion: 2,
       credits: 'MeewMeew',
       description: 'Tải, cập nhật, gỡ bỏ các module của meewmeew',
@@ -133,6 +133,7 @@ class MeewMeewModule {
         console.log(msg)
         log.push(msg)
       } else {
+        this.fs.unlinkSync(path);
         let msg = `[-] Module ${module} không tồn tại!`
         console.log(msg)
         log.push(msg)
@@ -197,13 +198,15 @@ class MeewMeewModule {
     return log;
   }
 
-  async installAllModules(overwrite = false) {
+  async installAllModules() {
     const log = []
     const modules = await this.listModules();
-    for (const module of modules) {
-      let msg = await this.installModule(module, 'commands', overwrite)
-      console.log(msg.join('\n'))
-      log.push(...msg)
+    for (const type in modules) {
+      for (const module in modules[type]) {
+        let msg = await this.installModule(module, type, true)
+        console.log(msg.join('\n'))
+        log.push(...msg)
+      }
     }
     return log;
   }
