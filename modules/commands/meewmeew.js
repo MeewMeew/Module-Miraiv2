@@ -8,7 +8,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: 'meewmeew',
-      version: '2.3.1',
+      version: '2.3.3',
       hasPermssion: 2,
       credits: 'MeewMeew',
       description: 'Tải, cập nhật, gỡ bỏ các module của meewmeew',
@@ -104,16 +104,7 @@ class MeewMeewModule {
 
   async listModulesLocal() {
     const config = await this.getConfig();
-    const modules = {
-      commands: [],
-      events: []
-    }
-    Object.keys(config.modules).map(el => config.modules[el].type === "commands" ? modules.commands.push({
-      [el]: config.modules[el].version
-    }) : modules.events.push({
-      [el]: config.modules[el].version
-    }))
-    return modules;
+    return config.modules;
   }
 
   async installModule(name, type = "commands", overwrite = false) {
@@ -132,8 +123,8 @@ class MeewMeewModule {
       }
       var result = await this.download(url, path)
       if (result) {
-        const { meewmeewConfig, config } = require(path);
-        if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
+        const { config } = require(path);
+        if (config.meewmeewConfig) this.setConfig(`${module}`, config.meewmeewConfig, ['modules'])
         else this.setConfig(`${module}`, {
           version: config.version,
           type: type,
@@ -210,10 +201,9 @@ class MeewMeewModule {
     const log = []
     const modules = await this.listModules();
     for (const module of modules) {
-      await this.installModule(module, 'commands', overwrite)
-      let msg = `[+] Module ${module} đã được cài đặt!`
-      console.log(msg)
-      log.push(msg)
+      let msg = await this.installModule(module, 'commands', overwrite)
+      console.log(msg.join('\n'))
+      log.push(...msg)
     }
     return log;
   }
@@ -224,9 +214,14 @@ class MeewMeewModule {
     const log = []
     for (const module of modules) {
       const { name, type } = module;
-      if (local[type][name] === module.version) continue;
-      await this.updateModule(name, type)
-      let msg = `[+] Module ${name} đã được cập nhật!`
+      if (local[name]) {
+        if (local[name].type === type && local[name].version === module.version) continue;
+        let msg = await this.updateModule(name, type)
+        console.log(msg.join('\n'))
+        log.push(...msg)
+        continue;
+      }
+      let msg = `[-] Module ${name} chưa được cài đặt!`
       console.log(msg)
       log.push(msg)
     }
@@ -236,13 +231,10 @@ class MeewMeewModule {
   async uninstallAllModules() {
     const local = await this.listModulesLocal();
     const log = []
-    for (const module in local) {
-      for (const name in local[module]) {
-        await this.uninstallModule(name, module)
-        let msg = `[+] Module ${name} đã được gỡ bỏ!`
-        console.log(msg)
-        log.push(msg)
-      }
+    for (const name in local) {
+      let msg = await this.uninstallModule(name, module)
+      console.log(msg.join('\n'))
+      log.push(...msg)
     }
     return log;
   }
@@ -253,12 +245,14 @@ class MeewMeewModule {
     const log = []
     for (const types in modules) {
       for (const module in modules[types]) {
-        let localModule = local[types][module]
+        let localModule = local[module]
         let latestVersion = modules[types][module]
         if (localModule) {
-          if (localModule.version === latestVersion) continue;
-        };
-        log.push(`[+] "${module}" ${localModule ? localModule.version : 'not installed'} -> ${latestVersion}`)
+          if (localModule['type'] == types) {
+            if (localModule['version'] === latestVersion) continue;
+          }
+        }
+        log.push(`[+] "${module}" ${localModule && localModule['type'] == types ? localModule.version : 'not installed'} -> ${latestVersion}`)
       }
     }
     return log;
@@ -316,35 +310,40 @@ class MeewMeewModule {
           break;
         case 'install':
           if (args[1] === 'all') {
-            api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
-            var log = await this.installAllModules(true);
-            return api.sendMessage(log.join('\n'), threadID);
+            return api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, async () => {
+              var log = await this.installAllModules(true);
+              return api.sendMessage(log.join('\n'), threadID);
+            }, event.messageID)
           } else {
             var type = args[1];
             if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
             var modules = args.slice(2);
-            api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
-            var log = await this.installModule(modules, type, true);
-            return api.sendMessage(log.join('\n'), threadID);
+            return api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, async () => {
+              var log = await this.installModule(modules, type, true);
+              return api.sendMessage(log.join('\n'), threadID);
+            }, event.messageID)
           }
         case 'uninstall':
           if (args[1] === 'all') {
-            api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
-            var log = await this.uninstallAllModules();
-            return api.sendMessage(log.join('\n'), threadID);
+            return api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, async () => {
+              var log = await this.uninstallAllModules();
+              return api.sendMessage(log.join('\n'), threadID);
+            }, event.messageID)
           } else {
             var type = args[1];
             if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
             var modules = args.slice(2);
-            api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
-            var log = await this.uninstallModule(modules, type);
-            return api.sendMessage(log.join('\n'), threadID);
+            return api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, async () => {
+              var log = await this.uninstallModule(modules, type);
+              return api.sendMessage(log.join('\n'), threadID);
+            }, event.messageID)
           }
         case 'update':
           if (args[1] === 'all') {
-            api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
-            var log = await this.updateAllModules();
-            return api.sendMessage(log.join('\n'), threadID);
+            return api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, async () => {
+              var log = await this.updateAllModules();
+              return api.sendMessage(log.join('\n'), threadID);
+            }, event.messageID)
           }
           else if (args[1] === 'list') {
             var log = await this.listUpdateModules();
@@ -354,9 +353,10 @@ class MeewMeewModule {
             var type = args[1];
             if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
             var modules = args.slice(2);
-            api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
-            var log = await this.updateModule(modules, type);
-            return api.sendMessage(log.join('\n'), threadID);
+            return api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, async () => {
+              var log = await this.updateModule(modules, type);
+              return api.sendMessage(log.join('\n'), threadID);
+            }, event.messageID)
           }
         case 'list':
           var type = args[1];
