@@ -1,8 +1,6 @@
 {
-  "version": "2.4.13",
-  "change": [
-    "meewmeew"
-  ],
+  "version": "2.5.1",
+  "change": [],
   "details": "update",
   "modules": {
     "commands": {

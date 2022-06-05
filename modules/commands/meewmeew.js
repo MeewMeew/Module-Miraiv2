@@ -37,59 +37,62 @@ class MeewMeewModule {
     const writer = this.fs.createWriteStream(path);
     const downloadStream = this.got.stream(url);
     downloadStream.pipe(writer);
-    return new Promise((resolve, reject) => {
-      downloadStream.on('error', reject);
-      writer.on('finish', resolve);
-      writer.on('error', reject);
+    return new Promise((resolve) => {
+      downloadStream.on('error', () => resolve(false));
+      writer.on('finish', () => resolve(true));
+      writer.on('error', () => resolve(false));
     });
   }
 
   async makeConfig() {
     if (!this.fs.existsSync(this.configPath)) {
       const config = {
-        APIKEY: '',
-        modules: {
-          commands: {},
-          events: {}
-        }
+        modules: {}
       }
       this.fs.writeFileSync(this.configPath, JSON.stringify(config, null, 4), 'utf8');
     }
   }
 
-  async setConfig(key, value, [...keys]) {
+  async setConfig(key, value, keys = []) {
     const data = this.fs.readFileSync(this.configPath, 'utf8');
     const config = JSON.parse(data);
     if (keys.length != 0) {
-      let temp = config[key]
+      let temp = config
       for (const el of keys) {
         temp = temp[el]
       }
-      temp[keys[keys.length - 1]] = value
+      temp[key] = value
     } else config[key] = value
     const json = JSON.stringify(config, null, 2);
     this.fs.writeFileSync(this.configPath, json, 'utf8');
     return;
   }
 
-  async deleteKey(key, [...keys]) {
+  async deleteKey(key, keys = []) {
     const data = this.fs.readFileSync(this.configPath, 'utf8');
     const config = JSON.parse(data);
     if (keys.length != 0) {
-      let temp = config[key]
+      let temp = config
       for (const el of keys) {
         temp = temp[el]
       }
-      delete temp[keys[keys.length - 1]]
+      delete temp[key]
     } else delete config[key]
     const json = JSON.stringify(config, null, 2);
     this.fs.writeFileSync(this.configPath, json, 'utf8');
     return;
   }
 
-  async getConfig(key) {
+  async getConfig(key, keys = []) {
     const data = this.fs.readFileSync(this.configPath, 'utf8');
     const config = JSON.parse(data);
+    if (keys.length != 0) {
+      let temp = config
+      for (const el of keys) {
+        temp = temp[el]
+      }
+      return temp[key]
+    }
     return key ? config[key] : config;
   }
 
@@ -127,16 +130,22 @@ class MeewMeewModule {
         log.push(msg)
         continue;
       }
-      await this.download(url, path)
-      const { meewmeewConfig, config } = require(path);
-      if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
-      else this.setConfig(`${module}`, {
-        version: config.version,
-        type: type,
-      }, ['modules'])
-      let msg = `[+] Module ${module} đã được cài đặt!`
-      console.log(msg)
-      log.push(msg)
+      var result = await this.download(url, path)
+      if (result) {
+        const { meewmeewConfig, config } = require(path);
+        if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
+        else this.setConfig(`${module}`, {
+          version: config.version,
+          type: type,
+        }, ['modules'])
+        let msg = `[+] Module ${module} đã được cài đặt!`
+        console.log(msg)
+        log.push(msg)
+      } else {
+        let msg = `[-] Module ${module} không tồn tại!`
+        console.log(msg)
+        log.push(msg)
+      }
     }
     return log;
   }
@@ -177,16 +186,22 @@ class MeewMeewModule {
         log.push(msg)
         continue;
       }
-      await this.download(url, path)
-      const { meewmeewConfig, config } = require(path);
-      if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
-      else this.setConfig(`${module}`, {
-        version: config.version,
-        type: type,
-      }, ['modules'])
-      let msg = `[+] Module ${module} đã được cập nhật!`
-      console.log(msg)
-      log.push(msg)
+      var result = await this.download(url, path)
+      if (result) {
+        const { meewmeewConfig, config } = require(path);
+        if (meewmeewConfig) this.setConfig(`${module}`, meewmeewConfig, ['modules'])
+        else this.setConfig(`${module}`, {
+          version: config.version,
+          type: type,
+        }, ['modules'])
+        let msg = `[+] Module ${module} đã được cập nhật!`
+        console.log(msg)
+        log.push(msg)
+      } else {
+        let msg = `[-] Module ${module} không tồn tại!`
+        console.log(msg)
+        log.push(msg)
+      }
     }
     return log;
   }
@@ -303,37 +318,37 @@ class MeewMeewModule {
           if (args[1] === 'all') {
             api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
             var log = await this.installAllModules(true);
-            return api.sendMessage(log.join('\n'), threadID, messageID);
+            return api.sendMessage(log.join('\n'), threadID);
           } else {
             var type = args[1];
             if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
             var modules = args.slice(2);
             api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
             var log = await this.installModule(modules, type, true);
-            return api.sendMessage(log.join('\n'), threadID, messageID);
+            return api.sendMessage(log.join('\n'), threadID);
           }
         case 'uninstall':
           if (args[1] === 'all') {
             api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
             var log = await this.uninstallAllModules();
-            return api.sendMessage(log.join('\n'), threadID, messageID);
+            return api.sendMessage(log.join('\n'), threadID);
           } else {
             var type = args[1];
             if (!this.trueType(type)) return api.sendMessage(`Loại không hợp lệ (commands/events)`, threadID, messageID);
             var modules = args.slice(2);
             api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
             var log = await this.uninstallModule(modules, type);
-            return api.sendMessage(log.join('\n'), threadID, messageID);
+            return api.sendMessage(log.join('\n'), threadID);
           }
         case 'update':
           if (args[1] === 'all') {
             api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
             var log = await this.updateAllModules();
-            return api.sendMessage(log.join('\n'), threadID, messageID);
+            return api.sendMessage(log.join('\n'), threadID);
           }
           else if (args[1] === 'list') {
             var log = await this.listUpdateModules();
-            return api.sendMessage(log.join('\n'), threadID, messageID);
+            return api.sendMessage(log.join('\n'), threadID);
           }
           else {
             var type = args[1];
@@ -341,7 +356,7 @@ class MeewMeewModule {
             var modules = args.slice(2);
             api.sendMessage("Đang bắt đầu, vui lòng đợi trong giây lát !", event.threadID, event.messageID)
             var log = await this.updateModule(modules, type);
-            return api.sendMessage(log.join('\n'), threadID, messageID);
+            return api.sendMessage(log.join('\n'), threadID);
           }
         case 'list':
           var type = args[1];
@@ -350,7 +365,7 @@ class MeewMeewModule {
           var msg = (Object.entries(list)).map((el, index) => {
             return `[${index + 1}] ${el[0]} - ${el[1]}`;
           }).join('\n');
-          return api.sendMessage(msg, threadID, messageID);
+          return api.sendMessage(msg, threadID);
         default:
           return api.sendMessage(`[+] Command không hợp lệ!`, threadID, messageID);
       }
