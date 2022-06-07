@@ -7,7 +7,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "tiktok",
-      version: "1.0.3",
+      version: "1.0.4",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "Get tiktok video without watermark",
@@ -33,7 +33,6 @@ class MeewMeewModule {
     const tiktok = new MeewMeew.Tiktok(APIKEY);
     if (args.length == 0) return api.sendMessage("Cách dùng: tiktok [url]", event.threadID, event.messageID);
     var url = args[0];
-    if (url.indexOf("https://www.tiktok.com/") == -1) return api.sendMessage("Cách dùng: tiktok [url]", event.threadID, event.messageID);
     var { path, error } = await tiktok.video(url, __dirname + '/cache/tiktok.mp4');
     if (error) return api.sendMessage(error, event.threadID, event.messageID);
     return api.sendMessage({ attachment: fs.createReadStream(path) }, event.threadID, () => fs.unlinkSync(path), event.messageID);
