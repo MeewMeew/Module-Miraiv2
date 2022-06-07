@@ -2,13 +2,13 @@ class MeewMeewModule {
   constructor() {
     this.fs = global.nodemodule['fs-extra']
     this.path = global.nodemodule['path']
-    this.got = global.nodemodule['got']
+    this.got = global.nodemodule['got'] || require('got')
     this.makeConfig();
   }
   get config() {
     return {
       name: 'meewmeew',
-      version: '2.3.5',
+      version: '2.3.6',
       hasPermssion: 2,
       credits: 'MeewMeew',
       description: 'Tải, cập nhật, gỡ bỏ các module của meewmeew',
