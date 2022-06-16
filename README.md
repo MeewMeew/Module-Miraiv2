@@ -25,7 +25,7 @@
 # Hướng Dẫn Tạo APIKEY
 - Để sử dụng được một số lệnh cần apikey, cần tạo một apikey mới để có thể sử dụng lệnh.
 - Dưới đây là video hướng dẫn.
-- Web login: [MeewMeew](https://meewmeew.info/site)
+- Web login: [MeewMeew](https://mewdev.pro/site)
 
 [![Generator APIKEY](https://img.youtube.com/vi/HPiA_Pdtmcw/0.jpg)](https://youtu.be/HPiA_Pdtmcw)
 

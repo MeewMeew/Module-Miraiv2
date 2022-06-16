@@ -6,7 +6,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "covid",
-      version: "2.1.3",
+      version: "2.1.4",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "Lấy thông tin về tình hình dịch bệnh COVID-19",
@@ -62,6 +62,7 @@ class MeewMeewModule {
         `💚 Hồi phục: ${hoiphucvn} (${pthoiphucvn}%)\n` +
         `💀 Tử vong: ${chetvn} (${ptchetvn}%)\n\n` +
         `Tin tức: ${news.vietnam}\n` +
+        `Chi tiết: ${news.url}\n` +
         `Cập nhật: ${data.time}`, event.threadID
       );
     } catch (error) {

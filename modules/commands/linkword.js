@@ -25,7 +25,7 @@ class MeewMeewModule {
 
   maxWord(lang) {
     if (lang == "en") return 1;
-    else return 2;
+    else if (lang == "vi") return 2;
   }
 
   validWord(words, lang) {
@@ -48,7 +48,7 @@ class MeewMeewModule {
     if (global.MeewMeew.linkword.has(threadID)) {
       var lang = global.MeewMeew.linkword.get(threadID);
       var maxWord = this.maxWord(lang);
-      var words = content.split(" ");
+      var words = content.split(/\s+/g);
       if (words.length == maxWord) {
         var result = await word.linkWord(this.validWord(words, lang), lang);
         if (result.data == "Bạn đã thua!" || result.error == "Từ của bạn sử dụng không tồn tại") {
@@ -56,7 +56,7 @@ class MeewMeewModule {
           return api.sendMessage("Bạn đã thua tôi, đồ con gà xD", threadID, messageID);
         }
         if (result.error) return api.sendMessage(result.error, threadID, messageID);
-        else return api.sendMessage(result.data, threadID, messageID);
+        return api.sendMessage(result.data, threadID, messageID);
       }
     }
   }

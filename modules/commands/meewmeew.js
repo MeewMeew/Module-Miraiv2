@@ -1,7 +1,7 @@
 class MeewMeewModule {
   constructor() {
-    this.fs = global.nodemodule['fs-extra']
-    this.path = global.nodemodule['path']
+    this.fs = global.nodemodule['fs-extra'] || require('fs-extra')
+    this.path = global.nodemodule['path'] || require('path')
     this.got = global.nodemodule['got'] || require('got')
     this.makeConfig();
   }
@@ -22,7 +22,7 @@ class MeewMeewModule {
   }
 
   get configPath() {
-    return this.path.resolve(process.cwd(), 'meewmeew.json')
+    return this.path.join(process.cwd(), 'meewmeew.json')
   }
 
   get rawGithubUrl() {

@@ -7,7 +7,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "hitbutt",
-      version: "2.2.9",
+      version: "2.2.10",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "",
@@ -54,8 +54,8 @@ class MeewMeewModule {
     try {
       var avatarOne = await facebook.avatar(one);
       var avatarTwo = await facebook.avatar(two);
-      var circleOne = await jimp.read(await this.circle(Buffer.from(avatarOne, 'utf-8')));
-      var circleTwo = await jimp.read(await this.circle(Buffer.from(avatarTwo, 'utf-8')));
+      var circleOne = await jimp.read(await this.circle(Buffer.from(avatarOne.data, 'utf-8')));
+      var circleTwo = await jimp.read(await this.circle(Buffer.from(avatarTwo.data, 'utf-8')));
     } catch (error) {
       console.log(error);
       let raw = await hit_butt_img.getBufferAsync("image/png");

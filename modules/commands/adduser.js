@@ -36,17 +36,15 @@ class MeewMeewModule {
     var participantIDs = participantIDs.map(e => parseInt(e));
     if (!args[0]) return out("Vui lòng nhập 1 id/link profile user cần add.");
     if (!isNaN(args[0])) return await this.adduser(args[0], undefined, adminIDs);
-    else {
-      try {
-        var [id, name, fail] = await facebook.uid(args[0], api);
-        if (fail == true && id != null) return out(id);
-        else if (fail == true && id == null) return out("Không tìm thấy ID người dùng.")
-        else {
-          await this.adduser(id, name || "người dùng Facebook", adminIDs);
-        }
-      } catch (e) {
-        return out(`${e.name}: ${e.message}.`);
+    try {
+      var [id, name, fail] = await facebook.uid(args[0], api);
+      if (fail == true && id != null) return out(id);
+      else if (fail == true && id == null) return out("Không tìm thấy ID người dùng.")
+      else {
+        await this.adduser(id, name || "người dùng Facebook", adminIDs);
       }
+    } catch (e) {
+      return out(`${e.name}: ${e.message}.`);
     }
   }
 

@@ -1,7 +1,7 @@
 /**
  * @author MeewMeew
  * @warn Do not edit code or edit credits
- * @apikey Reg key tại: https://meewmeew.info/site
+ * @apikey Reg key tại: https://mewdev.pro/site
  */
 
 class MeewMeewModule {

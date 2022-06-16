@@ -5,7 +5,7 @@
 
 class MeewMeewModule {
   constructor() {
-    this.API_URL = 'https://meewmeew.info/hidden/nettruyen';
+    this.API_URL = 'https://mewdev.pro/api/v1/hidden/nettruyen';
     this.config = {
       name: "nettruyen",
       version: "1.0.2",
@@ -18,7 +18,7 @@ class MeewMeewModule {
       envConfig: {
         meewmeew_apikey: "",
         limitPerMessage: 9,
-        home_page: 'https://meewmeew.info/site'
+        home_page: 'https://mewdev.pro/site'
       }
     }
 

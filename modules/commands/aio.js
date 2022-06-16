@@ -7,10 +7,10 @@ class MeewMeewModule {
   get config() {
     return {
       name: "aio",
-      version: "1.1.1",
+      version: "1.1.2",
       hasPermssion: 0,
       credits: "MeewMeew",
-      description: "Tải được tất cả video nếu nguồn được hỗ trợ (xem chi tiết tại meewmeew.info/site/docs#aio)",
+      description: "Tải được tất cả video nếu nguồn được hỗ trợ (xem chi tiết tại mewdev.pro/site/docs#aio)",
       commandCategory: "media",
       usages: "[url]",
       cooldowns: 5,
@@ -61,8 +61,8 @@ class MeewMeewModule {
       var size = media.formattedSize;
       var ext = media.extension;
       var quality = media.quality;
-      var filename = `${handleReply.author}_${handleReply.messageID}_${event.body}.${ext}`;
-      console.log(media)
+      var filename = `${handleReply.author}_${event.body}.${ext}`;
+      out(`Đang tải, vui lòng đợi...`);
       var { path, success } = await aio.download(url, resolve(__dirname, 'cache', filename));
       if (success == true) {
         if (statSync(path).size < 25000000) {

@@ -5,7 +5,7 @@
 
 class MeewMeewModule {
   constructor() {
-    this.API_URL = 'https://meewmeew.info/hidden/hentaivn';
+    this.API_URL = 'https://mewdev.pro/api/v1/hidden/hentaivn';
     this.config = {
       name: "hentaivn",
       version: "1.0.3",
@@ -18,7 +18,7 @@ class MeewMeewModule {
       envConfig: {
         meewmeew_apikey: "",
         limitPerMessage: 9,
-        home_page: 'https://meewmeew.info/site'
+        home_page: 'https://mewdev.pro/site'
       }
     }
 
