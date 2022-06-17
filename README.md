@@ -1,5 +1,7 @@
 <h1 align="center">
-	<img src="https://i.imgur.com/4sWdkoB.png" alt="MewMew">
+	<a href="https://mewdev.pro" target="_blank">
+		<img src="https://i.imgur.com/4sWdkoB.png" alt="MewMew">
+	</a>
 </h1>
 
 <p align="center">
