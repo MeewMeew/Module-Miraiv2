@@ -1,6 +1,8 @@
 {
-  "version": "2.5.14",
-  "change": [],
+  "version": "2.5.15",
+  "change": [
+    "linkword"
+  ],
   "details": "update",
   "modules": {
     "commands": {
@@ -14,7 +16,7 @@
       "hentaivn": "1.0.3",
       "hitbutt": "2.2.10",
       "img": "3.1.5",
-      "linkword": "2.0.11",
+      "linkword": "2.0.12",
       "meewmeew": "2.3.6",
       "nettruyen": "1.0.2",
       "sim": "4.3.9",

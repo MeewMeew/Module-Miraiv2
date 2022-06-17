@@ -7,7 +7,7 @@ class MeewMeewModule {
   get config() {
     return {
       name: "linkword",
-      version: "2.0.11",
+      version: "2.0.12",
       hasPermssion: 0,
       credits: "MeewMeew",
       description: "Chơi nối từ với bot hoặc thành viên trong nhóm",
@@ -29,7 +29,7 @@ class MeewMeewModule {
   }
 
   validWord(words, lang) {
-    if (lang == "vi") return words.slice(2).join();
+    if (lang == "vi") return words.join(" ");
     else return words[0];
   }
 
